@@ -42,7 +42,7 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         Tablero.setBackground(new java.awt.Color(204, 204, 204));
         Tablero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(Tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 840, 450));
+        getContentPane().add(Tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 800, 500));
 
         GenerarTablero.setText("Pintar ");
         GenerarTablero.addActionListener(new java.awt.event.ActionListener() {
@@ -88,15 +88,17 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         int n = Integer.parseInt(filas.getText());
         int m = Integer.parseInt(columnas.getText());
+        int ancho = 800/m;
+        int alto = 500/n;
 
         int mt[][] = new int[n][m];
 
-        Tablero.setSize(m * 50, n * 50);
+
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < m; j++) { 
                 Random r = new Random();
-                mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
+                mt[i][j] = r.nextInt(2) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
 
                 if (mt[i][j] == 1) {
                     t.setColor(Color.black); //Si se bloquea
@@ -104,11 +106,11 @@ public class TableroPrueba extends javax.swing.JFrame {
                     t.setColor(Color.white); // Ta libre :p
                 }
 
-                t.fillRect(50 * j, 50 * i, 50, 50); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
 
                 t.setColor(Color.black);
-                t.drawLine(j * 50, 0, j * 50, n * 50);
-                t.drawLine(0, i*50, m*50, i*50);
+                t.drawLine(j * ancho, 0, j * ancho, alto * ancho);
+                t.drawLine(0, i*alto, m*ancho, i*alto);
             }
         }
     }//GEN-LAST:event_GenerarTableroActionPerformed
