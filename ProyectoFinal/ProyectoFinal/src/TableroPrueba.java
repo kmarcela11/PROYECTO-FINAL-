@@ -117,6 +117,7 @@ public class TableroPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
         //CAMBIO RANDOOMMMMMMMM
         //HOLAA
+        //holaaaaaaaaa
     }//GEN-LAST:event_dificultadActionPerformed
 
     private void columnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_columnasActionPerformed
