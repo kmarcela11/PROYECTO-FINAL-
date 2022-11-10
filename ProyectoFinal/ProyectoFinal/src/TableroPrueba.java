@@ -3,20 +3,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author Valentina Bustamante
- */
 public class TableroPrueba extends javax.swing.JFrame {
+
     public TableroPrueba() {
         initComponents();
     }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,11 +22,9 @@ public class TableroPrueba extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tablero.setBackground(new java.awt.Color(204, 204, 204));
         Tablero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(Tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 800, 500));
 
         GenerarTablero.setText("Pintar ");
         GenerarTablero.addActionListener(new java.awt.event.ActionListener() {
@@ -43,7 +32,6 @@ public class TableroPrueba extends javax.swing.JFrame {
                 GenerarTableroActionPerformed(evt);
             }
         });
-        getContentPane().add(GenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
 
         dificultad.setText("jTextField1");
         dificultad.addActionListener(new java.awt.event.ActionListener() {
@@ -51,27 +39,63 @@ public class TableroPrueba extends javax.swing.JFrame {
                 dificultadActionPerformed(evt);
             }
         });
-        getContentPane().add(dificultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 50));
 
         filas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filasActionPerformed(evt);
             }
         });
-        getContentPane().add(filas, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, 100, -1));
 
         columnas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 columnasActionPerformed(evt);
             }
         });
-        getContentPane().add(columnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 100, -1));
 
         jLabel1.setText("n");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, -1, -1));
 
         jLabel2.setText("m");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(dificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(510, 510, 510)
+                .addComponent(jLabel1)
+                .addGap(42, 42, 42)
+                .addComponent(filas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(650, 650, 650)
+                .addComponent(jLabel2)
+                .addGap(47, 47, 47)
+                .addComponent(columnas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(400, 400, 400)
+                .addComponent(GenerarTablero))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(filas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(columnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(GenerarTablero)
+                .addGap(51, 51, 51)
+                .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -81,13 +105,13 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         int n = Integer.parseInt(filas.getText());
         int m = Integer.parseInt(columnas.getText());
-        int ancho = 800/m;
-        int alto = 500/n;
+        int ancho = 800 / m;
+        int alto = 500 / n;
 
         int mt[][] = new int[n][m];
-        
+
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) { 
+            for (int j = 0; j < m; j++) {
                 Random r = new Random();
                 mt[i][j] = r.nextInt(2) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
 
@@ -97,10 +121,11 @@ public class TableroPrueba extends javax.swing.JFrame {
                     t.setColor(Color.white); // Ta libre :p
                 }
                 t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
-
+                
                 t.setColor(Color.black);
-                t.drawLine(j * ancho, 0, j * ancho, alto * ancho);
-                t.drawLine(0, i*alto, m*ancho, i*alto);
+                t.drawLine(0, i * alto, m * ancho, i * alto);
+                t.drawLine(j * ancho, 0, j * ancho, n * alto);
+
             }
         }
     }//GEN-LAST:event_GenerarTableroActionPerformed
