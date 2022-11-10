@@ -22,7 +22,6 @@ public class TableroPrueba extends javax.swing.JFrame {
     private void initComponents() {
 
         Tablero = new javax.swing.JPanel();
-        xtab = new javax.swing.JLabel();
         GenerarTablero = new javax.swing.JButton();
         dificultad = new javax.swing.JTextField();
         filas = new javax.swing.JTextField();
@@ -34,16 +33,19 @@ public class TableroPrueba extends javax.swing.JFrame {
         down = new javax.swing.JLabel();
         up = new javax.swing.JLabel();
         joystick = new javax.swing.JLabel();
+        xtab = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tablero.setBackground(new java.awt.Color(204, 204, 204));
         Tablero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        xtab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/x.png"))); // NOI18N
-        Tablero.add(xtab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 20));
-
         getContentPane().add(Tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 187, 800, 500));
 
         GenerarTablero.setText("Pintar ");
@@ -112,10 +114,33 @@ public class TableroPrueba extends javax.swing.JFrame {
                 upMouseClicked(evt);
             }
         });
+        up.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                upKeyPressed(evt);
+            }
+        });
         getContentPane().add(up, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 520, 20, 30));
 
         joystick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/joystick.png"))); // NOI18N
         getContentPane().add(joystick, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 510, 108, 106));
+
+        xtab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/joystick.png"))); // NOI18N
+        getContentPane().add(xtab, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, 90));
+
+        jPanel1.setBackground(new java.awt.Color(153, 204, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1090, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -128,17 +153,38 @@ public class TableroPrueba extends javax.swing.JFrame {
         ancho = 800 / m;
         alto = 500 / n;
 
+        Random r = new Random();
+
+        int xr = r.nextInt(n); // Posición aleatoria de fila.
+        int yr = r.nextInt(m); // Posición aleatoria de columnas.
+
+        int xfr = r.nextInt(n); // Posición aleatoria de fila.
+        int yfr = r.nextInt(m); // Posición aleatoria de columnas.
+        while (xr == xfr && yfr == yr) {
+            xfr = r.nextInt(n); // Posición aleatoria de fila.
+            yfr = r.nextInt(m); // Posición aleatoria de columnas.
+        }
+
         int mt[][] = new int[n][m];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                Random r = new Random();
                 mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
 
                 if (mt[i][j] == 1) {
                     t.setColor(Color.black); //Si se bloquea
                 } else {
                     t.setColor(Color.white); // Ta libre :p
+                }
+
+                if (i == xr && j == yr) {
+                    mt[i][j] = 5;
+                    t.setColor(Color.green);
+                }
+
+                if (i == xfr && j == yfr) {
+                    mt[i][j] = 6;
+                    t.setColor(Color.blue);
                 }
 
                 t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
@@ -189,6 +235,17 @@ public class TableroPrueba extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_downMouseClicked
 
+    private void upKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_upKeyPressed
+
+    }//GEN-LAST:event_upKeyPressed
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        char v = evt.getKeyChar();
+        if (v == 'W') {
+            xtab.setLocation((xpos + 1) * ancho, (ypos) * alto);
+        }
+    }//GEN-LAST:event_formKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -234,6 +291,7 @@ public class TableroPrueba extends javax.swing.JFrame {
     private javax.swing.JTextField filas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel joystick;
     private javax.swing.JLabel left;
     private javax.swing.JLabel right;
