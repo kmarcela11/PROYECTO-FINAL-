@@ -3,11 +3,20 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+/**
+ *
+ * @author Valentina Bustamante
+ */
 public class TableroPrueba extends javax.swing.JFrame {
-
     public TableroPrueba() {
         initComponents();
     }
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -72,38 +81,32 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         int n = Integer.parseInt(filas.getText());
         int m = Integer.parseInt(columnas.getText());
-        int ancho = 800 / m;
-        int alto = 500 / n;
+        int ancho = 800/m;
+        int alto = 500/n;
 
         int mt[][] = new int[n][m];
-
+        
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < m; j++) { 
                 Random r = new Random();
-                mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
+                mt[i][j] = r.nextInt(2) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
 
                 if (mt[i][j] == 1) {
                     t.setColor(Color.black); //Si se bloquea
                 } else {
                     t.setColor(Color.white); // Ta libre :p
                 }
-
                 t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
 
                 t.setColor(Color.black);
-                t.drawLine(0, i * alto, m * ancho, i * alto);
-                t.setColor(Color.black);
-                t.drawLine(j * ancho, 0, j * ancho, n * alto);
-
+                t.drawLine(j * ancho, 0, j * ancho, alto * ancho);
+                t.drawLine(0, i*alto, m*ancho, i*alto);
             }
         }
     }//GEN-LAST:event_GenerarTableroActionPerformed
 
     private void dificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dificultadActionPerformed
-        // TODO add your handling code here:
-        //CAMBIO RANDOOMMMMMMMM
-        //HOLAA
-        //holaaaaaaaaa
+
     }//GEN-LAST:event_dificultadActionPerformed
 
     private void columnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_columnasActionPerformed
