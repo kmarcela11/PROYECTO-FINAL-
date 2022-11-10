@@ -72,15 +72,13 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         int n = Integer.parseInt(filas.getText());
         int m = Integer.parseInt(columnas.getText());
-        int ancho = 800/m;
-        int alto = 500/n;
+        int ancho = 800 / m;
+        int alto = 500 / n;
 
         int mt[][] = new int[n][m];
 
-
-
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) { 
+            for (int j = 0; j < m; j++) {
                 Random r = new Random();
                 mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
 
@@ -93,8 +91,10 @@ public class TableroPrueba extends javax.swing.JFrame {
                 t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
 
                 t.setColor(Color.black);
-                t.drawLine(j * ancho, 0, j * ancho, alto * ancho);
-                t.drawLine(0, i*alto, m*ancho, i*alto);
+                t.drawLine(0, i * alto, m * ancho, i * alto);
+                t.setColor(Color.black);
+                t.drawLine(j * ancho, 0, j * ancho, n * alto);
+
             }
         }
     }//GEN-LAST:event_GenerarTableroActionPerformed
