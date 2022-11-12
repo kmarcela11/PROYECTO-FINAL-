@@ -21,6 +21,7 @@ public class TableroPrueba extends javax.swing.JFrame {
     int m;
     int ancho;
     int alto;
+    public static int mt[][] = new int[100][100];
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -28,7 +29,6 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         Tablero = new javax.swing.JPanel();
         GenerarTablero = new javax.swing.JButton();
-        dificultad = new javax.swing.JTextField();
         filas = new javax.swing.JTextField();
         columnas = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -40,7 +40,8 @@ public class TableroPrueba extends javax.swing.JFrame {
         joystick = new javax.swing.JLabel();
         xtab = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        borde = new javax.swing.JPanel();
+        dificultad = new javax.swing.JTextField();
+        mostrarmt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -66,14 +67,6 @@ public class TableroPrueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(GenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
-
-        dificultad.setText("jTextField1");
-        dificultad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dificultadActionPerformed(evt);
-            }
-        });
-        getContentPane().add(dificultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 50));
 
         filas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,37 +133,45 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
 
-        borde.setBackground(new java.awt.Color(204, 204, 255));
+        dificultad.setText("jTextField1");
+        dificultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dificultadActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout bordeLayout = new javax.swing.GroupLayout(borde);
-        borde.setLayout(bordeLayout);
-        bordeLayout.setHorizontalGroup(
-            bordeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
-        );
-        bordeLayout.setVerticalGroup(
-            bordeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 185, Short.MAX_VALUE)
-        );
+        mostrarmt.setText("Miostrar matriz en consola");
+        mostrarmt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarmtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(830, Short.MAX_VALUE)
-                .addComponent(borde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(231, 231, 231))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(dificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(mostrarmt)))
+                .addContainerGap(1236, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(borde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(mostrarmt)
+                .addGap(18, 18, 18)
+                .addComponent(dificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(577, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 720));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1480, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -190,16 +191,17 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         int xfr = r.nextInt(n); // Posición aleatoria de fila.
         int yfr = r.nextInt(m); // Posición aleatoria de columnas.
-        while (xr == xfr && yfr == yr) {
-            xfr = r.nextInt(n); // Posición aleatoria de fila.
-            yfr = r.nextInt(m); // Posición aleatoria de columnas.
-        }
 
-        int mt[][] = new int[n][m];
+        // Por si las posiciones son iguales.
+        while (xr == xfr && yfr == yr) {
+            xfr = r.nextInt(n);
+            yfr = r.nextInt(m);
+        }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
+                t.setColor(Color.white);
 
                 if (mt[i][j] == 1) {
                     t.setColor(Color.black); //Si se bloquea
@@ -279,18 +281,51 @@ public class TableroPrueba extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyTyped
 
     private void TableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableroMouseClicked
-        Point posicion = getPointerInfo().getLocation();     
+
+        Point posicion = getPointerInfo().getLocation();
         int anchopantalla = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int altopantalla = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        
-        int xgap = anchopantalla - 1057 - Tablero.getLocation().x;
 
         int curx = posicion.x - Tablero.getLocationOnScreen().x;
-        System.out.println(curx);
+        // System.out.println(curx); DE CONTROL
         int cury = posicion.y - Tablero.getLocationOnScreen().y;
-        System.out.println(cury);
+        // System.out.println(cury); DE CONTROL
+
+        int inx = PosMatriz(curx, m, ancho);
+        int iny = PosMatriz(cury, n, alto);
+        System.out.println(inx + "    " + iny);
+
+        if (mt[iny][inx] == 1) {
+            dificultad.setText("Bloqueado :p");
+        } else {
+            mt[iny][inx] = 5;
+            Graphics t = Tablero.getGraphics();
+            t.setColor(Color.red);
+            t.fillRect(ancho * inx, alto * iny, ancho, alto); // Pinta la casilla seleccionada.
+        }
+
 
     }//GEN-LAST:event_TableroMouseClicked
+
+    private void mostrarmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarmtActionPerformed
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(String.valueOf(mt[i][j]) + " ");
+            }
+            System.out.print(" \n");
+        }
+
+        System.out.print(" \n");
+    }//GEN-LAST:event_mostrarmtActionPerformed
+
+    private int PosMatriz(int poscursor, int filcol, int medida) {
+        // Función que retorna la posición del cursor en la matriz.
+        int k = 0;
+        while (k < filcol && poscursor > k * medida) {
+            k++;
+        }
+        return k - 1;
+    }
 
     /**
      * @param args the command line arguments
@@ -331,7 +366,6 @@ public class TableroPrueba extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GenerarTablero;
     private javax.swing.JPanel Tablero;
-    private javax.swing.JPanel borde;
     private javax.swing.JTextField columnas;
     private javax.swing.JTextField dificultad;
     private javax.swing.JLabel down;
@@ -341,6 +375,7 @@ public class TableroPrueba extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel joystick;
     private javax.swing.JLabel left;
+    private javax.swing.JButton mostrarmt;
     private javax.swing.JLabel right;
     private javax.swing.JLabel up;
     private javax.swing.JLabel xtab;
