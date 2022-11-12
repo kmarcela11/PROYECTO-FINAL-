@@ -1,7 +1,12 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import static java.awt.MouseInfo.getPointerInfo;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Random;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class TableroPrueba extends javax.swing.JFrame {
 
@@ -35,6 +40,7 @@ public class TableroPrueba extends javax.swing.JFrame {
         joystick = new javax.swing.JLabel();
         xtab = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        borde = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -45,6 +51,11 @@ public class TableroPrueba extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tablero.setBackground(new java.awt.Color(204, 204, 204));
+        Tablero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableroMouseClicked(evt);
+            }
+        });
         Tablero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(Tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 187, 800, 500));
 
@@ -129,15 +140,34 @@ public class TableroPrueba extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
 
+        borde.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout bordeLayout = new javax.swing.GroupLayout(borde);
+        borde.setLayout(bordeLayout);
+        bordeLayout.setHorizontalGroup(
+            bordeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 29, Short.MAX_VALUE)
+        );
+        bordeLayout.setVerticalGroup(
+            bordeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 185, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1090, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(830, Short.MAX_VALUE)
+                .addComponent(borde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(231, 231, 231))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(borde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(353, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 720));
@@ -196,6 +226,8 @@ public class TableroPrueba extends javax.swing.JFrame {
 
             }
         }
+
+
     }//GEN-LAST:event_GenerarTableroActionPerformed
 
     private void dificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dificultadActionPerformed
@@ -246,6 +278,20 @@ public class TableroPrueba extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formKeyTyped
 
+    private void TableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableroMouseClicked
+        Point posicion = getPointerInfo().getLocation();     
+        int anchopantalla = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int altopantalla = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        
+        int xgap = anchopantalla - 1057 - Tablero.getLocation().x;
+
+        int curx = posicion.x - Tablero.getLocationOnScreen().x;
+        System.out.println(curx);
+        int cury = posicion.y - Tablero.getLocationOnScreen().y;
+        System.out.println(cury);
+
+    }//GEN-LAST:event_TableroMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -285,6 +331,7 @@ public class TableroPrueba extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GenerarTablero;
     private javax.swing.JPanel Tablero;
+    private javax.swing.JPanel borde;
     private javax.swing.JTextField columnas;
     private javax.swing.JTextField dificultad;
     private javax.swing.JLabel down;
