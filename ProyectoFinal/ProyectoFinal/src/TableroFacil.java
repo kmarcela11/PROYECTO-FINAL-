@@ -6,20 +6,22 @@ import java.awt.Point;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-public class TableroPrueba extends javax.swing.JFrame {
-    public TableroPrueba() {
+
+public class TableroFacil extends javax.swing.JFrame {
+
+    public TableroFacil() {
         initComponents();
     }
 
     Scanner lea = new Scanner(System.in);
     int xpos = 0;
     int ypos = 0;
-    int acum = 0; 
+    int acum = 0;
     int n;
     int m;
     int ancho;
     int alto;
-    boolean sel=true;
+    boolean sel = true;
     public static int mt[][] = new int[100][100];
 
     @SuppressWarnings("unchecked")
@@ -257,22 +259,18 @@ public class TableroPrueba extends javax.swing.JFrame {
         m = Integer.parseInt(columnas.getText());
         ancho = 800 / m;
         alto = 500 / n;
-        acum = 0; 
+        acum = 1;
         Random r = new Random();
 
 //        int xr = r.nextInt(n); // Posición aleatoria de fila.
 //        int yr = r.nextInt(m); // Posición aleatoria de columnas.
-
-        
 //        int xfr = r.nextInt(n); // Posición aleatoria de fila.
 //        int yfr = r.nextInt(m); // Posición aleatoria de columnas.
-
         // Por si las posiciones son iguales.
 //        while (xr == xfr && yfr == yr) {
 //            xfr = r.nextInt(n);
 //            yfr = r.nextInt(m);
 //        }
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
@@ -349,19 +347,21 @@ public class TableroPrueba extends javax.swing.JFrame {
     }//GEN-LAST:event_upKeyPressed
 
     private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
-      
+
     }//GEN-LAST:event_formKeyTyped
 
     private void TableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableroMouseClicked
 
         Point posicion = getPointerInfo().getLocation();
+        dificultad.setText("");
 
         int curx = posicion.x - Tablero.getLocationOnScreen().x;
         // System.out.println(curx); DE CONTROL
         int cury = posicion.y - Tablero.getLocationOnScreen().y;
         // System.out.println(cury); DE CONTROL
-        
-        if (acum <=3){ //validacion para que solo se pueda seleccionar dos casillas 
+        // System.out.println(acum); DE CONTROL
+        if (acum <= 2) { //validacion para que solo se pueda seleccionar dos casillas 
+
             int inx = PosMatriz(curx, m, ancho);
             int iny = PosMatriz(cury, n, alto);
             System.out.println(inx + "    " + iny);
@@ -369,34 +369,40 @@ public class TableroPrueba extends javax.swing.JFrame {
             if (mt[iny][inx] == 1) {
                 dificultad.setText("Bloqueado :p");
             } else {
-                    mt[iny][inx] = 5;
-                    Graphics t = Tablero.getGraphics();
-                    t.setColor(Color.red);
-                    t.fillRect(ancho * inx, alto * iny, ancho, alto); // Pinta la casilla seleccionada.
-                
-            }
-            }else{
-                    JOptionPane.showMessageDialog(null, "YA SELECCIONO LAS DOS CASILLAS"); // con joptionpane mientras tanto 
-            }
+                Graphics t = Tablero.getGraphics();
 
-        
-        
-        if (manu.isSelected() == true){
-            
-        
+                if (acum == 2) {
+                    mt[iny][inx] = 6; //Posición final :)
+                    t.setColor(Color.green);
+                }
+
+                if (acum == 1) {
+                    mt[iny][inx] = 5; //Posición inicial :p
+                    t.setColor(Color.red);
+                }
+                acum = acum + 1;
+
+                t.fillRect(ancho * inx, alto * iny, ancho, alto); // Pinta la casilla seleccionada.
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "YA SELECCIONO LAS DOS CASILLAS"); // con joptionpane mientras tanto 
+        }
+
+        if (manu.isSelected() == true) {
+
             int selx = posicion.x - Tablero.getLocationOnScreen().x;
             int sely = posicion.y - Tablero.getLocationOnScreen().y;
-            
+
             int px = PosMatriz(selx, m, ancho);
             int py = PosMatriz(sely, n, alto);
-            
-            if (mt[px][py]!=5){
-                
-                sel=false;
-                
+
+            if (mt[px][py] != 5) {
+
+                sel = false;
+
             }
         }
-        
 
 
     }//GEN-LAST:event_TableroMouseClicked
@@ -417,7 +423,7 @@ public class TableroPrueba extends javax.swing.JFrame {
     }//GEN-LAST:event_manuActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TableroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableroKeyPressed
@@ -433,102 +439,92 @@ public class TableroPrueba extends javax.swing.JFrame {
         int k = 0;
         while (k < filcol && poscursor > k * medida) {
             k++;
-            acum = acum +1; 
         }
         return k - 1;
     }
-    
-    public void movimiento(int [][] mt , int f, int c ){
-        
+
+    public void movimiento(int[][] mt, int f, int c) {
+
         String paso = lea.next();
-        
-        if (paso.compareTo("w")==0 || paso.compareTo("W")==0){ /* movimiento hacia arriba*/
-            
-            if (mt[f-1][c]!= 1 && (f-1 >=0 || f-1 <= n)){
-                
-                mt[f-1][c]= 5;
+
+        if (paso.compareTo("w") == 0 || paso.compareTo("W") == 0) {
+            /* movimiento hacia arriba*/
+
+            if (mt[f - 1][c] != 1 && (f - 1 >= 0 || f - 1 <= n)) {
+
+                mt[f - 1][c] = 5;
                 Graphics t = Tablero.getGraphics();
                 t.setColor(Color.red);
-                t.fillRect(ancho * (f-1), alto * c, ancho, alto);
-                
-            }
-            else{
-                
+                t.fillRect(ancho * (f - 1), alto * c, ancho, alto);
+
+            } else {
+
                 dificultad.setText("¡¡Te golpeaste con una pared!!");
-                
+
             }
-            
-        }
-        else{
-            
-            if (paso.compareTo("a")==0 || paso.compareTo("A")==0){ /* movimiento hacia izquierda*/
-            
-                if (mt[f][c-1]!= 1 && (c-1 >=0 || c-1 <= m)){
-                
-                    mt[f][c-1]= 5;
+
+        } else {
+
+            if (paso.compareTo("a") == 0 || paso.compareTo("A") == 0) {
+                /* movimiento hacia izquierda*/
+
+                if (mt[f][c - 1] != 1 && (c - 1 >= 0 || c - 1 <= m)) {
+
+                    mt[f][c - 1] = 5;
                     Graphics t = Tablero.getGraphics();
                     t.setColor(Color.red);
-                    t.fillRect(ancho * f, alto * (c-1), ancho, alto);
-                
+                    t.fillRect(ancho * f, alto * (c - 1), ancho, alto);
+
+                } else {
+
+                    dificultad.setText("¡¡Te golpeaste con una pared!!");
+
                 }
-            else{
-                
-                dificultad.setText("¡¡Te golpeaste con una pared!!");
-                
-            }
-            
-        }
-        
-        else{
-                if (paso.compareTo("s")==0 || paso.compareTo("S")==0){ /* movimiento hacia abajo*/
-            
-                    if (mt[f+1][c]!= 1 && (f+1 >=0 || f+1 <= n)){
-                
-                        mt[f+1][c]= 5;
+
+            } else {
+                if (paso.compareTo("s") == 0 || paso.compareTo("S") == 0) {
+                    /* movimiento hacia abajo*/
+
+                    if (mt[f + 1][c] != 1 && (f + 1 >= 0 || f + 1 <= n)) {
+
+                        mt[f + 1][c] = 5;
                         Graphics t = Tablero.getGraphics();
                         t.setColor(Color.red);
-                        t.fillRect(ancho * (f+1), alto * c, ancho, alto);
-                
-                    }
-                    else{
-                
+                        t.fillRect(ancho * (f + 1), alto * c, ancho, alto);
+
+                    } else {
+
                         dificultad.setText("¡¡Te golpeaste con una pared!!");
-                
+
                     }
-                  
-                }
-                else{                   
-                
-                    if (paso.compareTo("d")==0 || paso.compareTo("D")==0){ /* movimiento hacia derecha*/
-            
-                        if (mt[f][c+1]!= 1 && (c+1 >=0 || c+1 <= m)){
-                
-                            mt[f][c+1]= 5;
+
+                } else {
+
+                    if (paso.compareTo("d") == 0 || paso.compareTo("D") == 0) {
+                        /* movimiento hacia derecha*/
+
+                        if (mt[f][c + 1] != 1 && (c + 1 >= 0 || c + 1 <= m)) {
+
+                            mt[f][c + 1] = 5;
                             Graphics t = Tablero.getGraphics();
                             t.setColor(Color.red);
-                            t.fillRect(ancho * f, alto * (c+1), ancho, alto);
-                
+                            t.fillRect(ancho * f, alto * (c + 1), ancho, alto);
+
+                        } else {
+
+                            dificultad.setText("¡¡Te golpeaste con una pared!!");
+
                         }
-                    else{
-                
-                        dificultad.setText("¡¡Te golpeaste con una pared!!");
-                
+
                     }
-                  
-                } 
-                    
-              }
-                
+
+                }
+
             }
-            
+
         }
-        
+
     }
-                
-  
-                
-        
-    
 
     /**
      * @param args the command line arguments
@@ -547,21 +543,23 @@ public class TableroPrueba extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TableroPrueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableroFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TableroPrueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableroFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TableroPrueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableroFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TableroPrueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableroFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TableroPrueba().setVisible(true);
+                new TableroFacil().setVisible(true);
             }
         });
     }
