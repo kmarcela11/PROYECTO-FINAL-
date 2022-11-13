@@ -1,14 +1,13 @@
-
 import java.awt.Color;
 import java.awt.Graphics;
 import static java.awt.MouseInfo.getPointerInfo;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class TableroFacil extends javax.swing.JFrame {
-
     public TableroFacil() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -22,6 +21,7 @@ public class TableroFacil extends javax.swing.JFrame {
     int m;
     int ancho;
     int alto;
+    String nn, mm; 
     boolean sel = true;
     public static int mt[][] = new int[100][100];
 
@@ -30,7 +30,6 @@ public class TableroFacil extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         filas = new javax.swing.JTextField();
         columnas = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -66,11 +65,21 @@ public class TableroFacil extends javax.swing.JFrame {
                 filasActionPerformed(evt);
             }
         });
+        filas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                filasKeyTyped(evt);
+            }
+        });
         getContentPane().add(filas, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, 100, -1));
 
         columnas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 columnasActionPerformed(evt);
+            }
+        });
+        columnas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                columnasKeyTyped(evt);
             }
         });
         getContentPane().add(columnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 100, -1));
@@ -140,8 +149,10 @@ public class TableroFacil extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(auto);
         auto.setText("Automático");
 
+        buttonGroup1.add(manu);
         manu.setText("Manual");
         manu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,52 +263,47 @@ public class TableroFacil extends javax.swing.JFrame {
 
     private void GenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarTableroActionPerformed
         Graphics t = Tablero.getGraphics();
-
-        n = Integer.parseInt(filas.getText());
-        m = Integer.parseInt(columnas.getText());
-        ancho = 800 / m;
-        alto = 500 / n;
-        acum = 1;
+        nn = filas.getText(); 
+        mm = columnas.getText();
         Random r = new Random();
+        try{
+        if (nn.equals("") || mm.equals("")){ //validación texto vacio 
+            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
+        }else{
+            n = Integer.parseInt(filas.getText());
+            m = Integer.parseInt(columnas.getText());
+            ancho = 800 / m;
+            alto = 500 / n;
+            acum = 1;
+            if (((n <= 100) && (n > 0)) && ((m > 0) &&(m <= 100))){
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < m; j++) {
+                        mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
+                        t.setColor(Color.white);
 
-//        int xr = r.nextInt(n); // Posición aleatoria de fila.
-//        int yr = r.nextInt(m); // Posición aleatoria de columnas.
-//        int xfr = r.nextInt(n); // Posición aleatoria de fila.
-//        int yfr = r.nextInt(m); // Posición aleatoria de columnas.
-        // Por si las posiciones son iguales.
-//        while (xr == xfr && yfr == yr) {
-//            xfr = r.nextInt(n);
-//            yfr = r.nextInt(m);
-//        }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
-                t.setColor(Color.white);
+                        if (mt[i][j] == 1) {
+                            t.setColor(Color.black); //Si se bloquea
+                        } else {
+                            t.setColor(Color.white); // Ta libre :p
+                        }
 
-                if (mt[i][j] == 1) {
-                    t.setColor(Color.black); //Si se bloquea
-                } else {
-                    t.setColor(Color.white); // Ta libre :p
+                        t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                        t.setColor(Color.black);
+                        t.drawLine(0, i * alto, m * ancho, i * alto);
+                        t.setColor(Color.black);
+                        t.drawLine(j * ancho, 0, j * ancho, n * alto);
+                    }
                 }
-//
-//                if (i == xr && j == yr) {
-//                    mt[i][j] = 5;
-//                    t.setColor(Color.green);
-//                }
-//
-//                if (i == xfr && j == yfr) {
-//                    mt[i][j] = 6;
-//                    t.setColor(Color.blue);
-//                }
-
-                t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
-
-                t.setColor(Color.black);
-                t.drawLine(0, i * alto, m * ancho, i * alto);
-                t.setColor(Color.black);
-                t.drawLine(j * ancho, 0, j * ancho, n * alto);
-
+            }else { 
+                JOptionPane.showMessageDialog(null, "LOS VALORES DIGITADOS NO ESTAN DENTRO DEL LIMITE ");
             }
+
+        }
+        }catch (Exception e){ // esto lo puse randommmmm
+            
+            Ayuda abrir = new Ayuda(); 
+            abrir.setVisible(true);
+            this.setVisible(false);
         }
 
 
@@ -432,6 +438,18 @@ public class TableroFacil extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void filasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filasKeyTyped
+        char v = evt.getKeyChar();
+        if ((v < '0' || v > '9') && (v != KeyEvent.VK_BACK_SPACE) && (v != '.' || filas.getText().contains(".")))
+            evt.consume();
+    }//GEN-LAST:event_filasKeyTyped
+
+    private void columnasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_columnasKeyTyped
+        char v = evt.getKeyChar();
+        if ((v < '0' || v > '9') && (v != KeyEvent.VK_BACK_SPACE) && (v != '.' || columnas.getText().contains(".")))
+            evt.consume();
+    }//GEN-LAST:event_columnasKeyTyped
+
     private int PosMatriz(int poscursor, int filcol, int medida) {
         // Función que retorna la posición del cursor en la matriz.
         int k = 0;
@@ -524,37 +542,7 @@ public class TableroFacil extends javax.swing.JFrame {
 
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TableroFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TableroFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TableroFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TableroFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TableroFacil().setVisible(true);
@@ -567,7 +555,6 @@ public class TableroFacil extends javax.swing.JFrame {
     private javax.swing.JPanel Tablero;
     private javax.swing.JRadioButton auto;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextField columnas;
     private javax.swing.JTextField dificultad;
     private javax.swing.JLabel down;
