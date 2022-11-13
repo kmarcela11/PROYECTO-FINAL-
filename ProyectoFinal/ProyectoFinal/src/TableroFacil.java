@@ -266,7 +266,8 @@ public class TableroFacil extends javax.swing.JFrame {
         nn = filas.getText(); 
         mm = columnas.getText();
         Random r = new Random();
-        try{
+      
+        
         if (nn.equals("") || mm.equals("")){ //validación texto vacio 
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
         }else{
@@ -299,12 +300,7 @@ public class TableroFacil extends javax.swing.JFrame {
             }
 
         }
-        }catch (Exception e){ // esto lo puse randommmmm
-            
-            Ayuda abrir = new Ayuda(); 
-            abrir.setVisible(true);
-            this.setVisible(false);
-        }
+
 
 
     }//GEN-LAST:event_GenerarTableroActionPerformed
@@ -439,14 +435,14 @@ public class TableroFacil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void filasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filasKeyTyped
-        char v = evt.getKeyChar();
-        if ((v < '0' || v > '9') && (v != KeyEvent.VK_BACK_SPACE) && (v != '.' || filas.getText().contains(".")))
+        char f = evt.getKeyChar();
+        if ((f < '0' || f > '9') && (f != KeyEvent.VK_BACK_SPACE) && (f != '.' || filas.getText().contains(".")))
             evt.consume();
     }//GEN-LAST:event_filasKeyTyped
 
     private void columnasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_columnasKeyTyped
-        char v = evt.getKeyChar();
-        if ((v < '0' || v > '9') && (v != KeyEvent.VK_BACK_SPACE) && (v != '.' || columnas.getText().contains(".")))
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9') && (c != KeyEvent.VK_BACK_SPACE) && (c != '.' || columnas.getText().contains(".")))
             evt.consume();
     }//GEN-LAST:event_columnasKeyTyped
 
