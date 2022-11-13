@@ -5,12 +5,12 @@
 
 /**
  *
- * @author Valentina Bustamante
+ * @author Kanery Marcela
  */
 public class Ayuda extends javax.swing.JFrame {
 
     /**
-     * Creates new form Ayuda
+     * Creates new form ayuda
      */
     public Ayuda() {
         initComponents();
@@ -31,11 +31,11 @@ public class Ayuda extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -66,6 +66,7 @@ public class Ayuda extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Ayuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
