@@ -7,12 +7,12 @@
  *
  * @author Valentina Bustamante
  */
-public class Home extends javax.swing.JFrame {
+public class Select extends javax.swing.JFrame {
 
     /**
-     * Creates new form Home
+     * Creates new form Select
      */
-    public Home() {
+    public Select() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -27,23 +27,22 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        continuar = new javax.swing.JLabel();
+        nivelfacil = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
-        continuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/tempb.png"))); // NOI18N
-        continuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        continuar.addMouseListener(new java.awt.event.MouseAdapter() {
+        nivelfacil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/tempb.png"))); // NOI18N
+        nivelfacil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nivelfacil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                continuarMouseClicked(evt);
+                nivelfacilMouseClicked(evt);
             }
         });
 
-        jLabel1.setText("home");
+        jLabel1.setText("select");
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -53,7 +52,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(433, 433, 433)
-                        .addComponent(continuar))
+                        .addComponent(nivelfacil))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(554, 554, 554)
                         .addComponent(jLabel1)))
@@ -65,20 +64,39 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(324, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(125, 125, 125)
-                .addComponent(continuar)
+                .addComponent(nivelfacil)
                 .addGap(150, 150, 150))
         );
 
-        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1201, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void continuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseClicked
-    Select SelectScreen = new Select();
-    this.setVisible(false);
-    SelectScreen.setVisible(true);
-    }//GEN-LAST:event_continuarMouseClicked
+    private void nivelfacilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nivelfacilMouseClicked
+        TableroFacil easyl = new TableroFacil();
+        this.setVisible(false);
+        easyl.setVisible(true);
+    }//GEN-LAST:event_nivelfacilMouseClicked
 
     /**
      * @param args the command line arguments
@@ -97,27 +115,27 @@ public class Home extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Select.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Select.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Select.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Select.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                new Select().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel continuar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel nivelfacil;
     // End of variables declaration//GEN-END:variables
 }
