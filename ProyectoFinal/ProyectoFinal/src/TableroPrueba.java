@@ -402,6 +402,98 @@ public class TableroPrueba extends javax.swing.JFrame {
         }
         return k - 1;
     }
+    
+    public void movimiento(int [][] mt , int f, int c ){
+        
+        String paso = lea.next();
+        
+        if (paso.compareTo("w")==0 || paso.compareTo("W")==0){ /* movimiento hacia arriba*/
+            
+            if (mt[f-1][c]!= 1 && (f-1 >=0 || f-1 <= n)){
+                
+                mt[f-1][c]= 5;
+                Graphics t = Tablero.getGraphics();
+                t.setColor(Color.red);
+                t.fillRect(ancho * (f-1), alto * c, ancho, alto);
+                
+            }
+            else{
+                
+                dificultad.setText("¡¡Te golpeaste con una pared!!");
+                
+            }
+            
+        }
+        else{
+            
+            if (paso.compareTo("a")==0 || paso.compareTo("A")==0){ /* movimiento hacia izquierda*/
+            
+                if (mt[f][c-1]!= 1 && (c-1 >=0 || c-1 <= m)){
+                
+                    mt[f][c-1]= 5;
+                    Graphics t = Tablero.getGraphics();
+                    t.setColor(Color.red);
+                    t.fillRect(ancho * f, alto * (c-1), ancho, alto);
+                
+                }
+            else{
+                
+                dificultad.setText("¡¡Te golpeaste con una pared!!");
+                
+            }
+            
+        }
+        
+        else{
+                if (paso.compareTo("s")==0 || paso.compareTo("S")==0){ /* movimiento hacia abajo*/
+            
+                    if (mt[f+1][c]!= 1 && (f+1 >=0 || f+1 <= n)){
+                
+                        mt[f+1][c]= 5;
+                        Graphics t = Tablero.getGraphics();
+                        t.setColor(Color.red);
+                        t.fillRect(ancho * (f+1), alto * c, ancho, alto);
+                
+                    }
+                    else{
+                
+                        dificultad.setText("¡¡Te golpeaste con una pared!!");
+                
+                    }
+                  
+                }
+                else{                   
+                
+                    if (paso.compareTo("d")==0 || paso.compareTo("D")==0){ /* movimiento hacia derecha*/
+            
+                        if (mt[f][c+1]!= 1 && (c+1 >=0 || c+1 <= m)){
+                
+                            mt[f][c+1]= 5;
+                            Graphics t = Tablero.getGraphics();
+                            t.setColor(Color.red);
+                            t.fillRect(ancho * f, alto * (c+1), ancho, alto);
+                
+                        }
+                    else{
+                
+                        dificultad.setText("¡¡Te golpeaste con una pared!!");
+                
+                    }
+                  
+                } 
+                    
+              }
+                
+            }
+            
+        }
+        
+    }
+                
+  
+                
+        
+    
 
     /**
      * @param args the command line arguments
