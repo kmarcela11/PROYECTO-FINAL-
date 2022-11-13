@@ -257,20 +257,21 @@ public class TableroPrueba extends javax.swing.JFrame {
         m = Integer.parseInt(columnas.getText());
         ancho = 800 / m;
         alto = 500 / n;
-
+        acum = 0; 
         Random r = new Random();
 
-        int xr = r.nextInt(n); // Posición aleatoria de fila.
-        int yr = r.nextInt(m); // Posición aleatoria de columnas.
+//        int xr = r.nextInt(n); // Posición aleatoria de fila.
+//        int yr = r.nextInt(m); // Posición aleatoria de columnas.
 
-        int xfr = r.nextInt(n); // Posición aleatoria de fila.
-        int yfr = r.nextInt(m); // Posición aleatoria de columnas.
+        
+//        int xfr = r.nextInt(n); // Posición aleatoria de fila.
+//        int yfr = r.nextInt(m); // Posición aleatoria de columnas.
 
         // Por si las posiciones son iguales.
-        while (xr == xfr && yfr == yr) {
-            xfr = r.nextInt(n);
-            yfr = r.nextInt(m);
-        }
+//        while (xr == xfr && yfr == yr) {
+//            xfr = r.nextInt(n);
+//            yfr = r.nextInt(m);
+//        }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -354,8 +355,6 @@ public class TableroPrueba extends javax.swing.JFrame {
     private void TableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableroMouseClicked
 
         Point posicion = getPointerInfo().getLocation();
-        int anchopantalla = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-        int altopantalla = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 
         int curx = posicion.x - Tablero.getLocationOnScreen().x;
         // System.out.println(curx); DE CONTROL
