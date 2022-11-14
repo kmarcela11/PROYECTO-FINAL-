@@ -24,6 +24,10 @@ public class TableroFacil extends javax.swing.JFrame {
     int alto;
     boolean sel = true;
     public static int mt[][] = new int[100][100];
+    int inicialx = 0;
+    int inicialy = 0;
+    int finalx = 0;
+    int finaly = 0;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,9 +48,6 @@ public class TableroFacil extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         dificultad = new javax.swing.JTextField();
         mostrarmt = new javax.swing.JButton();
-        auto = new javax.swing.JRadioButton();
-        manu = new javax.swing.JRadioButton();
-        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         GenerarTablero = new javax.swing.JButton();
@@ -140,17 +141,6 @@ public class TableroFacil extends javax.swing.JFrame {
             }
         });
 
-        auto.setText("Automático");
-
-        manu.setText("Manual");
-        manu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manuActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Método de camino:");
-
         jButton1.setText("Resolver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,12 +199,8 @@ public class TableroFacil extends javax.swing.JFrame {
                                 .addGap(20, 20, 20)
                                 .addComponent(jLabel4)))
                         .addGap(56, 56, 56)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(manu)
-                            .addComponent(auto)
-                            .addComponent(jLabel3))))
-                .addContainerGap(184, Short.MAX_VALUE))
+                        .addComponent(jButton1)))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,13 +220,7 @@ public class TableroFacil extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel3)
-                        .addGap(51, 51, 51)
-                        .addComponent(auto)
-                        .addGap(48, 48, 48)
-                        .addComponent(manu)
-                        .addGap(36, 36, 36)
+                        .addGap(343, 343, 343)
                         .addComponent(jButton1)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
@@ -372,6 +352,7 @@ public class TableroFacil extends javax.swing.JFrame {
                 if (acum == 2) {
                     mt[iny][inx] = 6; //Posición final :)
                     t.setColor(Color.green);
+
                 }
 
                 if (acum == 1) {
@@ -387,21 +368,6 @@ public class TableroFacil extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "YA SELECCIONO LAS DOS CASILLAS"); // con joptionpane mientras tanto 
         }
 
-        if (manu.isSelected() == true) {
-
-            int selx = posicion.x - Tablero.getLocationOnScreen().x;
-            int sely = posicion.y - Tablero.getLocationOnScreen().y;
-
-            int px = PosMatriz(selx, m, ancho);
-            int py = PosMatriz(sely, n, alto);
-
-            if (mt[px][py] != 5) {
-
-                sel = false;
-
-            }
-        }
-
 
     }//GEN-LAST:event_TableroMouseClicked
 
@@ -415,10 +381,6 @@ public class TableroFacil extends javax.swing.JFrame {
 
         System.out.print(" \n");
     }//GEN-LAST:event_mostrarmtActionPerformed
-
-    private void manuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manuActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -565,7 +527,6 @@ public class TableroFacil extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GenerarTablero;
     private javax.swing.JPanel Tablero;
-    private javax.swing.JRadioButton auto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextField columnas;
@@ -576,12 +537,10 @@ public class TableroFacil extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel joystick;
     private javax.swing.JLabel left;
-    private javax.swing.JRadioButton manu;
     private javax.swing.JButton mostrarmt;
     private javax.swing.JLabel right;
     private javax.swing.JLabel up;
