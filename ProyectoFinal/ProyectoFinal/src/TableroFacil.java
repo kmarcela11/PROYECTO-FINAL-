@@ -6,6 +6,7 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class TableroFacil extends javax.swing.JFrame {
@@ -14,7 +15,7 @@ public class TableroFacil extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
     Scanner lea = new Scanner(System.in);
     int xpos = 0;
     int ypos = 0;
@@ -23,7 +24,7 @@ public class TableroFacil extends javax.swing.JFrame {
     int m;
     int ancho;
     int alto;
-    boolean sel = true;
+  
     public static int mt[][] = new int[100][100];
     int inicialx = 0;
     int inicialy = 0;
@@ -124,8 +125,8 @@ public class TableroFacil extends javax.swing.JFrame {
         joystick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/joystick.png"))); // NOI18N
         getContentPane().add(joystick, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 510, 108, 106));
 
-        xtab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/joystick.png"))); // NOI18N
-        getContentPane().add(xtab, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, 90));
+        xtab.setText("holaaaaaaaaaa");
+        getContentPane().add(xtab, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 80, 20));
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
 
@@ -236,7 +237,7 @@ public class TableroFacil extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(343, 343, 343)
                         .addComponent(jButton1)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 720));
@@ -339,6 +340,7 @@ public class TableroFacil extends javax.swing.JFrame {
                     t.setColor(Color.red);
                     inicialx = inx;
                     inicialy = iny;
+                    xtab.setLocation(inicialx * ancho,inicialy*alto);
                 }
                 acum = acum + 1;
 
@@ -435,6 +437,8 @@ public class TableroFacil extends javax.swing.JFrame {
         mt[inicialy][inicialx] = 1;
         return false;
     }
+    
+    
     private void TableroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableroKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_TableroKeyPressed
