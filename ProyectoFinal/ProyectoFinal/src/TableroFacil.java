@@ -233,10 +233,9 @@ public class TableroFacil extends javax.swing.JFrame {
 
     private void GenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarTableroActionPerformed
         Graphics t = Tablero.getGraphics();
-
         Random r = new Random();
 
-        try {
+        
             if (filas.getText().equals("") || columnas.getText().equals("")) { //validación texto vacio 
                 JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
             } else {
@@ -251,34 +250,11 @@ public class TableroFacil extends javax.swing.JFrame {
                         for (int j = 0; j < m; j++) {
                             mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
                             t.setColor(Color.white);
-                        
-                    
-
-//        int xr = r.nextInt(n); // Posición aleatoria de fila.
-//        int yr = r.nextInt(m); // Posición aleatoria de columnas.
-//        int xfr = r.nextInt(n); // Posición aleatoria de fila.
-//        int yfr = r.nextInt(m); // Posición aleatoria de columnas.
-                    // Por si las posiciones son iguales.
-//        while (xr == xfr && yfr == yr) {
-//            xfr = r.nextInt(n);
-//            yfr = r.nextInt(m);
-//        }
                     if (mt[i][j] == 1) {
                         t.setColor(Color.black); //Si se bloquea
                     } else {
                         t.setColor(Color.white); // Ta libre :p
                     }
-//
-//                if (i == xr && j == yr) {
-//                    mt[i][j] = 5;
-//                    t.setColor(Color.green);
-//                }
-//
-//                if (i == xfr && j == yfr) {
-//                    mt[i][j] = 6;
-//                    t.setColor(Color.blue);
-//                }
-
                     t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
 
                     t.setColor(Color.black);
@@ -291,12 +267,6 @@ public class TableroFacil extends javax.swing.JFrame {
         }
 
     }
-
-
-
-                        }catch (Exception e){ // esto lo puse randommmmm
-            
-                        }
     }//GEN-LAST:event_GenerarTableroActionPerformed
 
     private void rightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightMouseClicked
@@ -399,14 +369,14 @@ public class TableroFacil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void filasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filasKeyTyped
-        char v = evt.getKeyChar();
-        if ((v < '0' || v > '9') && (v != KeyEvent.VK_BACK_SPACE) && (v != '.' || filas.getText().contains(".")))
+        char f = evt.getKeyChar();
+        if ((f < '0' || f > '9') && (f != KeyEvent.VK_BACK_SPACE) && (f != '.' || filas.getText().contains(".")))
             evt.consume();
     }//GEN-LAST:event_filasKeyTyped
 
     private void columnasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_columnasKeyTyped
-        char v = evt.getKeyChar();
-        if ((v < '0' || v > '9') && (v != KeyEvent.VK_BACK_SPACE) && (v != '.' || columnas.getText().contains(".")))
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9') && (c != KeyEvent.VK_BACK_SPACE) && (c != '.' || columnas.getText().contains(".")))
             evt.consume();
     }//GEN-LAST:event_columnasKeyTyped
 
