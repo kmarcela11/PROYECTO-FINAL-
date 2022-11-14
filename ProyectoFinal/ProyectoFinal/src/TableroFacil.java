@@ -1,9 +1,11 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import static java.awt.MouseInfo.getPointerInfo;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
@@ -13,6 +15,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import sun.awt.resources.awt;
 
 
 public class TableroFacil extends javax.swing.JFrame {
@@ -376,6 +379,10 @@ public class TableroFacil extends javax.swing.JFrame {
                     inicialx = inx;
                     inicialy = iny;
                     xtab.setLocation(inicialx * ancho,inicialy*alto);
+                    
+//                     Image java.awt.Image = new javax.swing.ImageIcon(.getClass().getResource("/pfmedia/x.png")).getImage();
+//                    
+//                     t.drawImage(java, inicialx, inicialy, Tablero);
                 }
                 acum = acum + 1;
 
