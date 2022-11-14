@@ -358,12 +358,26 @@ public class TableroFacil extends javax.swing.JFrame {
     }//GEN-LAST:event_mostrarmtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(inicialx+"   "+inicialy);
+        System.out.println(inicialx + "   " + inicialy);
         boolean resultado = Buscar(mt, inicialy, inicialx, n, m);
+        Graphics t = Tablero.getGraphics();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (mt[i][j] == 0) {
+                    t.setColor(Color.decode("#ff9966"));
+                    t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                }
+
+                t.setColor(Color.black);
+                t.drawLine(0, i * alto, m * ancho, i * alto);
+                t.drawLine(j * ancho, 0, j * ancho, n * alto);
+
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static boolean Buscar(int mt[][], int inicialy, int inicialx, int n, int m) {
-        System.out.println(inicialx +"   ENTRA   "+inicialy);
+        System.out.println(inicialx + "   ENTRA   " + inicialy);
         if (mt[inicialy][inicialx] == 6) {
             System.out.println("encontrado");
             return true;
@@ -373,7 +387,7 @@ public class TableroFacil extends javax.swing.JFrame {
             System.out.println("sale");
             return false;
         }
-        
+
         mt[inicialy][inicialx] = 0;
 
         boolean encontrado = false;
@@ -404,9 +418,9 @@ public class TableroFacil extends javax.swing.JFrame {
             return true;
         }
 
-        if (inicialy - 1 < n) {
+        if (inicialy + 1 < n) {
             System.out.println("abajo");
-            encontrado = Buscar(mt, inicialy - 1, inicialx, n, m);
+            encontrado = Buscar(mt, inicialy + 1, inicialx, n, m);
         }
 
         if (encontrado == true) {
