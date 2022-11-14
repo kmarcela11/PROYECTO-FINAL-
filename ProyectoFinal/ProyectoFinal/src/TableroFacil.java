@@ -54,6 +54,7 @@ public class TableroFacil extends javax.swing.JFrame {
         GenerarTablero = new javax.swing.JButton();
         Tablero = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -178,6 +179,13 @@ public class TableroFacil extends javax.swing.JFrame {
 
         jLabel4.setText("presione la casilla para indicar la X (1° presionada)  y la O (2°presionada ) (que indica el inicio y el final) ");
 
+        jButton3.setText("Generar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -190,15 +198,18 @@ public class TableroFacil extends javax.swing.JFrame {
                         .addGap(266, 266, 266)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(148, 148, 148)
-                        .addComponent(GenerarTablero))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel4)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(dificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(148, 148, 148)
+                                    .addComponent(GenerarTablero)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(jLabel4))))
                         .addGap(56, 56, 56)
                         .addComponent(jButton1)))
                 .addContainerGap(220, Short.MAX_VALUE))
@@ -215,7 +226,9 @@ public class TableroFacil extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(dificultad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GenerarTablero))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(GenerarTablero)
+                                .addComponent(jButton3)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -233,7 +246,7 @@ public class TableroFacil extends javax.swing.JFrame {
 
     private void GenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarTableroActionPerformed
         Graphics t = Tablero.getGraphics();
-        Random r = new Random();
+       
 
         if (filas.getText().equals("") || columnas.getText().equals("")) { //validación texto vacio 
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
@@ -247,13 +260,8 @@ public class TableroFacil extends javax.swing.JFrame {
             if (((n <= 100) && (n > 0)) && ((m > 0) && (m <= 100))) {
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < m; j++) {
-                        mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
                         t.setColor(Color.white);
-                        if (mt[i][j] == 1) {
-                            t.setColor(Color.black); //Si se bloquea
-                        } else {
-                            t.setColor(Color.white); // Ta libre :p
-                        }
+                        
                         t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
 
                         t.setColor(Color.black);
@@ -317,9 +325,7 @@ public class TableroFacil extends javax.swing.JFrame {
             int iny = PosMatriz(cury, n, alto);
             System.out.println(inx + "  e  " + iny);
 
-            if (mt[iny][inx] == 1) {
-                dificultad.setText("Bloqueado :p");
-            } else {
+         
                 Graphics t = Tablero.getGraphics();
 
                 if (acum == 2) {
@@ -338,7 +344,7 @@ public class TableroFacil extends javax.swing.JFrame {
 
                 t.fillRect(ancho * inx, alto * iny, ancho, alto); // Pinta la casilla seleccionada.
 
-            }
+            
         } else {
             JOptionPane.showMessageDialog(null, "YA SELECCIONO LAS DOS CASILLAS"); // con joptionpane mientras tanto 
         }
@@ -460,6 +466,38 @@ public class TableroFacil extends javax.swing.JFrame {
     private void filasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_filasActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Graphics t = Tablero.getGraphics();
+        
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                
+                t.setColor(Color.white);
+                Random r = new Random();
+                
+                if(mt[i][j]!= 5 && mt[i][j]!=6){ /*estas son las casillas inicial y final*/
+                    
+                    mt[i][j] = r.nextInt(4) + 1; 
+                    
+                    if (mt[i][j] == 1) {
+                            t.setColor(Color.black); /*bloqueada*/
+                            
+                            
+                    }
+                    t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+
+                        t.setColor(Color.black);
+                        t.drawLine(0, i * alto, m * ancho, i * alto);
+                        t.setColor(Color.black);
+                        t.drawLine(j * ancho, 0, j * ancho, n * alto);
+
+                    }
+                }
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private int PosMatriz(int poscursor, int filcol, int medida) {
         // Función que retorna la posición del cursor en la matriz.
@@ -610,6 +648,7 @@ public class TableroFacil extends javax.swing.JFrame {
     private javax.swing.JTextField filas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
