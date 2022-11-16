@@ -40,7 +40,6 @@ public class TableroFacil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         filas = new javax.swing.JTextField();
         columnas = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -194,23 +193,32 @@ public class TableroFacil extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
         } else {
             n = Integer.parseInt(filas.getText());
+           
             m = Integer.parseInt(columnas.getText());
-            ancho = 800 / m;
-            alto = 500 / n;
-            acum = 1;
+             
+             
+            if ((n>=8 && n<=100) && ( m>=16 && m<=100) ){   /* validacion */          
+                ancho = 800 / m;
+                alto = 500 / n;
+                acum = 1;
 
-            if (((n <= 100) && (n > 0)) && ((m > 0) && (m <= 100))) {
-                for (int i = 0; i < n; i++) {
-                    for (int j = 0; j < m; j++) {
-                        t.setColor(Color.white);
-                        t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
-                        t.setColor(Color.black);
-                        t.drawLine(0, i * alto, m * ancho, i * alto);
-                        t.setColor(Color.black);
-                        t.drawLine(j * ancho, 0, j * ancho, n * alto);
+                if (((n <= 100) && (n > 0)) && ((m > 0) && (m <= 100))) {
+                    for (int i = 0; i < n; i++) {
+                        for (int j = 0; j < m; j++) {
+                            t.setColor(Color.white);
+                            t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                            t.setColor(Color.black);
+                            t.drawLine(0, i * alto, m * ancho, i * alto);
+                            t.setColor(Color.black);
+                            t.drawLine(j * ancho, 0, j * ancho, n * alto);
 
+                        }
                     }
                 }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n" 
+                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");  
             }
         }
     }//GEN-LAST:event_b_pintarActionPerformed
@@ -499,7 +507,6 @@ public class TableroFacil extends javax.swing.JFrame {
     private javax.swing.JButton b_pintar;
     private javax.swing.JButton b_resolver;
     private javax.swing.JButton b_salir;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField columnas;
     private javax.swing.JTextField dificultad;
     private javax.swing.JTextField filas;
