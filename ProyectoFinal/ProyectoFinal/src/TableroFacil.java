@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -13,21 +14,23 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-public class TableroFacil extends javax.swing.JFrame {
 
+public class TableroFacil extends javax.swing.JFrame {
+    
     public Clip clip;
     public String link = "/sonido/";
+
     public TableroFacil() {
         initComponents();
         this.setLocationRelativeTo(null);
-    } 
-    public void mus(String archivo){
-        try{
+    }    
+
+    public void mus(String archivo) {
+        try {
             clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(link+ archivo+ ".wav")));
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(link + archivo + ".wav")));
             clip.start();
-        }
-        catch(IOException | LineUnavailableException | UnsupportedAudioFileException e){
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
         }
     }
     
@@ -35,7 +38,7 @@ public class TableroFacil extends javax.swing.JFrame {
     int acum = 0, inicialx = 0, inicialy = 0;
     int n, m, ancho, alto, posicioninicial, posicionfinal;
     public static int mt[][] = new int[100][100];
- 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -193,15 +196,15 @@ public class TableroFacil extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
         } else {
             n = Integer.parseInt(filas.getText());
-           
+            
             m = Integer.parseInt(columnas.getText());
-             
-             
-            if ((n>=8 && n<=100) && ( m>=16 && m<=100) ){   /* validacion */          
+            
+            if ((n >= 8 && n <= 100) && (m >= 16 && m <= 100)) {
+                /* validacion */                
                 ancho = 800 / m;
                 alto = 500 / n;
                 acum = 1;
-
+                
                 if (((n <= 100) && (n > 0)) && ((m > 0) && (m <= 100))) {
                     for (int i = 0; i < n; i++) {
                         for (int j = 0; j < m; j++) {
@@ -211,14 +214,13 @@ public class TableroFacil extends javax.swing.JFrame {
                             t.drawLine(0, i * alto, m * ancho, i * alto);
                             t.setColor(Color.black);
                             t.drawLine(j * ancho, 0, j * ancho, n * alto);
-
+                            
                         }
                     }
                 }
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n" 
-                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");  
+            } else {
+                JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n"
+                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");                
             }
         }
     }//GEN-LAST:event_b_pintarActionPerformed
@@ -235,35 +237,35 @@ public class TableroFacil extends javax.swing.JFrame {
             int inx = PosMatriz(curx, m, ancho);
             int iny = PosMatriz(cury, n, alto);
             System.out.println(" la columna " + inx + "  y  " + " la fila " + iny);
-                Graphics t = Tablero.getGraphics();
-                Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
-                if (acum == 1)  {
-                    mt[iny][inx] = 5; //Posición inicial :p
-                    inicialx = inx;
-                    inicialy = iny;
-                    img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+            Graphics t = Tablero.getGraphics();
+            Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+            if (acum == 1) {
+                mt[iny][inx] = 5; //Posición inicial :p
+                inicialx = inx;
+                inicialy = iny;
+                img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+                t.drawImage(img, (ancho * inx) + 18, (alto * iny) + 20, Tablero);
+                
+                System.out.println(posicioninicial);
+            }
+            if (acum == 2) {
+                mt[iny][inx] = 6; //Posición final :)
+                int yf = iny;
+                int xf = inx;
+                
+                System.out.println(posicionfinal);
+                if ((inicialx != xf) && (inicialy != yf)) {
+                    System.out.println(posicioninicial + " diferente de " + posicionfinal);
+                    img = new ImageIcon(getClass().getResource("/pfmedia/o.png")).getImage();
+                    /*img = img.getScaledInstance(inx, iny, java.awt.Image.SCALE_SMOOTH); //PARA REDIMENSIONAR (No funciona :/) */
                     t.drawImage(img, (ancho * inx) + 18, (alto * iny) + 20, Tablero);
-                     
-                    System.out.println(posicioninicial);
+                } else {
+                    JOptionPane.showMessageDialog(null, "no puede digitar la misma casilla de inicio");
+                    acum = acum - 1;                    
+                    System.out.println(posicioninicial + " igual " + posicionfinal); //validacion no pueden ser las mismas casillas al seleccionar
                 }
-                if (acum == 2){
-                    mt[iny][inx] = 6; //Posición final :)
-                    int yf = iny;
-                    int xf = inx;
-                   
-                    System.out.println(posicionfinal);
-                    if ((inicialx != xf) && (inicialy != yf)){
-                        System.out.println(posicioninicial + " diferente de " + posicionfinal );
-                        img = new ImageIcon(getClass().getResource("/pfmedia/o.png")).getImage();
-                        /*img = img.getScaledInstance(inx, iny, java.awt.Image.SCALE_SMOOTH); //PARA REDIMENSIONAR (No funciona :/) */
-                        t.drawImage(img, (ancho * inx) + 18 , (alto * iny) + 20 , Tablero);
-                    }else{
-                        JOptionPane.showMessageDialog(null, "no puede digitar la misma casilla de inicio");
-                        acum = acum - 1; 
-                        System.out.println(posicioninicial + " igual " + posicionfinal ); //validacion no pueden ser las mismas casillas al seleccionar
-                    }
-                }
-                acum = acum + 1;       
+            }
+            acum = acum + 1;            
         } else {
             JOptionPane.showMessageDialog(null, "YA SELECCIONO LAS DOS CASILLAS"); // con joptionpane mientras tanto 
         }
@@ -276,7 +278,7 @@ public class TableroFacil extends javax.swing.JFrame {
             }
             System.out.print(" \n");
         }
-
+        
         System.out.print(" \n");
     }//GEN-LAST:event_b_mostrarmatrizActionPerformed
 
@@ -290,62 +292,62 @@ public class TableroFacil extends javax.swing.JFrame {
                     t.setColor(Color.decode("#ff9966"));
                     t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
                 }
-
+                
                 t.setColor(Color.black);
                 t.drawLine(0, i * alto, m * ancho, i * alto);
                 t.drawLine(j * ancho, 0, j * ancho, n * alto);
-
+                
             }
         }
     }//GEN-LAST:event_b_resolverActionPerformed
-
+    
     public static boolean Buscar(int mt[][], int inicialy, int inicialx, int n, int m) {
         System.out.println(inicialx + "   ENTRA   " + inicialy);
         if (mt[inicialy][inicialx] == 6) {
             System.out.println("encontrado");
             return true;
         }
-
+        
         if (mt[inicialy][inicialx] == 1 || mt[inicialy][inicialx] == 0) {
             System.out.println("sale");
             return false;
         }
-
+        
         mt[inicialy][inicialx] = 0;
-
+        
         boolean encontrado = false;
         if (inicialy - 1 >= 0) {
             System.out.println("arriba");
             encontrado = Buscar(mt, inicialy - 1, inicialx, n, m);
         }
-
+        
         if (encontrado == true) {
             return true;
         }
-
+        
         if (inicialx + 1 < m) {
             System.out.println("derecha");
             encontrado = Buscar(mt, inicialy, inicialx + 1, n, m);
         }
-
+        
         if (encontrado == true) {
             return true;
         }
-
+        
         if (inicialx - 1 >= 0) {
             System.out.println("izquierda");
             encontrado = Buscar(mt, inicialy, inicialx - 1, n, m);
         }
-
+        
         if (encontrado == true) {
             return true;
         }
-
+        
         if (inicialy + 1 < n) {
             System.out.println("abajo");
             encontrado = Buscar(mt, inicialy + 1, inicialx, n, m);
         }
-
+        
         if (encontrado == true) {
             return true;
         }
@@ -353,7 +355,7 @@ public class TableroFacil extends javax.swing.JFrame {
         return false;
     }
     
-    
+
     private void b_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_salirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_b_salirActionPerformed
@@ -376,10 +378,12 @@ public class TableroFacil extends javax.swing.JFrame {
             for (int j = 0; j < m; j++) {
                 t.setColor(Color.white);
                 Random r = new Random();
-                if(mt[i][j]!= 5 && mt[i][j]!=6){ /*estas son las casillas inicial y final*/
-                    mt[i][j] = r.nextInt(4) + 1; 
+                if (mt[i][j] != 5 && mt[i][j] != 6) {
+                    /*estas son las casillas inicial y final*/
+                    mt[i][j] = r.nextInt(4) + 1;                    
                     if (mt[i][j] == 1) {
-                        t.setColor(Color.black); /*bloqueada*/    
+                        t.setColor(Color.black);
+                        /*bloqueada*/                        
                     }
                     t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
                     t.setColor(Color.black);
@@ -399,7 +403,7 @@ public class TableroFacil extends javax.swing.JFrame {
     private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
 
     }//GEN-LAST:event_formKeyTyped
-
+    
     private int PosMatriz(int poscursor, int filcol, int medida) {
         // Función que retorna la posición del cursor en la matriz.
         int k = 0;
@@ -408,91 +412,90 @@ public class TableroFacil extends javax.swing.JFrame {
         }
         return k - 1;
     }
-
+    
     public void movimiento(int[][] mt, int f, int c) {
-
+        
         String paso = lea.next();
-
+        
         if (paso.compareTo("w") == 0 || paso.compareTo("W") == 0) {
             /* movimiento hacia arriba*/
-
+            
             if (mt[f - 1][c] != 1 && (f - 1 >= 0 || f - 1 <= n)) {
-
+                
                 mt[f - 1][c] = 5;
                 Graphics t = Tablero.getGraphics();
                 t.setColor(Color.red);
                 t.fillRect(ancho * (f - 1), alto * c, ancho, alto);
-
+                
             } else {
-
+                
                 dificultad.setText("¡¡Te golpeaste con una pared!!");
-
+                
             }
-
+            
         } else {
-
+            
             if (paso.compareTo("a") == 0 || paso.compareTo("A") == 0) {
                 /* movimiento hacia izquierda*/
-
+                
                 if (mt[f][c - 1] != 1 && (c - 1 >= 0 || c - 1 <= m)) {
-
+                    
                     mt[f][c - 1] = 5;
                     Graphics t = Tablero.getGraphics();
                     t.setColor(Color.red);
                     t.fillRect(ancho * f, alto * (c - 1), ancho, alto);
-
+                    
                 } else {
-
+                    
                     dificultad.setText("¡¡Te golpeaste con una pared!!");
-
+                    
                 }
-
+                
             } else {
                 if (paso.compareTo("s") == 0 || paso.compareTo("S") == 0) {
                     /* movimiento hacia abajo*/
-
+                    
                     if (mt[f + 1][c] != 1 && (f + 1 >= 0 || f + 1 <= n)) {
-
+                        
                         mt[f + 1][c] = 5;
                         Graphics t = Tablero.getGraphics();
                         t.setColor(Color.red);
                         t.fillRect(ancho * (f + 1), alto * c, ancho, alto);
-
+                        
                     } else {
-
+                        
                         dificultad.setText("¡¡Te golpeaste con una pared!!");
-
+                        
                     }
-
+                    
                 } else {
-
+                    
                     if (paso.compareTo("d") == 0 || paso.compareTo("D") == 0) {
                         /* movimiento hacia derecha*/
-
+                        
                         if (mt[f][c + 1] != 1 && (c + 1 >= 0 || c + 1 <= m)) {
-
+                            
                             mt[f][c + 1] = 5;
                             Graphics t = Tablero.getGraphics();
                             t.setColor(Color.red);
                             t.fillRect(ancho * f, alto * (c + 1), ancho, alto);
-
+                            
                         } else {
-
+                            
                             dificultad.setText("¡¡Te golpeaste con una pared!!");
-
+                            
                         }
-
+                        
                     }
-
+                    
                 }
-
+                
             }
-
+            
         }
-
+        
     }
-
-
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
