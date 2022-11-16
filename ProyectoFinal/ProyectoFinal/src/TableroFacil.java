@@ -243,17 +243,19 @@ public class TableroFacil extends javax.swing.JFrame {
                     inicialy = iny;
                     img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
                     t.drawImage(img, (ancho * inx) + 18, (alto * iny) + 20, Tablero);
-                    posicioninicial = iny + inx; 
+                     
                     System.out.println(posicioninicial);
                 }
                 if (acum == 2){
                     mt[iny][inx] = 6; //Posición final :)
-                    posicionfinal = iny + inx;
+                    int yf = iny;
+                    int xf = inx;
+                   
                     System.out.println(posicionfinal);
-                    if (posicioninicial != posicionfinal){
+                    if ((inicialx != xf) && (inicialy != yf)){
                         System.out.println(posicioninicial + " diferente de " + posicionfinal );
                         img = new ImageIcon(getClass().getResource("/pfmedia/o.png")).getImage();
-//                      img = img.getScaledInstance(inx, iny, java.awt.Image.SCALE_SMOOTH); //PARA REDIMENSIONAR (No funciona :/)
+                        /*img = img.getScaledInstance(inx, iny, java.awt.Image.SCALE_SMOOTH); //PARA REDIMENSIONAR (No funciona :/) */
                         t.drawImage(img, (ancho * inx) + 18 , (alto * iny) + 20 , Tablero);
                     }else{
                         JOptionPane.showMessageDialog(null, "no puede digitar la misma casilla de inicio");
