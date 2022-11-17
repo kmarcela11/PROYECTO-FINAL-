@@ -29,13 +29,16 @@ public class Select extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         nivelfacil = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        nvl1 = new javax.swing.JButton();
+        nvl2 = new javax.swing.JButton();
+        nvl3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
         nivelfacil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/tempb.png"))); // NOI18N
-        nivelfacil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nivelfacil.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nivelfacil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nivelfacilMouseClicked(evt);
@@ -44,6 +47,27 @@ public class Select extends javax.swing.JFrame {
 
         jLabel1.setText("select");
 
+        nvl1.setText("NIVEL 1");
+        nvl1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nvl1ActionPerformed(evt);
+            }
+        });
+
+        nvl2.setText("NIVEL 2");
+        nvl2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nvl2ActionPerformed(evt);
+            }
+        });
+
+        nvl3.setText("NIVEL 3");
+        nvl3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nvl3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -51,21 +75,35 @@ public class Select extends javax.swing.JFrame {
             .addGroup(bgLayout.createSequentialGroup()
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(433, 433, 433)
-                        .addComponent(nivelfacil))
+                        .addGap(120, 120, 120)
+                        .addComponent(nvl1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addGap(183, 183, 183)
+                                .addComponent(nivelfacil))
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addGap(259, 259, 259)
+                                .addComponent(nvl2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
+                                .addComponent(nvl3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(554, 554, 554)
                         .addComponent(jLabel1)))
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addGap(134, 134, 134))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                .addContainerGap(324, Short.MAX_VALUE)
+                .addGap(119, 119, 119)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nvl1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nvl2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nvl3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 542, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(125, 125, 125)
+                .addGap(66, 66, 66)
                 .addComponent(nivelfacil)
-                .addGap(150, 150, 150))
+                .addGap(209, 209, 209))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,7 +119,7 @@ public class Select extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 1120, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -97,6 +135,28 @@ public class Select extends javax.swing.JFrame {
         this.setVisible(false);
         easyl.setVisible(true);
     }//GEN-LAST:event_nivelfacilMouseClicked
+
+    private void nvl3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nvl3ActionPerformed
+        // TODO add your handling code here:
+        dificil level3 = new dificil();
+        this.setVisible(false);
+        level3.setVisible(true);
+    }//GEN-LAST:event_nvl3ActionPerformed
+
+    private void nvl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nvl1ActionPerformed
+        // TODO add your handling code here:
+         nuevonivel level = new nuevonivel();
+        this.setVisible(false);
+        level.setVisible(true);
+        
+    }//GEN-LAST:event_nvl1ActionPerformed
+
+    private void nvl2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nvl2ActionPerformed
+     
+        TableroFacil easyl = new TableroFacil();
+        this.setVisible(false);
+        easyl.setVisible(true);
+    }//GEN-LAST:event_nvl2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,5 +197,8 @@ public class Select extends javax.swing.JFrame {
     private javax.swing.JPanel bg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nivelfacil;
+    private javax.swing.JButton nvl1;
+    private javax.swing.JButton nvl2;
+    private javax.swing.JButton nvl3;
     // End of variables declaration//GEN-END:variables
 }
