@@ -1,8 +1,10 @@
+
+import java.util.Random;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Valentina Bustamante
@@ -130,6 +132,79 @@ public class Select extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static boolean Buscar(int mt[][], int inicialy, int inicialx, int n, int m) {
+        System.out.println(inicialx + "   ENTRA   " + inicialy);
+        if (mt[inicialy][inicialx] == 6) {
+            System.out.println("encontrado");
+            return true;
+        }
+
+        if (mt[inicialy][inicialx] == 1 || mt[inicialy][inicialx] == 0) {
+            System.out.println("sale");
+            return false;
+        }
+
+        mt[inicialy][inicialx] = 0;
+
+        boolean encontrado = false;
+        if (inicialy - 1 >= 0) {
+            System.out.println("arriba");
+            encontrado = Buscar(mt, inicialy - 1, inicialx, n, m);
+        }
+
+        if (encontrado == true) {
+            return true;
+        }
+
+        if (inicialx + 1 < m) {
+            System.out.println("derecha");
+            encontrado = Buscar(mt, inicialy, inicialx + 1, n, m);
+        }
+
+        if (encontrado == true) {
+            return true;
+        }
+
+        if (inicialx - 1 >= 0) {
+            System.out.println("izquierda");
+            encontrado = Buscar(mt, inicialy, inicialx - 1, n, m);
+        }
+
+        if (encontrado == true) {
+            return true;
+        }
+
+        if (inicialy + 1 < n) {
+            System.out.println("abajo");
+            encontrado = Buscar(mt, inicialy + 1, inicialx, n, m);
+        }
+
+        if (encontrado == true) {
+            return true;
+        }
+        mt[inicialy][inicialx] = 1;
+        return false;
+    }
+
+    public static void GenRandom(int n, int m, int xr, int yr, int xfr, int yfr) {
+        Random r = new Random();
+
+        xr = r.nextInt(n); // Posición aleatoria de fila inicial.
+        yr = r.nextInt(m); // Posición aleatoria de columnas inicial.
+
+        xfr = r.nextInt(n); // Posición aleatoria de fila final.
+        yfr = r.nextInt(m); // Posición aleatoria de columnas final.
+
+        while (xr == xfr && yfr == yr) { // en caso de que pos inicial y pos final sean iguales, se usa random otra vez
+
+            xfr = r.nextInt(n); // Posición aleatoria de fila final.
+            yfr = r.nextInt(m); // Posición aleatoria de columnas final.
+        }
+        
+        System.out.println(xr+" "+yr+" "+xfr+" "+yfr+" ");
+
+    }
+
     private void nivelfacilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nivelfacilMouseClicked
         TableroFacil easyl = new TableroFacil();
         this.setVisible(false);
@@ -145,14 +220,14 @@ public class Select extends javax.swing.JFrame {
 
     private void nvl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nvl1ActionPerformed
         // TODO add your handling code here:
-         nuevonivel level = new nuevonivel();
+        nuevonivel level = new nuevonivel();
         this.setVisible(false);
         level.setVisible(true);
-        
+
     }//GEN-LAST:event_nvl1ActionPerformed
 
     private void nvl2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nvl2ActionPerformed
-     
+
         TableroFacil easyl = new TableroFacil();
         this.setVisible(false);
         easyl.setVisible(true);

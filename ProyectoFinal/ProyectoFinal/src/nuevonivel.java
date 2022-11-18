@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author valec
@@ -23,8 +22,10 @@ public class nuevonivel extends javax.swing.JFrame {
     public nuevonivel() {
         initComponents();
     }
-int n,m,ancho, alto;
- public static int mt[][] = new int[100][100];
+
+    public static int n, m, ancho, alto, posicioninicial, posicionfinal, x, y, dx, dy, xr, yr, xfr, yfr;
+    public static int mt[][] = new int[100][100];
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,74 +155,67 @@ int n,m,ancho, alto;
     private void pintarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pintarActionPerformed
         // TODO add your handling code here:
         Graphics t = Tablero.getGraphics();
-         Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
-        
+        Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+
         if (filas.getText().equals("") || columnas.getText().equals("")) { //validación texto vacio 
-            
+
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
-            
+
         } else {
-            
-            n = Integer.parseInt(filas.getText()); /*toma cantidad de filas del textfield*/
-            
-            m = Integer.parseInt(columnas.getText()); /*toma cantidad de columnas del textfield*/
-            
-            if ((n >= 8 && n <= 100) && (m >= 16 && m <= 100)) { /*validación de tamaño máx y min de matriz*/
-                
-                ancho = 800 / m; /* ancho casillas*/
-                alto = 500 / n; /* alto casillas*/
-   
+
+            n = Integer.parseInt(filas.getText());
+            /*toma cantidad de filas del textfield*/
+
+            m = Integer.parseInt(columnas.getText());
+            /*toma cantidad de columnas del textfield*/
+
+            if ((n >= 8 && n <= 100) && (m >= 16 && m <= 100)) {
+                /*validación de tamaño máx y min de matriz*/
+
+                ancho = 800 / m;
+                /* ancho casillas*/
+                alto = 500 / n;
+                /* alto casillas*/
+
                 Random r = new Random();
 
-                int xr = r.nextInt(n); // Posición aleatoria de fila inicial.
-                int yr = r.nextInt(m); // Posición aleatoria de columnas inicial.
-
-                int xfr = r.nextInt(n); // Posición aleatoria de fila final.
-                int yfr = r.nextInt(m); // Posición aleatoria de columnas final.
-                
-                while (xr == xfr && yfr == yr) { // en caso de que pos inicial y pos final sean iguales, se usa random otra vez
-                    
-                    xfr = r.nextInt(n); // Posición aleatoria de fila final.
-                    yfr = r.nextInt(m); // Posición aleatoria de columnas final.
-                }
-
+                Select.GenRandom(n, m, xr, yr, xfr, yfr);
 
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < m; j++) {
-                        
+
                         mt[i][j] = r.nextInt(6) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
 
                         if (mt[i][j] == 1) {
-                        t.setColor(Color.black); //Si se bloquea
-                        
-                    } else {
-                        t.setColor(Color.white); // Ta libre :p
-                    }
+                            t.setColor(Color.black); //Si se bloquea
 
-                    if (i == xr && j == yr) {
-                        mt[i][j] = 5;
-                        t.setColor(Color.green); // posicion inicial
-                    }
+                        } else {
+                            t.setColor(Color.white); // Ta libre :p
+                        }
 
-                    if (i == xfr && j == yfr) {
-                        mt[i][j] = 6;
-                        t.setColor(Color.blue); // posicion final
-                    }
+                        if (i == xr && j == yr) {
+                            mt[i][j] = 5;
+                            t.setColor(Color.green); // posicion inicial
+                        }
 
-                t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
-                t.setColor(Color.black);
-                t.drawLine(0, i * alto, m * ancho, i * alto);
-                t.setColor(Color.black);
-                t.drawLine(j * ancho, 0, j * ancho, n * alto);
+                        if (i == xfr && j == yfr) {
+                            mt[i][j] = 6;
+                            t.setColor(Color.blue); // posicion final
+                        }
+
+                        t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                        t.setColor(Color.black);
+                        t.drawLine(0, i * alto, m * ancho, i * alto);
+                        t.setColor(Color.black);
+                        t.drawLine(j * ancho, 0, j * ancho, n * alto);
 
                     }
                 }
-                
-            }
-            else {
-                
+
+            } else {
+
                 JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n"
-                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");                
+                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");
             }
         }
     }//GEN-LAST:event_pintarActionPerformed
