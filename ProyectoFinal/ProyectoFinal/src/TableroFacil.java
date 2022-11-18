@@ -101,6 +101,11 @@ public class TableroFacil extends javax.swing.JFrame {
                 b_pintarActionPerformed(evt);
             }
         });
+        b_pintar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                b_pintarKeyPressed(evt);
+            }
+        });
 
         Tablero.setBackground(new java.awt.Color(204, 204, 204));
         Tablero.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -419,6 +424,59 @@ public class TableroFacil extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_TableroKeyPressed
+
+    private void b_pintarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b_pintarKeyPressed
+        Graphics t = Tablero.getGraphics();
+        if (evt.getKeyCode()==37){
+            if(mt[xr][yr-1]!=1 && yr>0){
+                mt[xr][yr-1]= 5;
+                yr=yr-1;
+                t.setColor(Color.green);
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                if (xr==xfr && yr==yfr){
+                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                }
+            }
+            
+        }
+        if (evt.getKeyCode()==38){
+            if(mt[xr-1][yr]!=1 && xr>0){
+                mt[xr-1][yr]= 5;
+                xr=xr-1;
+                t.setColor(Color.green);
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                 if (xr==xfr && yr==yfr){
+                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                }
+            }
+        }
+        
+        if (evt.getKeyCode()==39){
+            if(mt[xr][yr+1]!=1 && yr<m){
+                mt[xr][yr+1]= 5;
+                yr=yr+1;
+               t.setColor(Color.green);
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                 if (xr==xfr && yr==yfr){
+                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                }
+            }
+        }
+        
+        if (evt.getKeyCode()==40){
+            if(mt[xr+1][yr]!=1 && xr<n){
+                mt[xr+1][yr]= mt[xr][yr];
+                mt[xr][yr]= 5;
+                xr=xr+1;
+                t.setColor(Color.green);
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                 if (xr==xfr && yr==yfr){
+                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_b_pintarKeyPressed
 
     private int PosMatriz(int poscursor, int filcol, int medida) {
         // Función que retorna la posición del cursor en la matriz.

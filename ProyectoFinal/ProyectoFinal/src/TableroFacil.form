@@ -164,6 +164,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b_pintarActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="b_pintarKeyPressed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="Tablero">
