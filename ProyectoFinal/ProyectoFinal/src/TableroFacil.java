@@ -240,6 +240,8 @@ public class TableroFacil extends javax.swing.JFrame {
 
                 int xr = r.nextInt(n); // Posición aleatoria de fila inicial.
                 int yr = r.nextInt(m); // Posición aleatoria de columnas inicial.
+                inicialy = yr;
+                inicialx = xr;
 
                 int xfr = r.nextInt(n); // Posición aleatoria de fila final.
                 int yfr = r.nextInt(m); // Posición aleatoria de columnas final.
@@ -338,19 +340,19 @@ public class TableroFacil extends javax.swing.JFrame {
     }//GEN-LAST:event_TableroMouseClicked
 
     private void b_mostrarmatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_mostrarmatrizActionPerformed
-        /*for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 System.out.print(String.valueOf(mt[i][j]) + " ");
             }
             System.out.print(" \n");
         }
         
-        System.out.print(" \n"); */
+        System.out.print(" \n");
     }//GEN-LAST:event_b_mostrarmatrizActionPerformed
 
     private void b_resolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_resolverActionPerformed
         System.out.println(inicialx + "   " + inicialy);
-        boolean resultado = Buscar(mt, inicialy, inicialx, n, m);
+        boolean resultado = Buscar(mt, inicialx, inicialy, n, m);
         Graphics t = Tablero.getGraphics();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
