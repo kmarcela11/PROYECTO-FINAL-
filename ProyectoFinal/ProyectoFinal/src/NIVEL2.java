@@ -163,7 +163,7 @@ public class NIVEL2 extends javax.swing.JFrame {
         } 
         for (int i = 0; i < nn; i++) { 
             for (int j = 0; j < mm; j++) { 
-                    mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).            
+                    mt[i][j] = r.nextInt(3) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).            
                     if (mt[i][j] == 1) { 
                         t.setColor(Color.black); //Si se bloquea      
                     }else { 
@@ -317,13 +317,12 @@ public class NIVEL2 extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                      nivel2 = true; 
                 }
-            }    
-        }else{
+            } else{
                 if(mt[xr][yr-1]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 0){
+                    if (vidas <1){
                         JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
                             FILCOL abrir = new FILCOL();
                             this.setVisible(false);
@@ -331,7 +330,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                     }
                 }
             }
-        
+        }
         if (evt.getKeyCode()==38){ //arriba
             
             if(mt[xr-1][yr]!=1 && xr>0){
@@ -343,13 +342,12 @@ public class NIVEL2 extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                      nivel2 = true; 
                 }
-            }
-        }else{
+            }else{
                 if(mt[xr-1][yr]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 0){
+                    if (vidas <1){
                         JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
                             FILCOL abrir = new FILCOL();
                             this.setVisible(false);
@@ -357,6 +355,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                     }
                 }
             }
+        }
         
         if (evt.getKeyCode()==39){ // derecha           
             if(mt[xr][yr+1]!=1 && yr<mm){
@@ -367,13 +366,12 @@ public class NIVEL2 extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                      nivel2 = true; 
                 }
-            }
-        }else{
+            }else{
                 if(mt[xr][yr+1]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 0){
+                    if (vidas <1){
                         JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
                             FILCOL abrir = new FILCOL();
                             this.setVisible(false);
@@ -381,7 +379,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                     }
                 }
             }
-        
+        }
         if (evt.getKeyCode()==40){ //izquierda
             if(mt[xr+1][yr]!=1 && xr<nn){
                 xr=xr+1;
@@ -391,13 +389,12 @@ public class NIVEL2 extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                      nivel2 = true; 
                 }
-            }
-        }else{
+            }else{
                 if(mt[xr+1][yr]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 0){
+                    if (vidas <1){
                         JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
                             FILCOL abrir = new FILCOL();
                             this.setVisible(false);
@@ -405,6 +402,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                     }
                 }
             }
+        }
         
     }//GEN-LAST:event_b_generarKeyPressed
 

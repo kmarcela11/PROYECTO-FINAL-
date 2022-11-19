@@ -306,6 +306,7 @@ public class NIVEL1 extends javax.swing.JFrame {
                 if (xr == xfr && yr == yfr) {
                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
                     nivel1 = true;
+                }
                 } else {
                     if (mt[xr + 1][yr] == 1) {
                         JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
@@ -320,7 +321,8 @@ public class NIVEL1 extends javax.swing.JFrame {
                     }
                 }
             }
-        }
+        
+        System.out.println(xr +"    "+yr);
     }//GEN-LAST:event_b_generarKeyPressed
 
     private void b_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ayudaActionPerformed

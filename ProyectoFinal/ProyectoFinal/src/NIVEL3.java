@@ -279,7 +279,7 @@ public class NIVEL3 extends javax.swing.JFrame {
                 Random r = new Random();
                 if (mt[i][j] != 5 && mt[i][j] != 6) {
                     /*estas son las casillas inicial y final*/
-                    mt[i][j] = r.nextInt(4) + 1;
+                    mt[i][j] = r.nextInt(2) + 1;
                     if (mt[i][j] == 1) {
                         t.setColor(Color.black);
                         /*bloqueada*/
@@ -345,7 +345,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         } 
         for (int i = 0; i < nn; i++) { 
             for (int j = 0; j < mm; j++) { 
-                    mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).            
+                    mt[i][j] = r.nextInt(2) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).            
                     if (mt[i][j] == 1) { 
                         t.setColor(Color.black); //Si se bloquea      
                     }else { 
