@@ -21,8 +21,7 @@ public static int n, m;
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        datos = new javax.swing.JButton();
         rb_nivel1 = new javax.swing.JRadioButton();
         rb_nivel2 = new javax.swing.JRadioButton();
         rb_nivel3 = new javax.swing.JRadioButton();
@@ -47,17 +46,10 @@ public static int n, m;
 
         jLabel3.setText("m");
 
-        jButton1.setText("ENVIAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        datos.setText("ENVIAR");
+        datos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("CONTINUAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                datosActionPerformed(evt);
             }
         });
 
@@ -71,6 +63,11 @@ public static int n, m;
 
         buttonGroup1.add(rb_nivel2);
         rb_nivel2.setText("NIVEL 2");
+        rb_nivel2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_nivel2ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rb_nivel3);
         rb_nivel3.setText("NIVEL 3");
@@ -80,36 +77,34 @@ public static int n, m;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(140, 140, 140)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rb_nivel2)
-                    .addComponent(rb_nivel3))
-                .addGap(55, 55, 55))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(rb_nivel1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rb_nivel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)))
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(datos)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                                        .addComponent(jLabel2)))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(filas, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(columnas))))
+                            .addComponent(columnas)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rb_nivel2)
+                            .addComponent(rb_nivel1))))
                 .addGap(117, 117, 117))
         );
         layout.setVerticalGroup(
@@ -124,26 +119,21 @@ public static int n, m;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(columnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(rb_nivel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(rb_nivel2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(rb_nivel3)))
-                .addGap(102, 102, 102))
+                    .addComponent(rb_nivel2)
+                    .addComponent(datos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rb_nivel3)
+                .addGap(113, 113, 113))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void datosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datosActionPerformed
              
         if (filas.getText().equals("") || columnas.getText().equals("")) { //validación texto vacio 
 
@@ -154,15 +144,30 @@ public static int n, m;
 
             m = Integer.parseInt(columnas.getText());
             /*toma cantidad de columnas del textfield*/
+
+        }
+         if (rb_nivel1.isSelected()==true){
+            
+            nuevonivel nvl1 = new nuevonivel();
+            this.setVisible(false);
+            nvl1.setVisible(true);
+        }
+        
+        if (rb_nivel2.isSelected()==true){
+            
+            TableroFacil SelectScreen = new TableroFacil();
+            this.setVisible(false);
+            SelectScreen.setVisible(true);
+        }
+        
+         if (rb_nivel3.isSelected()==true){
+            
+            dificil lvl3 = new dificil();
+            this.setVisible(false);
+            lvl3.setVisible(true);
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        TableroFacil SelectScreen = new TableroFacil();
-        this.setVisible(false);
-        SelectScreen.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_datosActionPerformed
 
     private void columnasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_columnasKeyTyped
         char c = evt.getKeyChar();
@@ -180,6 +185,11 @@ public static int n, m;
         // TODO add your handling code here:
     }//GEN-LAST:event_rb_nivel1ActionPerformed
 
+    private void rb_nivel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_nivel2ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_rb_nivel2ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -192,9 +202,8 @@ public static int n, m;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField columnas;
+    private javax.swing.JButton datos;
     private javax.swing.JTextField filas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
