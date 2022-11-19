@@ -308,8 +308,6 @@ public class NIVEL1 extends javax.swing.JFrame {
                 }
             }
         }
-        
-        totalvida.RANKINGG = vidas; 
     }//GEN-LAST:event_b_generarKeyPressed
 
     private void b_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ayudaActionPerformed

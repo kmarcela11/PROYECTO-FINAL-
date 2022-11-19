@@ -328,7 +328,7 @@ public class NIVEL3 extends javax.swing.JFrame {
     }//GEN-LAST:event_b_homeActionPerformed
 
     private void b_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_generarActionPerformed
-             Graphics t = Tablero.getGraphics();
+        Graphics t = Tablero.getGraphics();
         Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
 
         nn = FILCOL.n; //trae la fila
