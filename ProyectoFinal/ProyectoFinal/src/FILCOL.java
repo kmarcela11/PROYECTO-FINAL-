@@ -218,7 +218,11 @@ public class FILCOL extends javax.swing.JFrame {
     }//GEN-LAST:event_b_musicaActionPerformed
 
     private void b_nomusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_nomusicaActionPerformed
-    }//GEN-LAST:event_b_nomusicaActionPerformed
+ reproducir=false;
+        
+        if (reproducir==false){
+             clip.stop();
+        }    }//GEN-LAST:event_b_nomusicaActionPerformed
 
     public static void main(String args[]) {
 
