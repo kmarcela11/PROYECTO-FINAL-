@@ -328,57 +328,65 @@ public class NIVEL3 extends javax.swing.JFrame {
     }//GEN-LAST:event_b_homeActionPerformed
 
     private void b_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_generarActionPerformed
-        Graphics t = Tablero.getGraphics();
-        Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+        Graphics t = Tablero.getGraphics(); 
+        Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage(); 
+        nn = FILCOL.n; //trae la fila 
+        mm = FILCOL.m; //trae la columna 
+        ancho = 800 / mm;/* ancho casillas*/ 
+        alto = 500 / nn;/* alto casillas*/ 
+        Random r = new Random(); 
+        xr = r.nextInt(nn); // Posición aleatoria de fila inicial. 
+        yr = r.nextInt(mm); // Posición aleatoria de columnas inicial. 
+        xfr = r.nextInt(nn); // Posición aleatoria de fila final. 
+        yfr = r.nextInt(mm); // Posición aleatoria de columnas final. 
+        while (xr == xfr && yfr == yr) { // en caso de que pos inicial y pos final sean iguales, se usa random otra vez 
+            xfr = r.nextInt(nn); // Posición aleatoria de fila final. 
+            yfr = r.nextInt(mm); // Posición aleatoria de columnas final. 
+        } 
+        for (int i = 0; i < nn; i++) { 
+            for (int j = 0; j < mm; j++) { 
+                    mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).            
+                    if (mt[i][j] == 1) { 
+                        t.setColor(Color.black); //Si se bloquea      
+                    }else { 
+                        t.setColor(Color.white); // Ta libre :p 
+                    }                  
+                    if (i == xr && j == yr) { 
+                        mt[i][j] = 5; 
+                        inin = 5; 
+                    } 
+                    if (i == xfr && j == yfr) { 
+                        mt[i][j] = 6; 
+                        fina = 6; 
+                    }   
+                if (!(i == xr && j == yr) && !(i == xfr && j == yfr)) { 
+                    t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito. 
+                } 
+            } 
+        } 
 
-        nn = FILCOL.n; //trae la fila
-        mm = FILCOL.m; //trae la columna
-        ancho = 800 / mm;/* ancho casillas*/
-        alto = 500 / nn;/* alto casillas*/
-        Random r = new Random();
-        xr = r.nextInt(nn); // Posición aleatoria de fila inicial.
-        yr = r.nextInt(mm); // Posición aleatoria de columnas inicial.
-        xfr = r.nextInt(nn); // Posición aleatoria de fila final.
-        yfr = r.nextInt(mm); // Posición aleatoria de columnas final.
-                
-        while (xr == xfr && yfr == yr) { // en caso de que pos inicial y pos final sean iguales, se usa random otra vez
-            xfr = r.nextInt(nn); // Posición aleatoria de fila final.
-            yfr = r.nextInt(mm); // Posición aleatoria de columnas final.
-        }
-        for (int i = 0; i < nn; i++) {
-            for (int j = 0; j < mm; j++) {
-                mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).           
-                if (mt[i][j] == 1) {
-                    t.setColor(Color.black); //Si se bloquea     
-                } else {
-                    t.setColor(Color.white); // Ta libre :p
-                }    
-                if (i == xr && j == yr) {
-                    mt[i][j] = 5;
-                    inin = 5; 
-                }
-                if (i == xfr && j == yfr) {
-                    mt[i][j] = 6;
-                    fina = 6;
-                }
-                if (!(i == xr && j == yr) && !(i == xfr && j == yfr)){
-                     t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
-                }
-                t.setColor(Color.black);
-                t.drawLine(0, i * alto, mm * ancho, i * alto);
-                t.setColor(Color.black);
-                t.drawLine(j * ancho, 0, j * ancho, nn * alto);
-            }
-        }
-        if (inin == 5){
-            img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
-            t.drawImage(img, ancho * yr, alto * xr, ancho, alto, Tablero);//posicion inicial
-        }
+        if (inin == 5) { 
+            t.setColor(Color.white); 
+            t.fillRect(ancho * yr, alto * xr, ancho, alto); 
+            img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage(); 
+           t.drawImage(img, ancho * yr, alto * xr, ancho, alto, Tablero);//posicion inicial 
 
-        if (fina ==6){
-            img = new ImageIcon(getClass().getResource("/pfmedia/o.png")).getImage();
-            t.drawImage(img, ancho * yfr, alto * xfr, ancho, alto, Tablero); // posicion final
-        }
+        } 
+        if (fina == 6) { 
+            t.setColor(Color.white); 
+            t.fillRect(ancho * yfr, alto * xfr, ancho, alto); 
+            img = new ImageIcon(getClass().getResource("/pfmedia/o.png")).getImage(); 
+            t.drawImage(img, ancho * yfr, alto * xfr, ancho, alto, Tablero); // posicion final 
+        } 
+
+        for (int i = 0; i < nn; i++) { 
+            for (int j = 0; j < mm; j++) { 
+                t.setColor(Color.black); 
+                t.drawLine(0, i * alto, mm * ancho, i * alto); 
+                t.setColor(Color.black); 
+                t.drawLine(j * ancho, 0, j * ancho, nn * alto);  
+            }    
+        } 
     }//GEN-LAST:event_b_generarActionPerformed
     public static boolean Buscar(int mt[][], int inicialy, int inicialx, int nn, int mm) {
         System.out.println(inicialx + "   ENTRA   " + inicialy);
