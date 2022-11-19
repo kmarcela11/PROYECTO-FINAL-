@@ -311,7 +311,7 @@ public class NIVEL1 extends javax.swing.JFrame {
     }//GEN-LAST:event_b_generarKeyPressed
 
     private void b_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ayudaActionPerformed
-        AYUDA abrir = new AYUDA();
+        AYUDAA abrir = new AYUDAA();
         this.setVisible(false);
         abrir.setVisible(true);
     }//GEN-LAST:event_b_ayudaActionPerformed
