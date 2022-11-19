@@ -167,8 +167,7 @@ public class NIVEL3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_generarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b_generarKeyPressed
-         Graphics t = Tablero.getGraphics();
-        
+        Graphics t = Tablero.getGraphics();       
         if (evt.getKeyCode()==37){ //izquierda
             if(mt[xr][yr-1]!=1 && yr>0){
                 yr=yr-1;
@@ -177,13 +176,12 @@ public class NIVEL3 extends javax.swing.JFrame {
                 if (xr==xfr && yr==yfr){
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
-            }    
-        }else{
+            } else{
                 if(mt[xr][yr-1]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 0){
+                    if (vidas <1){
                         JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
                             FILCOL abrir = new FILCOL();
                             this.setVisible(false);
@@ -191,7 +189,7 @@ public class NIVEL3 extends javax.swing.JFrame {
                     }
                 }
             }
-        
+        }
         if (evt.getKeyCode()==38){ //arriba
             
             if(mt[xr-1][yr]!=1 && xr>0){
@@ -202,13 +200,12 @@ public class NIVEL3 extends javax.swing.JFrame {
                  if (xr==xfr && yr==yfr){
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
-            }
-        }else{
+            }else{
                 if(mt[xr-1][yr]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 0){
+                    if (vidas <1){
                         JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
                             FILCOL abrir = new FILCOL();
                             this.setVisible(false);
@@ -216,6 +213,7 @@ public class NIVEL3 extends javax.swing.JFrame {
                     }
                 }
             }
+        }
         
         if (evt.getKeyCode()==39){ // derecha           
             if(mt[xr][yr+1]!=1 && yr<mm){
@@ -225,13 +223,12 @@ public class NIVEL3 extends javax.swing.JFrame {
                  if (xr==xfr && yr==yfr){
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
-            }
-        }else{
+            }else{
                 if(mt[xr][yr+1]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 0){
+                    if (vidas <1){
                         JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
                             FILCOL abrir = new FILCOL();
                             this.setVisible(false);
@@ -239,7 +236,7 @@ public class NIVEL3 extends javax.swing.JFrame {
                     }
                 }
             }
-        
+        }
         if (evt.getKeyCode()==40){ //izquierda
             if(mt[xr+1][yr]!=1 && xr<nn){
                 xr=xr+1;
@@ -248,21 +245,21 @@ public class NIVEL3 extends javax.swing.JFrame {
                  if (xr==xfr && yr==yfr){
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
-            }
-        }else{
+            }else{
                 if(mt[xr+1][yr]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 0){
+                    if (vidas <1){
                         JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
-                      
                             FILCOL abrir = new FILCOL();
                             this.setVisible(false);
                             abrir.setVisible(true);
                     }
                 }
             }
+        }
+        
     }//GEN-LAST:event_b_generarKeyPressed
 
     private void b_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ayudaActionPerformed
