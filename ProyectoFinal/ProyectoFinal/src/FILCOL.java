@@ -14,6 +14,8 @@ public class FILCOL extends javax.swing.JFrame {
     public FILCOL() {
         initComponents();
         this.setLocationRelativeTo(null);
+        USUARIO enviar = new USUARIO();
+        tf_nombre.setText(enviar.nombre);
     }
     public void mus(String archivo) {
         /*código para la pista musical*/
@@ -26,7 +28,6 @@ public class FILCOL extends javax.swing.JFrame {
         }
     }
     public static int n, m;
-    boolean nym = false;
     boolean reproducir = false; 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,12 +40,11 @@ public class FILCOL extends javax.swing.JFrame {
         lbl_n = new javax.swing.JLabel();
         lbl_m = new javax.swing.JLabel();
         b_enviar = new javax.swing.JButton();
-        rb_nivel1 = new javax.swing.JRadioButton();
-        rb_nivel2 = new javax.swing.JRadioButton();
-        rb_nivel3 = new javax.swing.JRadioButton();
         b_ayuda = new javax.swing.JButton();
         b_musica = new javax.swing.JButton();
         b_nomusica = new javax.swing.JButton();
+        tf_nombre = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,27 +60,18 @@ public class FILCOL extends javax.swing.JFrame {
             }
         });
 
-        lbl_digitar.setText("digite n y m ");
+        lbl_digitar.setText("DIGITA N Y M ");
 
         lbl_n.setText("n");
 
         lbl_m.setText("m");
 
-        b_enviar.setText("ENVIAR");
+        b_enviar.setText("JUGARRRRRRRRRRRR");
         b_enviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_enviarActionPerformed(evt);
             }
         });
-
-        bg_niveles.add(rb_nivel1);
-        rb_nivel1.setText("NIVEL 1");
-
-        bg_niveles.add(rb_nivel2);
-        rb_nivel2.setText("NIVEL 2");
-
-        bg_niveles.add(rb_nivel3);
-        rb_nivel3.setText("NIVEL 3");
 
         b_ayuda.setText("AYUDA");
         b_ayuda.addActionListener(new java.awt.event.ActionListener() {
@@ -103,39 +94,29 @@ public class FILCOL extends javax.swing.JFrame {
             }
         });
 
+        tf_nombre.setEditable(false);
+
+        jLabel1.setText("HOLAAAAAAAA");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rb_nivel3))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(lbl_digitar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(77, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_m))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(b_enviar)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl_digitar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                                        .addComponent(lbl_n)))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_filas, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(tf_columnas)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rb_nivel2)
-                            .addComponent(rb_nivel1))))
+                            .addComponent(lbl_m)
+                            .addComponent(lbl_n))
+                        .addGap(160, 160, 160)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tf_columnas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_filas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(117, 117, 117))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -148,27 +129,36 @@ public class FILCOL extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(b_musica)))
                 .addGap(75, 75, 75))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(b_enviar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_filas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_digitar)
-                    .addComponent(lbl_n))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_columnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_m))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(rb_nivel1)
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rb_nivel2)
-                    .addComponent(b_enviar))
+                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rb_nivel3)
+                .addComponent(lbl_digitar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_n)
+                    .addComponent(tf_filas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_m)
+                    .addComponent(tf_columnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(b_enviar)
                 .addGap(18, 18, 18)
                 .addComponent(b_musica)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,28 +179,16 @@ public class FILCOL extends javax.swing.JFrame {
         }else{
             n = Integer.parseInt(tf_filas.getText()); /*toma cantidad de filas del textfield*/
             m = Integer.parseInt(tf_columnas.getText()); /*toma cantidad de columnas del textfield*/
-            if ((n < 8 && n > 100) && (m < 16 && m > 100)) { /*validación de tamaño máx y min de matriz*/
-                JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n"
-                + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");  
-                nym = false; 
+            if (((n >= 8) && (n <= 100)) && ((m >= 16) && (m <= 100))){
+                        NIVEL1 abrir = new NIVEL1();
+                        this.setVisible(false);
+                        abrir.setVisible(true);
+
             }else{
-                nym = true; 
-            }    
-        }
-        if ((rb_nivel1.isSelected()==true) && (nym == true )){ 
-            NIVEL1 nvl1 = new NIVEL1();
-            this.setVisible(false);
-            nvl1.setVisible(true);
-        }
-        if ((rb_nivel2.isSelected()==true)&& (nym == true )){ 
-            NIVEL2 nv12 = new NIVEL2();
-            this.setVisible(false);
-            nv12.setVisible(true);
-        }
-        if ((rb_nivel3.isSelected()==true)&& (nym == true )){            
-            NIVEL3 nv13 = new NIVEL3();
-            this.setVisible(false);
-            nv13.setVisible(true);
+                 JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n"
+                + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");  
+                
+            }
         }
     }//GEN-LAST:event_b_enviarActionPerformed
 
@@ -240,10 +218,6 @@ public class FILCOL extends javax.swing.JFrame {
     }//GEN-LAST:event_b_musicaActionPerformed
 
     private void b_nomusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_nomusicaActionPerformed
-        reproducir = false; 
-        if (reproducir == true){
-            mus("musica");
-        }
     }//GEN-LAST:event_b_nomusicaActionPerformed
 
     public static void main(String args[]) {
@@ -261,13 +235,12 @@ public class FILCOL extends javax.swing.JFrame {
     private javax.swing.JButton b_musica;
     private javax.swing.JButton b_nomusica;
     private javax.swing.ButtonGroup bg_niveles;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_digitar;
     private javax.swing.JLabel lbl_m;
     private javax.swing.JLabel lbl_n;
-    private javax.swing.JRadioButton rb_nivel1;
-    private javax.swing.JRadioButton rb_nivel2;
-    private javax.swing.JRadioButton rb_nivel3;
     private javax.swing.JTextField tf_columnas;
     private javax.swing.JTextField tf_filas;
+    private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
 }

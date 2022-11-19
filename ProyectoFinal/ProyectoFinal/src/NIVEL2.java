@@ -11,11 +11,12 @@ public class NIVEL2 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    Scanner lea = new Scanner(System.in);
+    Scanner lea = new Scanner(System.in);  
     int inicialx = 0, inicialy = 0;
     boolean nivel2 = false; 
     public static int n, m,nn,mm, ancho, alto,bloq,inin,fina, posicioninicial, posicionfinal, x, y, dx, dy, xr, yr, xfr, yfr;
     public static int mt[][] = new int[100][100];
+    public static int vidas = 3; 
     private Image img;
 
     @SuppressWarnings("unchecked")
@@ -309,7 +310,19 @@ public class NIVEL2 extends javax.swing.JFrame {
                      nivel2 = true; 
                 }
             }    
-        }
+        }else{
+                if(mt[xr+1][yr]==1 ){
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1; 
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 0){
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                            FILCOL abrir = new FILCOL();
+                            this.setVisible(false);
+                            abrir.setVisible(true);
+                    }
+                }
+            }
         
         if (evt.getKeyCode()==38){ //arriba
             
@@ -323,7 +336,19 @@ public class NIVEL2 extends javax.swing.JFrame {
                      nivel2 = true; 
                 }
             }
-        }
+        }else{
+                if(mt[xr+1][yr]==1 ){
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1; 
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 0){
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                            FILCOL abrir = new FILCOL();
+                            this.setVisible(false);
+                            abrir.setVisible(true);
+                    }
+                }
+            }
         
         if (evt.getKeyCode()==39){ // derecha           
             if(mt[xr][yr+1]!=1 && yr<mm){
@@ -335,7 +360,19 @@ public class NIVEL2 extends javax.swing.JFrame {
                      nivel2 = true; 
                 }
             }
-        }
+        }else{
+                if(mt[xr+1][yr]==1 ){
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1; 
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 0){
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                            FILCOL abrir = new FILCOL();
+                            this.setVisible(false);
+                            abrir.setVisible(true);
+                    }
+                }
+            }
         
         if (evt.getKeyCode()==40){ //izquierda
             if(mt[xr+1][yr]!=1 && xr<nn){
@@ -347,7 +384,19 @@ public class NIVEL2 extends javax.swing.JFrame {
                      nivel2 = true; 
                 }
             }
-        }
+        }else{
+                if(mt[xr+1][yr]==1 ){
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1; 
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 0){
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                            FILCOL abrir = new FILCOL();
+                            this.setVisible(false);
+                            abrir.setVisible(true);
+                    }
+                }
+            }
         
     }//GEN-LAST:event_b_generarKeyPressed
 

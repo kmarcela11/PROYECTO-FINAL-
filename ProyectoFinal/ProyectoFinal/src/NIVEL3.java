@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 public class NIVEL3 extends javax.swing.JFrame {
     public NIVEL3() {
@@ -10,6 +12,8 @@ public class NIVEL3 extends javax.swing.JFrame {
     int inicialx = 0, inicialy = 0;
     public static int n, m,nn,mm, ancho, alto,bloq,inin,fina, posicioninicial, posicionfinal, x, y, dx, dy, xr, yr, xfr, yfr;
     public static int mt[][] = new int[100][100];
+    public static int vidas = 1; 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -162,9 +166,6 @@ public class NIVEL3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void b_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_generarActionPerformed
-    }//GEN-LAST:event_b_generarActionPerformed
-
     private void b_generarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b_generarKeyPressed
          Graphics t = Tablero.getGraphics();
         
@@ -177,7 +178,19 @@ public class NIVEL3 extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
             }    
-        }
+        }else{
+                if(mt[xr+1][yr]==1 ){
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1; 
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 0){
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                            FILCOL abrir = new FILCOL();
+                            this.setVisible(false);
+                            abrir.setVisible(true);
+                    }
+                }
+            }
         
         if (evt.getKeyCode()==38){ //arriba
             
@@ -190,7 +203,19 @@ public class NIVEL3 extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
             }
-        }
+        }else{
+                if(mt[xr+1][yr]==1 ){
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1; 
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 0){
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                            FILCOL abrir = new FILCOL();
+                            this.setVisible(false);
+                            abrir.setVisible(true);
+                    }
+                }
+            }
         
         if (evt.getKeyCode()==39){ // derecha           
             if(mt[xr][yr+1]!=1 && yr<mm){
@@ -201,7 +226,19 @@ public class NIVEL3 extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
             }
-        }
+        }else{
+                if(mt[xr+1][yr]==1 ){
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1; 
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 0){
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                            FILCOL abrir = new FILCOL();
+                            this.setVisible(false);
+                            abrir.setVisible(true);
+                    }
+                }
+            }
         
         if (evt.getKeyCode()==40){ //izquierda
             if(mt[xr+1][yr]!=1 && xr<nn){
@@ -212,7 +249,20 @@ public class NIVEL3 extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
             }
-        }
+        }else{
+                if(mt[xr+1][yr]==1 ){
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1; 
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 0){
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                      
+                            FILCOL abrir = new FILCOL();
+                            this.setVisible(false);
+                            abrir.setVisible(true);
+                    }
+                }
+            }
     }//GEN-LAST:event_b_generarKeyPressed
 
     private void b_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ayudaActionPerformed
@@ -276,6 +326,60 @@ public class NIVEL3 extends javax.swing.JFrame {
         this.setVisible(false);
         abrir.setVisible(true);
     }//GEN-LAST:event_b_homeActionPerformed
+
+    private void b_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_generarActionPerformed
+             Graphics t = Tablero.getGraphics();
+        Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+
+        nn = FILCOL.n; //trae la fila
+        mm = FILCOL.m; //trae la columna
+        ancho = 800 / mm;/* ancho casillas*/
+        alto = 500 / nn;/* alto casillas*/
+        Random r = new Random();
+        xr = r.nextInt(nn); // Posición aleatoria de fila inicial.
+        yr = r.nextInt(mm); // Posición aleatoria de columnas inicial.
+        xfr = r.nextInt(nn); // Posición aleatoria de fila final.
+        yfr = r.nextInt(mm); // Posición aleatoria de columnas final.
+                
+        while (xr == xfr && yfr == yr) { // en caso de que pos inicial y pos final sean iguales, se usa random otra vez
+            xfr = r.nextInt(nn); // Posición aleatoria de fila final.
+            yfr = r.nextInt(mm); // Posición aleatoria de columnas final.
+        }
+        for (int i = 0; i < nn; i++) {
+            for (int j = 0; j < mm; j++) {
+                mt[i][j] = r.nextInt(4) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).           
+                if (mt[i][j] == 1) {
+                    t.setColor(Color.black); //Si se bloquea     
+                } else {
+                    t.setColor(Color.white); // Ta libre :p
+                }    
+                if (i == xr && j == yr) {
+                    mt[i][j] = 5;
+                    inin = 5; 
+                }
+                if (i == xfr && j == yfr) {
+                    mt[i][j] = 6;
+                    fina = 6;
+                }
+                if (!(i == xr && j == yr) && !(i == xfr && j == yfr)){
+                     t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                }
+                t.setColor(Color.black);
+                t.drawLine(0, i * alto, mm * ancho, i * alto);
+                t.setColor(Color.black);
+                t.drawLine(j * ancho, 0, j * ancho, nn * alto);
+            }
+        }
+        if (inin == 5){
+            img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+            t.drawImage(img, ancho * yr, alto * xr, ancho, alto, Tablero);//posicion inicial
+        }
+
+        if (fina ==6){
+            img = new ImageIcon(getClass().getResource("/pfmedia/o.png")).getImage();
+            t.drawImage(img, ancho * yfr, alto * xfr, ancho, alto, Tablero); // posicion final
+        }
+    }//GEN-LAST:event_b_generarActionPerformed
     public static boolean Buscar(int mt[][], int inicialy, int inicialx, int nn, int mm) {
         System.out.println(inicialx + "   ENTRA   " + inicialy);
         if (mt[inicialy][inicialx] == 6) {
