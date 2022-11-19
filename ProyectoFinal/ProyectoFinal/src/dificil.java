@@ -24,7 +24,7 @@ public class dificil extends javax.swing.JFrame {
         initComponents();
     }
 
-    public static int n, m, ancho, alto, posicioninicial, posicionfinal, x, y, dx, dy, xr, yr, xfr, yfr;
+   public static int n, m,nn,mm, ancho, alto,bloq,inin,fina, posicioninicial, posicionfinal, x, y, dx, dy, xr, yr, xfr, yfr;
     public static int mt[][] = new int[100][100];
 
     /**
@@ -38,10 +38,6 @@ public class dificil extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Tablero = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        filas = new javax.swing.JTextField();
-        columnas = new javax.swing.JTextField();
         pintarr = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,20 +57,15 @@ public class dificil extends javax.swing.JFrame {
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jLabel1.setText("n:");
-
-        jLabel2.setText("m:");
-
-        columnas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                columnasActionPerformed(evt);
-            }
-        });
-
         pintarr.setText("pintar");
         pintarr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pintarrActionPerformed(evt);
+            }
+        });
+        pintarr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pintarrKeyPressed(evt);
             }
         });
 
@@ -87,37 +78,16 @@ public class dificil extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(46, 46, 46))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(pintarr)
-                                .addGap(121, 121, 121)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(filas, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                            .addComponent(columnas))))
+                        .addComponent(pintarr)
+                        .addGap(219, 219, 219)))
                 .addGap(153, 153, 153))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(filas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(columnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(pintarr)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
+                .addComponent(pintarr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -136,77 +106,131 @@ public class dificil extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void columnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_columnasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_columnasActionPerformed
-
     private void pintarrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pintarrActionPerformed
         // TODO add your handling code here:
-        Graphics t = Tablero.getGraphics();
-        Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
-
-        if (filas.getText().equals("") || columnas.getText().equals("")) { //validación texto vacio 
-
-            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
-
-        } else {
-
-            n = Integer.parseInt(filas.getText());
-            /*toma cantidad de filas del textfield*/
-
-            m = Integer.parseInt(columnas.getText());
-            /*toma cantidad de columnas del textfield*/
-
-            if ((n >= 8 && n <= 100) && (m >= 16 && m <= 100)) {
-                /*validación de tamaño máx y min de matriz*/
-
-                ancho = 800 / m;
-                /* ancho casillas*/
-                alto = 500 / n;
-                /* alto casillas*/
-
+         Graphics t = Tablero.getGraphics();
+    Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+    
+                nn = inicio.n; //trae la fila
+                mm = inicio.m; //trae la columna
+                
+                if ((nn >= 8 && nn <= 100) && (mm >= 16 && mm <= 100)) { /*validación de tamaño máx y min de matriz*/
+                
+                ancho = 800 / mm;/* ancho casillas*/
+                alto = 500 / nn;/* alto casillas*/
+                
                 Random r = new Random();
-
-                Select.GenRandom(n, m, xr, yr, xfr, yfr);
-
-                for (int i = 0; i < n; i++) {
-                    for (int j = 0; j < m; j++) {
-
+                
+                xr = r.nextInt(nn); // Posición aleatoria de fila inicial.
+                yr = r.nextInt(mm); // Posición aleatoria de columnas inicial.
+                
+                xfr = r.nextInt(nn); // Posición aleatoria de fila final.
+                yfr = r.nextInt(mm); // Posición aleatoria de columnas final.
+                
+                while (xr == xfr && yfr == yr) { // en caso de que pos inicial y pos final sean iguales, se usa random otra vez
+                    xfr = r.nextInt(nn); // Posición aleatoria de fila final.
+                    yfr = r.nextInt(mm); // Posición aleatoria de columnas final.
+                }
+                
+                for (int i = 0; i < nn; i++) {
+                    for (int j = 0; j < mm; j++) {
+                        
                         mt[i][j] = r.nextInt(2) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
-
+                        
                         if (mt[i][j] == 1) {
-                            t.setColor(Color.black); //Si se bloquea
-
+                            t.setColor(Color.black); //Si se bloquea     
                         } else {
                             t.setColor(Color.white); // Ta libre :p
                         }
-
+                        
                         if (i == xr && j == yr) {
                             mt[i][j] = 5;
-                            t.setColor(Color.green); // posicion inicial
+                            inin = 5; 
                         }
-
-                        if (i == xfr && j == yfr) {
+                        
+                        if ((i == xfr && j == yfr)&& !(mt[i][j] == 1)) {
                             mt[i][j] = 6;
-                            t.setColor(Color.blue); // posicion final
+                            fina = 6;
                         }
-
-                        t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                        
+                        if (!(i == xr && j == yr) && !(i == xfr && j == yfr)){
+                             t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                        }
+                        
                         t.setColor(Color.black);
-                        t.drawLine(0, i * alto, m * ancho, i * alto);
+                        t.drawLine(0, i * alto, mm * ancho, i * alto);
                         t.setColor(Color.black);
-                        t.drawLine(j * ancho, 0, j * ancho, n * alto);
+                        t.drawLine(j * ancho, 0, j * ancho, nn * alto);
 
                     }
                 }
-
-            } else {
-
+               
+                if (inin == 5){
+                    img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
+                    t.drawImage(img, ancho * yr, alto * xr, ancho, alto, Tablero);//posicion inicial
+                }
+                
+                if (fina ==6){
+                    img = new ImageIcon(getClass().getResource("/pfmedia/o.png")).getImage();
+                    t.drawImage(img, ancho * yfr, alto * xfr, ancho, alto, Tablero); // posicion final
+                }  
+                
+            } else {                
                 JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n"
-                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");
+                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");               
+            }
+    }//GEN-LAST:event_pintarrActionPerformed
+
+    private void pintarrKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pintarrKeyPressed
+        // TODO add your handling code here:
+         Graphics t = Tablero.getGraphics();
+        
+        if (evt.getKeyCode()==37){ //izquierda
+            if(mt[xr][yr-1]!=1 && yr>0){
+                yr=yr-1;
+                t.setColor(Color.green);
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                if (xr==xfr && yr==yfr){
+                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                }
+            }    
+        }
+        
+        if (evt.getKeyCode()==38){ //arriba
+            
+            if(mt[xr-1][yr]!=1 && xr>0){
+                xr=xr-1;
+                t.setColor(Color.green);
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                
+                 if (xr==xfr && yr==yfr){
+                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                }
             }
         }
-    }//GEN-LAST:event_pintarrActionPerformed
+        
+        if (evt.getKeyCode()==39){ // derecha           
+            if(mt[xr][yr+1]!=1 && yr<mm){
+                yr=yr+1;
+                t.setColor(Color.green);
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);                
+                 if (xr==xfr && yr==yfr){
+                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                }
+            }
+        }
+        
+        if (evt.getKeyCode()==40){ //izquierda
+            if(mt[xr+1][yr]!=1 && xr<nn){
+                xr=xr+1;
+                t.setColor(Color.green);
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                 if (xr==xfr && yr==yfr){
+                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                }
+            }
+        }
+    }//GEN-LAST:event_pintarrKeyPressed
 
     /**
      * @param args the command line arguments
@@ -245,10 +269,6 @@ public class dificil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Tablero;
-    private javax.swing.JTextField columnas;
-    private javax.swing.JTextField filas;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton pintarr;
     // End of variables declaration//GEN-END:variables

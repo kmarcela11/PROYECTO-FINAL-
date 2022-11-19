@@ -454,7 +454,6 @@ public class TableroFacil extends javax.swing.JFrame {
         }
         
         if (evt.getKeyCode()==39){ // derecha           
-           
             if(mt[xr][yr+1]!=1 && yr<mm){
                 yr=yr+1;
                 t.setColor(Color.green);
@@ -463,9 +462,7 @@ public class TableroFacil extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null, "Ganaste wuu");
                 }
             }
-            
-           
-      
+        }
         
         if (evt.getKeyCode()==40){ //izquierda
             if(mt[xr+1][yr]!=1 && xr<nn){
