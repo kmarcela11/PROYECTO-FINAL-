@@ -2,8 +2,9 @@ public class RANKINGG extends javax.swing.JFrame {
     public RANKINGG() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
-
+    public static int totalvida = 0;    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

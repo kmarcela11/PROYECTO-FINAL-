@@ -10,7 +10,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     int inicialx = 0, inicialy = 0;
-    public static int n, m,nn,mm, ancho, alto,bloq,inin,fina, posicioninicial, posicionfinal, x, y, dx, dy, xr, yr, xfr, yfr;
+    public static int n, m,nn,mm, ancho, alto,inin,fina, posicioninicial, posicionfinal, xr, yr, xfr, yfr;
     public static int mt[][] = new int[100][100];
     public static int vidas = 1; 
     
@@ -179,7 +179,7 @@ public class NIVEL3 extends javax.swing.JFrame {
                 }
             }    
         }else{
-                if(mt[xr+1][yr]==1 ){
+                if(mt[xr][yr-1]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
@@ -204,7 +204,7 @@ public class NIVEL3 extends javax.swing.JFrame {
                 }
             }
         }else{
-                if(mt[xr+1][yr]==1 ){
+                if(mt[xr-1][yr]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
@@ -227,7 +227,7 @@ public class NIVEL3 extends javax.swing.JFrame {
                 }
             }
         }else{
-                if(mt[xr+1][yr]==1 ){
+                if(mt[xr][yr+1]==1 ){
                     JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
                     vidas = vidas - 1; 
                     System.out.println("actualmente tienes " + vidas);
