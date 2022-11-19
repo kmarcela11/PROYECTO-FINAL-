@@ -162,7 +162,7 @@ public class NIVEL1 extends javax.swing.JFrame {
     private void b_generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_generarActionPerformed
         Graphics t = Tablero.getGraphics();
         Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
-
+        vidas = 5;
         nn = FILCOL.n; //trae la fila
         mm = FILCOL.m; //trae la columna
         ancho = 800 / mm;/* ancho casillas*/
