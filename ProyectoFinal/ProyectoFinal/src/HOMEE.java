@@ -21,7 +21,9 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(gametitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 700, 130));
 
+        playername.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         playername.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/x.png"))); // NOI18N
+        playername.setText("|Nombre");
         playername.setToolTipText("");
         playername.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         playername.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -29,7 +31,7 @@ public class HOMEE extends javax.swing.JFrame {
                 playernameMouseClicked(evt);
             }
         });
-        getContentPane().add(playername, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 340, 80));
+        getContentPane().add(playername, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 340, 80));
 
         selectlevel_bt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/selectlevel_bt.png"))); // NOI18N
         selectlevel_bt.setToolTipText("");
