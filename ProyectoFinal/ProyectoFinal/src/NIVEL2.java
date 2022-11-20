@@ -65,13 +65,21 @@ public class NIVEL2 extends javax.swing.JFrame {
         p_nivel2.add(Tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 800, 550));
 
         b_generar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/generarbt.png"))); // NOI18N
-        b_generar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_generar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b_generar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 b_generarMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                b_generarMousePressed(evt);
+            }
         });
-        p_nivel2.add(b_generar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 560, 170, 50));
+        b_generar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                b_generarKeyPressed(evt);
+            }
+        });
+        p_nivel2.add(b_generar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 170, 50));
 
         needed.setText("GENERAR TABLERO ");
         needed.addActionListener(new java.awt.event.ActionListener() {
@@ -84,10 +92,10 @@ public class NIVEL2 extends javax.swing.JFrame {
                 neededKeyPressed(evt);
             }
         });
-        p_nivel2.add(needed, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, -1, -1));
+        p_nivel2.add(needed, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 140, -1));
 
         b_automatico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/solvebt.png"))); // NOI18N
-        b_automatico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_automatico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b_automatico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 b_automaticoMouseClicked(evt);
@@ -425,6 +433,113 @@ public class NIVEL2 extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void b_generarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b_generarKeyPressed
+        Graphics t = Tablero.getGraphics();
+        if (evt.getKeyCode() == 37) { //izquierda
+            if (mt[xr][yr - 1] != 1 && yr > 0) {
+                yr = yr - 1;
+                t.setColor(Color.decode("#F4A364"));
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                if (xr == xfr && yr == yfr) {
+                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                    nivel2 = true;
+                }
+            } else {
+                if (mt[xr][yr - 1] == 1) {
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1;
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas < 1) {
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                        FILCOL abrir = new FILCOL();
+                        this.setVisible(false);
+                        abrir.setVisible(true);
+                    }
+                }
+            }
+        }
+        if (evt.getKeyCode() == 38) { //arriba
+
+            if (mt[xr - 1][yr] != 1 && xr > 0) {
+                xr = xr - 1;
+                t.setColor(Color.decode("#F4A364"));
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+
+                if (xr == xfr && yr == yfr) {
+                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                    nivel2 = true;
+                }
+            } else {
+                if (mt[xr - 1][yr] == 1) {
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1;
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas < 1) {
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                        FILCOL abrir = new FILCOL();
+                        this.setVisible(false);
+                        abrir.setVisible(true);
+                    }
+                }
+            }
+        }
+
+        if (evt.getKeyCode() == 39) { // derecha           
+            if (mt[xr][yr + 1] != 1 && yr < mm) {
+                yr = yr + 1;
+                t.setColor(Color.decode("#F4A364"));
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                if (xr == xfr && yr == yfr) {
+                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                    nivel2 = true;
+                }
+            } else {
+                if (mt[xr][yr + 1] == 1) {
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1;
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas < 1) {
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                        FILCOL abrir = new FILCOL();
+                        this.setVisible(false);
+                        abrir.setVisible(true);
+                    }
+                }
+            }
+        }
+        if (evt.getKeyCode() == 40) { //izquierda
+            if (mt[xr + 1][yr] != 1 && xr < nn) {
+                xr = xr + 1;
+                t.setColor(Color.decode("#F4A364"));
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                if (xr == xfr && yr == yfr) {
+                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                    nivel2 = true;
+                }
+            } else {
+                if (mt[xr + 1][yr] == 1) {
+                    JOptionPane.showMessageDialog(null, "TOCASTE UNA CASILLA BLOQUEADA, AHORA TIENES UNA VIDA MENOS");
+                    vidas = vidas - 1;
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas < 1) {
+                        JOptionPane.showMessageDialog(null, "YA NO TIENES MAS VIDAS, NO PUEDES SEGUIR JUGANDO");
+                        FILCOL abrir = new FILCOL();
+                        this.setVisible(false);
+                        abrir.setVisible(true);
+                    }
+                }
+            }
+        }
+
+                               
+
+    }//GEN-LAST:event_b_generarKeyPressed
+
+    private void b_generarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_generarMousePressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_b_generarMousePressed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
