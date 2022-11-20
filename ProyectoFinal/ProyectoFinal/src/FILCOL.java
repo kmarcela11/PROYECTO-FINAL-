@@ -28,7 +28,7 @@ public class FILCOL extends javax.swing.JFrame {
         try {
             clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(link + archivo + ".wav")));
-            clip.start(); 
+            clip.start();
         } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
 
         }
@@ -46,8 +46,8 @@ public class FILCOL extends javax.swing.JFrame {
         b_musica = new javax.swing.JButton();
         b_nomusica = new javax.swing.JButton();
         tf_nombre = new javax.swing.JTextField();
-        level2_bt = new javax.swing.JLabel();
-        level1_bt = new javax.swing.JLabel();
+        level_bt1 = new javax.swing.JLabel();
+        level_bt2 = new javax.swing.JLabel();
         levelsbg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -111,35 +111,35 @@ public class FILCOL extends javax.swing.JFrame {
         tf_nombre.setEditable(false);
         getContentPane().add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 90, 170, 34));
 
-        level2_bt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"))); // NOI18N
-        level2_bt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        level2_bt.addMouseListener(new java.awt.event.MouseAdapter() {
+        level_bt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"))); // NOI18N
+        level_bt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        level_bt1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                level2_btMouseClicked(evt);
+                level_bt1MouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                level2_btMouseEntered(evt);
+                level_bt1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                level2_btMouseExited(evt);
+                level_bt1MouseExited(evt);
             }
         });
-        getContentPane().add(level2_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 310, 70));
+        getContentPane().add(level_bt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 310, 70));
 
-        level1_bt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"))); // NOI18N
-        level1_bt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        level1_bt.addMouseListener(new java.awt.event.MouseAdapter() {
+        level_bt2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level2_selbt.png"))); // NOI18N
+        level_bt2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        level_bt2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                level1_btMouseClicked(evt);
+                level_bt2MouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                level1_btMouseEntered(evt);
+                level_bt2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                level1_btMouseExited(evt);
+                level_bt2MouseExited(evt);
             }
         });
-        getContentPane().add(level1_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 310, 70));
+        getContentPane().add(level_bt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 310, 70));
 
         levelsbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/levelsbg.png"))); // NOI18N
         getContentPane().add(levelsbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 720));
@@ -173,50 +173,7 @@ public class FILCOL extends javax.swing.JFrame {
             clip.stop();
         }    }//GEN-LAST:event_b_nomusicaActionPerformed
 
-    private void level2_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level2_btMouseClicked
-        if (tf_filas.getText().equals("") || tf_columnas.getText().equals("")) { //validación texto vacio 
-            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
-        } else {
-            n = Integer.parseInt(tf_filas.getText());
-            /*toma cantidad de filas del textfield*/
-            m = Integer.parseInt(tf_columnas.getText());
-            /*toma cantidad de columnas del textfield*/
-            if (((n >= 8) && (n <= 100)) && ((m >= 16) && (m <= 100))) {
-                NIVEL2 abrir = new NIVEL2();
-                this.setVisible(false);
-                abrir.setVisible(true);
-
-            } else {
-                JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n"
-                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");
-
-            }
-        }
-    }//GEN-LAST:event_level2_btMouseClicked
-
-    private void level2_btMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level2_btMouseEntered
-        ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level1_selbtmouse.png"));
-        level2_bt.setIcon(im);
-    }//GEN-LAST:event_level2_btMouseEntered
-
-    private void level2_btMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level2_btMouseExited
-        ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"));
-        level2_bt.setIcon(im);
-    }//GEN-LAST:event_level2_btMouseExited
-
-    private void tf_columnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_columnasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_columnasActionPerformed
-
-    private void tf_filasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_filasMouseClicked
-    tf_filas.setText("");
-    }//GEN-LAST:event_tf_filasMouseClicked
-
-    private void tf_columnasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_columnasMouseClicked
-    tf_columnas.setText("");
-    }//GEN-LAST:event_tf_columnasMouseClicked
-
-    private void level1_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level1_btMouseClicked
+    private void level_bt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt1MouseClicked
      if (tf_filas.getText().equals("") || tf_columnas.getText().equals("")) { //validación texto vacio 
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
         } else {
@@ -235,15 +192,61 @@ public class FILCOL extends javax.swing.JFrame {
 
             }
         }
-    }//GEN-LAST:event_level1_btMouseClicked
+    }//GEN-LAST:event_level_bt1MouseClicked
 
-    private void level1_btMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level1_btMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_level1_btMouseEntered
+    private void level_bt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt1MouseEntered
+        ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level1_selbtmouse.png"));
+        level_bt1.setIcon(im);
+    }//GEN-LAST:event_level_bt1MouseEntered
 
-    private void level1_btMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level1_btMouseExited
+    private void level_bt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt1MouseExited
+        ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"));
+        level_bt1.setIcon(im);
+    }//GEN-LAST:event_level_bt1MouseExited
+
+    private void tf_columnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_columnasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_level1_btMouseExited
+    }//GEN-LAST:event_tf_columnasActionPerformed
+
+    private void tf_filasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_filasMouseClicked
+        tf_filas.setText("");
+    }//GEN-LAST:event_tf_filasMouseClicked
+
+    private void tf_columnasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_columnasMouseClicked
+        tf_columnas.setText("");
+    }//GEN-LAST:event_tf_columnasMouseClicked
+
+    private void level_bt2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt2MouseClicked
+
+        if (tf_filas.getText().equals("") || tf_columnas.getText().equals("")) { //validación texto vacio 
+            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
+        } else {
+            n = Integer.parseInt(tf_filas.getText());
+            /*toma cantidad de filas del textfield*/
+            m = Integer.parseInt(tf_columnas.getText());
+            /*toma cantidad de columnas del textfield*/
+            if (((n >= 8) && (n <= 100)) && ((m >= 16) && (m <= 100))) {
+                NIVEL2 abrir = new NIVEL2();
+                this.setVisible(false);
+                abrir.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n"
+                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");
+
+            }
+        }
+    }//GEN-LAST:event_level_bt2MouseClicked
+
+    private void level_bt2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt2MouseEntered
+        ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level2_selbtmouse.png"));
+        level_bt2.setIcon(im);
+    }//GEN-LAST:event_level_bt2MouseEntered
+
+    private void level_bt2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt2MouseExited
+        ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level2_selbt.png"));
+        level_bt2.setIcon(im);
+    }//GEN-LAST:event_level_bt2MouseExited
 
     public static void main(String args[]) {
 
@@ -258,8 +261,8 @@ public class FILCOL extends javax.swing.JFrame {
     private javax.swing.JButton b_musica;
     private javax.swing.JButton b_nomusica;
     private javax.swing.ButtonGroup bg_niveles;
-    private javax.swing.JLabel level1_bt;
-    private javax.swing.JLabel level2_bt;
+    private javax.swing.JLabel level_bt1;
+    private javax.swing.JLabel level_bt2;
     private javax.swing.JLabel levelsbg;
     private javax.swing.JTextField tf_columnas;
     private javax.swing.JTextField tf_filas;

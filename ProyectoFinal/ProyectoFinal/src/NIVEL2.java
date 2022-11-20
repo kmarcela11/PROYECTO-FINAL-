@@ -12,6 +12,8 @@ public class NIVEL2 extends javax.swing.JFrame {
     public NIVEL2() {
         initComponents();
         this.setLocationRelativeTo(null);
+        movimientos = 0;
+        score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
     }
     Scanner lea = new Scanner(System.in);
     int inicialx = 0, inicialy = 0;
@@ -20,6 +22,7 @@ public class NIVEL2 extends javax.swing.JFrame {
     public static int mt[][] = new int[100][100];
     public static int vidas = 3;
     private Image img;
+    int movimientos = 0;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -291,7 +294,7 @@ public class NIVEL2 extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void b_generarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b_generarKeyPressed
-     
+
     }//GEN-LAST:event_b_generarKeyPressed
 
     private void b_generarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_generarMousePressed
@@ -302,11 +305,15 @@ public class NIVEL2 extends javax.swing.JFrame {
         if (evt.getKeyCode() == 37) { //izquierda
             if (mt[xr][yr - 1] != 1 && yr > 0) {
                 yr = yr - 1;
-                t.setColor(Color.decode("#F4A364"));
+                t.setColor(Color.decode("#FCC26B"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
-                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
                     nivel2 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
+                    NEXTLEVEL abrir = new NEXTLEVEL();
+                    abrir.setVisible(true);
                 }
             } else {
                 if (mt[xr][yr - 1] == 1) {
@@ -320,7 +327,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    
+
                     if (vidas < 1) {
                         vida1.setVisible(false);
                         FILCOL abrir = new FILCOL();
@@ -334,12 +341,17 @@ public class NIVEL2 extends javax.swing.JFrame {
 
             if (mt[xr - 1][yr] != 1 && xr > 0) {
                 xr = xr - 1;
-                t.setColor(Color.decode("#F4A364"));
+                t.setColor(Color.decode("#FCC26B"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
 
                 if (xr == xfr && yr == yfr) {
-                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
+
                     nivel2 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
+                    NEXTLEVEL abrir = new NEXTLEVEL();
+                    abrir.setVisible(true);
                 }
             } else {
                 if (mt[xr - 1][yr] == 1) {
@@ -353,7 +365,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    
+
                     if (vidas < 1) {
                         vida1.setVisible(false);
                         FILCOL abrir = new FILCOL();
@@ -367,11 +379,16 @@ public class NIVEL2 extends javax.swing.JFrame {
         if (evt.getKeyCode() == 39) { // derecha           
             if (mt[xr][yr + 1] != 1 && yr < mm) {
                 yr = yr + 1;
-                t.setColor(Color.decode("#F4A364"));
+                t.setColor(Color.decode("#FCC26B"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
-                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
+
                     nivel2 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
+                    NEXTLEVEL abrir = new NEXTLEVEL();
+                    abrir.setVisible(true);
                 }
             } else {
                 if (mt[xr][yr + 1] == 1) {
@@ -385,7 +402,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    
+
                     if (vidas < 1) {
                         vida1.setVisible(false);
                         FILCOL abrir = new FILCOL();
@@ -398,11 +415,16 @@ public class NIVEL2 extends javax.swing.JFrame {
         if (evt.getKeyCode() == 40) { //izquierda
             if (mt[xr + 1][yr] != 1 && xr < nn) {
                 xr = xr + 1;
-                t.setColor(Color.decode("#F4A364"));
+                t.setColor(Color.decode("#FCC26B"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
-                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
+
                     nivel2 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
+                    NEXTLEVEL abrir = new NEXTLEVEL();
+                    abrir.setVisible(true);
                 }
             } else {
                 if (mt[xr + 1][yr] == 1) {
@@ -416,7 +438,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    
+
                     if (vidas < 1) {
                         vida1.setVisible(false);
                         FILCOL abrir = new FILCOL();
@@ -426,6 +448,8 @@ public class NIVEL2 extends javax.swing.JFrame {
                 }
             }
         }
+
+        movimientos++;
 
 
     }//GEN-LAST:event_neededKeyPressed

@@ -63,6 +63,11 @@ public class NEXTLEVEL extends javax.swing.JFrame {
 
         lev_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level3bt.png"))); // NOI18N
         lev_3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lev_3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lev_3MouseClicked(evt);
+            }
+        });
         getContentPane().add(lev_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 90, 90));
 
         bgnextlevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/nextlevelbg.png"))); // NOI18N
@@ -87,6 +92,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
 
         if (NIVEL2.nivel2 == true) {
             lev_3.setVisible(true);
+            lev_2.setVisible(true);
         }
     }//GEN-LAST:event_formWindowActivated
 
@@ -97,10 +103,28 @@ public class NEXTLEVEL extends javax.swing.JFrame {
     private void lev_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lev_2MouseClicked
         NIVEL2 abrir = new NIVEL2();
         abrir.setVisible(true);
+
         NIVEL1 cerrar = new NIVEL1();
         cerrar.setVisible(false);
+
+        NIVEL3 cerrar1 = new NIVEL3();
+        cerrar1.setVisible(false);
+
         this.setVisible(false);
     }//GEN-LAST:event_lev_2MouseClicked
+
+    private void lev_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lev_3MouseClicked
+        NIVEL3 abrir = new NIVEL3();
+        abrir.setVisible(true);
+
+        NIVEL2 cerrar1 = new NIVEL2();
+        cerrar1.setVisible(false);
+
+        NIVEL1 cerrar = new NIVEL1();
+        cerrar.setVisible(false);
+
+        this.setVisible(false);
+    }//GEN-LAST:event_lev_3MouseClicked
 
     /**
      * @param args the command line arguments

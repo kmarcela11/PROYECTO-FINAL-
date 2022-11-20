@@ -12,12 +12,15 @@ public class NIVEL1 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         nivel1 = false;
+        movimientos = 0;
+        score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
     }
     int inicialx = 0, inicialy = 0;
     public static int n, m, nn, mm, ancho, alto, inin, fina, posicioninicial, posicionfinal, xr, yr, xfr, yfr;
     public static int mt[][] = new int[100][100];
     public static boolean nivel1 = false;
     public static int vidas = 5;
+    int movimientos = 0;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -27,6 +30,7 @@ public class NIVEL1 extends javax.swing.JFrame {
         vida1 = new javax.swing.JLabel();
         vida2 = new javax.swing.JLabel();
         vida5 = new javax.swing.JLabel();
+        score = new javax.swing.JLabel();
         vida4 = new javax.swing.JLabel();
         vida3 = new javax.swing.JLabel();
         b_generar = new javax.swing.JLabel();
@@ -56,6 +60,11 @@ public class NIVEL1 extends javax.swing.JFrame {
 
         vida5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/heart_spr.png"))); // NOI18N
         jPanel1.add(vida5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 140, 50, 50));
+
+        score.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
+        score.setForeground(new java.awt.Color(243, 252, 240));
+        score.setText("000");
+        jPanel1.add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 240, -1, -1));
 
         vida4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/heart_spr.png"))); // NOI18N
         jPanel1.add(vida4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 140, 50, 50));
@@ -211,6 +220,9 @@ public class NIVEL1 extends javax.swing.JFrame {
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
                     nivel1 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
                     NEXTLEVEL sgte = new NEXTLEVEL();
                     sgte.setVisible(true);
                     this.setVisible(false);
@@ -219,23 +231,23 @@ public class NIVEL1 extends javax.swing.JFrame {
                 if (mt[xr][yr - 1] == 1) {
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
-                    
+
                     if (vidas == 4) {
                         vida5.setVisible(false);
                     }
-                    
+
                     if (vidas == 3) {
                         vida4.setVisible(false);
                     }
-                    
+
                     if (vidas == 2) {
                         vida3.setVisible(false);
                     }
-                    
+
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    
+
                     if (vidas < 1) {
                         vida1.setVisible(false);
                         FILCOL abrir = new FILCOL();
@@ -254,6 +266,9 @@ public class NIVEL1 extends javax.swing.JFrame {
 
                 if (xr == xfr && yr == yfr) {
                     nivel1 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
                     NEXTLEVEL sgte = new NEXTLEVEL();
                     sgte.setVisible(true);
                     this.setVisible(false);
@@ -262,23 +277,23 @@ public class NIVEL1 extends javax.swing.JFrame {
                 if (mt[xr - 1][yr] == 1) {
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
-                    
+
                     if (vidas == 4) {
                         vida5.setVisible(false);
                     }
-                    
+
                     if (vidas == 3) {
                         vida4.setVisible(false);
                     }
-                    
+
                     if (vidas == 2) {
                         vida3.setVisible(false);
                     }
-                    
+
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    
+
                     if (vidas < 1) {
                         vida1.setVisible(false);
                         FILCOL abrir = new FILCOL();
@@ -296,6 +311,9 @@ public class NIVEL1 extends javax.swing.JFrame {
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
                     nivel1 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
                     NEXTLEVEL sgte = new NEXTLEVEL();
                     sgte.setVisible(true);
                     this.setVisible(false);
@@ -304,23 +322,23 @@ public class NIVEL1 extends javax.swing.JFrame {
                 if (mt[xr][yr + 1] == 1) {
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
-                    
+
                     if (vidas == 4) {
                         vida5.setVisible(false);
                     }
-                    
+
                     if (vidas == 3) {
                         vida4.setVisible(false);
                     }
-                    
+
                     if (vidas == 2) {
                         vida3.setVisible(false);
                     }
-                    
+
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    
+
                     if (vidas < 1) {
                         vida1.setVisible(false);
                         FILCOL abrir = new FILCOL();
@@ -337,6 +355,10 @@ public class NIVEL1 extends javax.swing.JFrame {
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
                     nivel1 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    HOMEE.Ranking[HOMEE.jugadores][1] = HOMEE.Ranking[HOMEE.jugadores][1] + vidas;
+                    System.out.println(movimientos);
                     NEXTLEVEL sgte = new NEXTLEVEL();
                     sgte.setVisible(true);
                     this.setVisible(false);
@@ -345,23 +367,23 @@ public class NIVEL1 extends javax.swing.JFrame {
                 if (mt[xr + 1][yr] == 1) {
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
-                    
+
                     if (vidas == 4) {
                         vida5.setVisible(false);
                     }
-                    
+
                     if (vidas == 3) {
                         vida4.setVisible(false);
                     }
-                    
+
                     if (vidas == 2) {
                         vida3.setVisible(false);
                     }
-                    
+
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    
+
                     if (vidas < 1) {
                         vida1.setVisible(false);
                         FILCOL abrir = new FILCOL();
@@ -372,7 +394,8 @@ public class NIVEL1 extends javax.swing.JFrame {
             }
         }
 
-                               
+        movimientos++;
+
 
     }//GEN-LAST:event_NOBORRARKeyPressed
 
@@ -448,6 +471,7 @@ public class NIVEL1 extends javax.swing.JFrame {
     private javax.swing.JLabel b_generar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel level1bg;
+    private javax.swing.JLabel score;
     private javax.swing.JLabel vida1;
     private javax.swing.JLabel vida2;
     private javax.swing.JLabel vida3;

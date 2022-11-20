@@ -11,6 +11,7 @@ public class NIVEL3 extends javax.swing.JFrame {
     public NIVEL3() {
         initComponents();
         this.setLocationRelativeTo(null);
+        score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
     }
     int inicialx = 0, inicialy = 0;
     public static int n, m, nn, mm, ancho, alto, inin, fina, posicioninicial, posicionfinal, xr, yr, xfr, yfr;
@@ -120,7 +121,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         }
         for (int i = 0; i < nn; i++) {
             for (int j = 0; j < mm; j++) {
-                mt[i][j] = r.nextInt(3) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
+                mt[i][j] = r.nextInt(2) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
                 if (mt[i][j] == 1) {
                     t.setColor(Color.decode("#1f271b")); //Si se bloquea
                 } else {
@@ -169,7 +170,7 @@ public class NIVEL3 extends javax.swing.JFrame {
     }//GEN-LAST:event_b_generarMousePressed
 
     private void b_generarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b_generarKeyPressed
- 
+
     }//GEN-LAST:event_b_generarKeyPressed
 
     private void b_automaticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_automaticoMouseClicked
@@ -193,7 +194,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         if (evt.getKeyCode() == 37) { //izquierda
             if (mt[xr][yr - 1] != 1 && yr > 0) {
                 yr = yr - 1;
-                t.setColor(Color.decode("#F4A364"));
+                t.setColor(Color.decode("#EA5157"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
@@ -217,7 +218,7 @@ public class NIVEL3 extends javax.swing.JFrame {
 
             if (mt[xr - 1][yr] != 1 && xr > 0) {
                 xr = xr - 1;
-                t.setColor(Color.decode("#F4A364"));
+                t.setColor(Color.decode("#EA5157"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
 
                 if (xr == xfr && yr == yfr) {
@@ -242,7 +243,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         if (evt.getKeyCode() == 39) { // derecha
             if (mt[xr][yr + 1] != 1 && yr < mm) {
                 yr = yr + 1;
-                t.setColor(Color.decode("#F4A364"));
+                t.setColor(Color.decode("#EA5157"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
@@ -265,7 +266,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         if (evt.getKeyCode() == 40) { //izquierda
             if (mt[xr + 1][yr] != 1 && xr < nn) {
                 xr = xr + 1;
-                t.setColor(Color.decode("#F4A364"));
+                t.setColor(Color.decode("#EA5157"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
                     JOptionPane.showMessageDialog(null, "Ganaste wuu");
