@@ -18,8 +18,9 @@ public class FILCOL extends javax.swing.JFrame {
     public FILCOL() {
         initComponents();
         this.setLocationRelativeTo(null);
-        USUARIO enviar = new USUARIO();
-        tf_nombre.setText(enviar.nombre);
+        tf_nombre.setText(HOMEE.nombre);
+        tf_filas.setOpaque(false);
+        tf_columnas.setOpaque(false);
     }
 
     public void mus(String archivo) {
@@ -27,7 +28,7 @@ public class FILCOL extends javax.swing.JFrame {
         try {
             clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(link + archivo + ".wav")));
-            clip.start();
+            clip.start(); 
         } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
 
         }
@@ -51,21 +52,44 @@ public class FILCOL extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tf_filas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tf_filas.setBackground(new java.awt.Color(102, 102, 102));
+        tf_filas.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        tf_filas.setForeground(new java.awt.Color(255, 255, 255));
+        tf_filas.setText("Llenar aquí");
+        tf_filas.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        tf_filas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_filasMouseClicked(evt);
+            }
+        });
         tf_filas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tf_filasKeyTyped(evt);
             }
         });
-        getContentPane().add(tf_filas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 140, -1));
+        getContentPane().add(tf_filas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 150, -1));
 
-        tf_columnas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tf_columnas.setBackground(new java.awt.Color(102, 102, 102));
+        tf_columnas.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        tf_columnas.setForeground(new java.awt.Color(255, 255, 255));
+        tf_columnas.setText("Llenar aquí");
+        tf_columnas.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        tf_columnas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_columnasMouseClicked(evt);
+            }
+        });
+        tf_columnas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_columnasActionPerformed(evt);
+            }
+        });
         tf_columnas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tf_columnasKeyTyped(evt);
             }
         });
-        getContentPane().add(tf_columnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, 140, -1));
+        getContentPane().add(tf_columnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 150, -1));
 
         b_musica.setText("MUSIC ON");
         b_musica.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +187,18 @@ public class FILCOL extends javax.swing.JFrame {
         ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"));
         level1_bt.setIcon(im);
     }//GEN-LAST:event_level1_btMouseExited
+
+    private void tf_columnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_columnasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_columnasActionPerformed
+
+    private void tf_filasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_filasMouseClicked
+    tf_filas.setText("");
+    }//GEN-LAST:event_tf_filasMouseClicked
+
+    private void tf_columnasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_columnasMouseClicked
+    tf_columnas.setText("");
+    }//GEN-LAST:event_tf_columnasMouseClicked
 
     public static void main(String args[]) {
 
