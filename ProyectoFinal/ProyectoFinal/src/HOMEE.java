@@ -68,9 +68,9 @@ public class HOMEE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     public static String nombre;
     public static int jugadores = 0;
-    String nulo = "PLAYER";
-    String Jugadores[] = new String[100];
-    int Ranking[][] = new int[100][2]; //Columna 0 para vidas, columna 1 para puntuación;
+    public static String nulo = "PLAYER";
+    public static String Jugadores[] = new String[100];
+    public static int Ranking[][] = new int[100][2]; //Columna 0 para vidas, columna 1 para puntuación;
 
     private void selectlevel_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectlevel_btMouseClicked
         nombre = tf_nombre.getText();
