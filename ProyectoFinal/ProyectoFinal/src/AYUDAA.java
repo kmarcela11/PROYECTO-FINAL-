@@ -1,14 +1,10 @@
-
 import javax.swing.ImageIcon;
-
 public class AYUDAA extends javax.swing.JFrame {
-
     public AYUDAA() {
         initComponents();
         this.setLocationRelativeTo(null);
         clic = 0;
     }
-
     int clic = 0;
 
     @SuppressWarnings("unchecked")

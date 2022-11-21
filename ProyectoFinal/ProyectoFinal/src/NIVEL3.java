@@ -1,11 +1,8 @@
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-
 public class NIVEL3 extends javax.swing.JFrame {
 
     public NIVEL3() {
@@ -74,7 +71,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         vida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/heartlv3.png"))); // NOI18N
         getContentPane().add(vida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 140, 100, 90));
 
-        left.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        left.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         left.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 leftMouseClicked(evt);
@@ -82,7 +79,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         });
         getContentPane().add(left, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 510, 40, 40));
 
-        right.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        right.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         right.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rightMouseClicked(evt);
@@ -90,7 +87,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         });
         getContentPane().add(right, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 510, 40, 40));
 
-        up.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        up.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         up.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 upMouseClicked(evt);
@@ -98,7 +95,7 @@ public class NIVEL3 extends javax.swing.JFrame {
         });
         getContentPane().add(up, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 460, 40, 40));
 
-        down.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        down.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         down.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 downMouseClicked(evt);
@@ -208,14 +205,6 @@ public class NIVEL3 extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_b_generarMouseClicked
-
-    private void b_generarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_generarMousePressed
-
-    }//GEN-LAST:event_b_generarMousePressed
-
-    private void b_generarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b_generarKeyPressed
-
-    }//GEN-LAST:event_b_generarKeyPressed
 
     private void b_automaticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_automaticoMouseClicked
         boolean resultado = Buscar(mt, inicialx, inicialy, nn, mm);
@@ -600,6 +589,14 @@ public class NIVEL3 extends javax.swing.JFrame {
             movimientos++;
         }
     }//GEN-LAST:event_downMouseClicked
+
+    private void b_generarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b_generarKeyPressed
+
+    }//GEN-LAST:event_b_generarKeyPressed
+
+    private void b_generarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_generarMousePressed
+
+    }//GEN-LAST:event_b_generarMousePressed
     public static boolean Buscar(int mt[][], int inicialy, int inicialx, int nn, int mm) {
         System.out.println(inicialx + "   ENTRA   " + inicialy);
         if (mt[inicialy][inicialx] == 6) {

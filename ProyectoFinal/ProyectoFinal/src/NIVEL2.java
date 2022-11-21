@@ -1,10 +1,8 @@
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 public class NIVEL2 extends javax.swing.JFrame {
 

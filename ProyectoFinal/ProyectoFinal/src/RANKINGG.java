@@ -1,6 +1,4 @@
-
 public class RANKINGG extends javax.swing.JFrame {
-
     public RANKINGG() {
         initComponents();
         this.setLocationRelativeTo(null);

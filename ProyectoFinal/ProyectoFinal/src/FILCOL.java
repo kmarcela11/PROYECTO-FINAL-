@@ -1,14 +1,10 @@
-
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 public class FILCOL extends javax.swing.JFrame {
 
@@ -96,11 +92,6 @@ public class FILCOL extends javax.swing.JFrame {
                 tf_columnasMouseClicked(evt);
             }
         });
-        tf_columnas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_columnasActionPerformed(evt);
-            }
-        });
         tf_columnas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tf_columnasKeyTyped(evt);
@@ -109,7 +100,7 @@ public class FILCOL extends javax.swing.JFrame {
         getContentPane().add(tf_columnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 230, -1));
 
         level_bt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"))); // NOI18N
-        level_bt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        level_bt1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         level_bt1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 level_bt1MouseClicked(evt);
@@ -124,7 +115,7 @@ public class FILCOL extends javax.swing.JFrame {
         getContentPane().add(level_bt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 310, 70));
 
         level_bt2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level2_selbt.png"))); // NOI18N
-        level_bt2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        level_bt2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         level_bt2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 level_bt2MouseClicked(evt);
@@ -139,7 +130,7 @@ public class FILCOL extends javax.swing.JFrame {
         getContentPane().add(level_bt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 310, 70));
 
         level_bt3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level3_selbt.png"))); // NOI18N
-        level_bt3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        level_bt3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         level_bt3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 level_bt3MouseClicked(evt);
@@ -201,10 +192,6 @@ public class FILCOL extends javax.swing.JFrame {
         ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"));
         level_bt1.setIcon(im);
     }//GEN-LAST:event_level_bt1MouseExited
-
-    private void tf_columnasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_columnasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_columnasActionPerformed
 
     private void tf_filasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_filasMouseClicked
         tf_filas.setText("");

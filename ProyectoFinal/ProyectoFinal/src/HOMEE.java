@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -52,7 +51,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         b_mus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/aaampause.png"))); // NOI18N
-        b_mus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_mus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b_mus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 b_musMouseClicked(evt);
@@ -70,20 +69,10 @@ public class HOMEE extends javax.swing.JFrame {
                 tf_nombreMouseClicked(evt);
             }
         });
-        tf_nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_nombreActionPerformed(evt);
-            }
-        });
-        tf_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tf_nombreKeyTyped(evt);
-            }
-        });
         getContentPane().add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 320, -1));
 
         ayudabt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/ayudabt.png"))); // NOI18N
-        ayudabt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ayudabt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ayudabt.setDisabledIcon(null);
         ayudabt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,7 +82,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().add(ayudabt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 610, 180, 50));
 
         rankingbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/rankingbt.png"))); // NOI18N
-        rankingbt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rankingbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         rankingbt.setDisabledIcon(null);
         rankingbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,7 +92,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().add(rankingbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 620, 180, 50));
 
         salirbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/salirbt.png"))); // NOI18N
-        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salirbt.setDisabledIcon(null);
         salirbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,14 +159,6 @@ public class HOMEE extends javax.swing.JFrame {
         tf_nombre.setText("");
     }//GEN-LAST:event_tf_nombreMouseClicked
 
-    private void tf_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_nombreKeyTyped
-
-    }//GEN-LAST:event_tf_nombreKeyTyped
-
-    private void tf_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_nombreActionPerformed
-
     private void rankingbtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rankingbtMouseClicked
         RANKINGG abrir = new RANKINGG();
         abrir.setVisible(true);
@@ -218,8 +199,6 @@ public class HOMEE extends javax.swing.JFrame {
             }
 
         }
-
-
     }//GEN-LAST:event_b_musMouseClicked
 
     public static void main(String args[]) {
