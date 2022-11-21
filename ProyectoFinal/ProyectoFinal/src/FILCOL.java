@@ -197,9 +197,7 @@ public class FILCOL extends javax.swing.JFrame {
         }    }//GEN-LAST:event_b_nomusicaActionPerformed
 
     private void level_bt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt1MouseClicked
-     if (tf_filas.getText().equals("") || tf_columnas.getText().equals("")) { //validación texto vacio 
-            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
-        } else {
+        try{
             n = Integer.parseInt(tf_filas.getText());
             /*toma cantidad de filas del textfield*/
             m = Integer.parseInt(tf_columnas.getText());
@@ -214,6 +212,8 @@ public class FILCOL extends javax.swing.JFrame {
                         + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");
 
             }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )"); 
         }
     }//GEN-LAST:event_level_bt1MouseClicked
 
@@ -241,15 +241,13 @@ public class FILCOL extends javax.swing.JFrame {
 
     private void level_bt2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt2MouseClicked
 
-        if (tf_filas.getText().equals("") || tf_columnas.getText().equals("")) { //validación texto vacio 
-            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
-        } else {
+        try{
             n = Integer.parseInt(tf_filas.getText());
             /*toma cantidad de filas del textfield*/
             m = Integer.parseInt(tf_columnas.getText());
             /*toma cantidad de columnas del textfield*/
             if (((n >= 8) && (n <= 100)) && ((m >= 16) && (m <= 100))) {
-                NIVEL2 abrir = new NIVEL2();
+                NIVEL1 abrir = new NIVEL1();
                 this.setVisible(false);
                 abrir.setVisible(true);
 
@@ -258,6 +256,8 @@ public class FILCOL extends javax.swing.JFrame {
                         + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");
 
             }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )"); 
         }
     }//GEN-LAST:event_level_bt2MouseClicked
 
@@ -272,16 +272,13 @@ public class FILCOL extends javax.swing.JFrame {
     }//GEN-LAST:event_level_bt2MouseExited
 
     private void level_bt3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt3MouseClicked
-         // TODO add your handling code here:
-        if (tf_filas.getText().equals("") || tf_columnas.getText().equals("")) { //validación texto vacio 
-            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
-        } else {
+         try{
             n = Integer.parseInt(tf_filas.getText());
             /*toma cantidad de filas del textfield*/
             m = Integer.parseInt(tf_columnas.getText());
             /*toma cantidad de columnas del textfield*/
             if (((n >= 8) && (n <= 100)) && ((m >= 16) && (m <= 100))) {
-                NIVEL3 abrir = new NIVEL3();
+                NIVEL1 abrir = new NIVEL1();
                 this.setVisible(false);
                 abrir.setVisible(true);
 
@@ -290,6 +287,8 @@ public class FILCOL extends javax.swing.JFrame {
                         + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");
 
             }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )"); 
         }
     }//GEN-LAST:event_level_bt3MouseClicked
 
