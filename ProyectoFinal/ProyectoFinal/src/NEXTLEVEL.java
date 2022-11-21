@@ -37,6 +37,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
         lev_3 = new javax.swing.JLabel();
         advertencia = new javax.swing.JLabel();
         bgnextlevel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 400));
@@ -55,7 +56,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
         score.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
         score.setForeground(new java.awt.Color(31, 39, 27));
         score.setText("000");
-        getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+        getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
 
         lev_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1bt.png"))); // NOI18N
         lev_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -67,7 +68,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
                 lev_1MouseExited(evt);
             }
         });
-        getContentPane().add(lev_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 90, 90));
+        getContentPane().add(lev_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 90, 90));
 
         lev_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level2bt.png"))); // NOI18N
         lev_2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -79,7 +80,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
                 lev_2MouseExited(evt);
             }
         });
-        getContentPane().add(lev_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 90, 90));
+        getContentPane().add(lev_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 90, 90));
 
         lev_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level3bt.png"))); // NOI18N
         lev_3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -88,10 +89,10 @@ public class NEXTLEVEL extends javax.swing.JFrame {
                 lev_3MouseClicked(evt);
             }
         });
-        getContentPane().add(lev_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 90, 90));
+        getContentPane().add(lev_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 360, 90, 90));
 
         advertencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/advertencianivel.png"))); // NOI18N
-        getContentPane().add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 460, 30));
+        getContentPane().add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 460, 30));
 
         bgnextlevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/nextlevelbg.png"))); // NOI18N
         bgnextlevel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -99,7 +100,10 @@ public class NEXTLEVEL extends javax.swing.JFrame {
                 bgnextlevelMouseMoved(evt);
             }
         });
-        getContentPane().add(bgnextlevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 701, 401));
+        getContentPane().add(bgnextlevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 701, 401));
+
+        jPanel1.setBackground(new java.awt.Color(31, 39, 27));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -204,6 +208,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel advertencia;
     private javax.swing.JLabel bgnextlevel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lev_1;
     private javax.swing.JLabel lev_2;
     private javax.swing.JLabel lev_3;

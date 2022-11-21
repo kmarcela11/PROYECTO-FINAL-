@@ -109,7 +109,7 @@ public class FILCOL extends javax.swing.JFrame {
                 b_musicaActionPerformed(evt);
             }
         });
-        getContentPane().add(b_musica, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(b_musica, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         b_nomusica.setText("MUSIC OFF");
         b_nomusica.addActionListener(new java.awt.event.ActionListener() {

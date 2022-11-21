@@ -17,7 +17,7 @@ public class NIVEL1 extends javax.swing.JFrame {
         movimientos = 0;
         score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
     }
-   
+
     int inicialx = 0, inicialy = 0;
     public static int n, m, nn, mm, ancho, alto, inin, fina, posicioninicial, posicionfinal, xr, yr, xfr, yfr;
     public static int mt[][] = new int[100][100];
@@ -30,6 +30,12 @@ public class NIVEL1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        left = new javax.swing.JLabel();
+        down = new javax.swing.JLabel();
+        up = new javax.swing.JLabel();
+        right = new javax.swing.JLabel();
+        NOBORRAR = new javax.swing.JButton();
+        joystick = new javax.swing.JLabel();
         vida1 = new javax.swing.JLabel();
         vida2 = new javax.swing.JLabel();
         vida5 = new javax.swing.JLabel();
@@ -40,7 +46,6 @@ public class NIVEL1 extends javax.swing.JFrame {
         Tablero = new javax.swing.JPanel();
         b_automatico = new javax.swing.JLabel();
         level1bg = new javax.swing.JLabel();
-        NOBORRAR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -54,6 +59,54 @@ public class NIVEL1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        left.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        left.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                leftMouseClicked(evt);
+            }
+        });
+        jPanel1.add(left, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 510, 40, 40));
+
+        down.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        down.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                downMouseClicked(evt);
+            }
+        });
+        jPanel1.add(down, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 550, 40, 40));
+
+        up.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        up.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                upMouseClicked(evt);
+            }
+        });
+        jPanel1.add(up, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 460, 40, 40));
+
+        right.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        right.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rightMouseClicked(evt);
+            }
+        });
+        jPanel1.add(right, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 510, 40, 40));
+
+        NOBORRAR.setText("GENERAR TABLERO ");
+        NOBORRAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NOBORRARActionPerformed(evt);
+            }
+        });
+        NOBORRAR.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NOBORRARKeyPressed(evt);
+            }
+        });
+        jPanel1.add(NOBORRAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 490, 0, 0));
+
+        joystick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/joystick.png"))); // NOI18N
+        jPanel1.add(joystick, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 150, 150));
 
         vida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/heart_spr.png"))); // NOI18N
         jPanel1.add(vida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 140, 50, 50));
@@ -82,7 +135,7 @@ public class NIVEL1 extends javax.swing.JFrame {
                 b_generarMouseClicked(evt);
             }
         });
-        jPanel1.add(b_generar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 560, 170, 50));
+        jPanel1.add(b_generar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, 170, 50));
 
         Tablero.setBackground(new java.awt.Color(243, 252, 240));
         Tablero.setPreferredSize(new java.awt.Dimension(0, 0));
@@ -107,23 +160,10 @@ public class NIVEL1 extends javax.swing.JFrame {
                 b_automaticoMouseClicked(evt);
             }
         });
-        jPanel1.add(b_automatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 360, 90, 80));
+        jPanel1.add(b_automatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 380, 90, 80));
 
         level1bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1bg.png"))); // NOI18N
         jPanel1.add(level1bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
-
-        NOBORRAR.setText("GENERAR TABLERO ");
-        NOBORRAR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NOBORRARActionPerformed(evt);
-            }
-        });
-        NOBORRAR.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NOBORRARKeyPressed(evt);
-            }
-        });
-        jPanel1.add(NOBORRAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 490, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 700));
 
@@ -131,7 +171,7 @@ public class NIVEL1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_automaticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_automaticoMouseClicked
-        boolean resultado = Buscar(mt, inicialx, inicialy, nn, mm); 
+        boolean resultado = Buscar(mt, inicialx, inicialy, nn, mm);
         //LLamado a procedimiento que resuelve automática y recursivamente laberinto.
         Graphics t = Tablero.getGraphics();
         for (int i = 0; i < nn; i++) {
@@ -145,6 +185,20 @@ public class NIVEL1 extends javax.swing.JFrame {
                 t.drawLine(j * ancho, 0, j * ancho, nn * alto);
             }
         }
+
+        try {
+            Thread.sleep(2000);
+            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0];
+            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+            System.out.println(movimientos);
+            GAMEOVER salir = new GAMEOVER();
+            salir.setVisible(true);
+            this.setVisible(false);
+
+        } catch (InterruptedException ex) {
+
+        }
+
     }//GEN-LAST:event_b_automaticoMouseClicked
 
     private void b_generarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_generarMouseClicked
@@ -157,9 +211,11 @@ public class NIVEL1 extends javax.swing.JFrame {
         Random r = new Random();
         xr = r.nextInt(nn);//Posición aleatoria de fila inicial.
         yr = r.nextInt(mm);//Posición aleatoria de columna inicial.
+        inicialx = xr;
+        inicialy = yr;
         xfr = r.nextInt(nn);//Posición aleatoria de fila final.
         yfr = r.nextInt(mm);//Posición aleatoria de columna final.
-        while (xr == xfr && yfr == yr){// En caso de que pos inicial y pos final sean iguales, se usa random otra vez.
+        while (xr == xfr && yfr == yr) {// En caso de que pos inicial y pos final sean iguales, se usa random otra vez.
             xfr = r.nextInt(nn);//Posición aleatoria de fila final.
             yfr = r.nextInt(mm);//Posición aleatoria de columna final.
         }
@@ -212,14 +268,210 @@ public class NIVEL1 extends javax.swing.JFrame {
 
     private void NOBORRARKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NOBORRARKeyPressed
         Graphics t = Tablero.getGraphics();
-        if (evt.getKeyCode() == 37) {//Tecla hacia izquierda.
-            if (mt[xr][yr - 1] != 1 && yr > 0) {//Validación para casilla libre y evitar salir de panel.
-                yr = yr - 1;
+
+        try {
+            if (evt.getKeyCode() == 37) {//Tecla hacia izquierda.
+                if (mt[xr][yr - 1] != 1 && yr > 0) {//Validación para casilla libre y evitar salir de panel.
+                    yr = yr - 1;
+                    t.setColor(Color.decode("#F4A364"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {//Se llegó a posición final.
+                        nivel1 = true;
+                        vd1 = vidas;
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                        //Cálculo de puntaje obtenido.
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+                        NEXTLEVEL sgte = new NEXTLEVEL();
+                        sgte.setVisible(true);
+                        this.setVisible(false);
+                    }
+                } else {
+                    if (mt[xr][yr - 1] == 1) {//Golpe con casilla bloqueada.
+                        vidas = vidas - 1;//Pierde una vida.
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas == 4) {
+                            vida5.setVisible(false);
+                        }
+                        if (vidas == 3) {
+                            vida4.setVisible(false);
+                        }
+                        if (vidas == 2) {
+                            vida3.setVisible(false);
+                        }
+                        if (vidas == 1) {
+                            vida2.setVisible(false);
+                        }
+                        if (vidas < 1) {
+                            vida1.setVisible(false);
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50) / 2;
+                            //Cálculo del puntaje obtenido.
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            System.out.println(movimientos);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
+                    }
+                }
+            }
+            if (evt.getKeyCode() == 38) {//Tecla hacia arriba.
+                if (mt[xr - 1][yr] != 1 && xr > 0) {
+
+                    xr = xr - 1;
+
+                    t.setColor(Color.decode("#F4A364"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        nivel1 = true;
+                        vd1 = vidas;
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                        //Cálculo de puntaje obtenido.
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+                        NEXTLEVEL sgte = new NEXTLEVEL();
+                        sgte.setVisible(true);
+                        this.setVisible(false);
+                    }
+                } else {
+                    if (mt[xr - 1][yr] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas == 4) {
+                            vida5.setVisible(false);
+                        }
+                        if (vidas == 3) {
+                            vida4.setVisible(false);
+                        }
+                        if (vidas == 2) {
+                            vida3.setVisible(false);
+                        }
+                        if (vidas == 1) {
+                            vida2.setVisible(false);
+                        }
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            System.out.println(movimientos);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
+                    }
+                }
+            }
+
+            if (evt.getKeyCode() == 39) {//Tecla hacia derecha.           
+                if (mt[xr][yr + 1] != 1 && yr < mm) {
+                    yr = yr + 1;
+                    t.setColor(Color.decode("#F4A364"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        nivel1 = true;
+                        vd1 = vidas;
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+                        NEXTLEVEL sgte = new NEXTLEVEL();
+                        sgte.setVisible(true);
+                        this.setVisible(false);
+                    }
+                } else {
+                    if (mt[xr][yr + 1] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas == 4) {
+                            vida5.setVisible(false);
+                        }
+                        if (vidas == 3) {
+                            vida4.setVisible(false);
+                        }
+                        if (vidas == 2) {
+                            vida3.setVisible(false);
+                        }
+                        if (vidas == 1) {
+                            vida2.setVisible(false);
+                        }
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            System.out.println(movimientos);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
+                    }
+                }
+            }
+            if (evt.getKeyCode() == 40) {//Tecla hacia izquierda.
+                if (mt[xr + 1][yr] != 1 && xr < nn) {
+                    xr = xr + 1;
+                    t.setColor(Color.decode("#F4A364"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        nivel1 = true;
+                        vd1 = vidas;
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        HOMEE.Ranking[HOMEE.jugadores][1] = HOMEE.Ranking[HOMEE.jugadores][1] + vidas;
+                        System.out.println(movimientos);
+                        NEXTLEVEL sgte = new NEXTLEVEL();
+                        sgte.setVisible(true);
+                        this.setVisible(false);
+                    }
+                } else {
+                    if (mt[xr + 1][yr] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+
+                        if (vidas == 4) {
+                            vida5.setVisible(false);
+                        }
+                        if (vidas == 3) {
+                            vida4.setVisible(false);
+                        }
+                        if (vidas == 2) {
+                            vida3.setVisible(false);
+                        }
+                        if (vidas == 1) {
+                            vida2.setVisible(false);
+                        }
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            System.out.println(movimientos);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
+                    }
+                }
+            }
+            movimientos++;
+        } catch (Exception e) {
+            movimientos++;
+        }
+
+    }//GEN-LAST:event_NOBORRARKeyPressed
+
+    private void NOBORRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOBORRARActionPerformed
+
+    }//GEN-LAST:event_NOBORRARActionPerformed
+
+    private void upMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upMouseClicked
+        Graphics t = Tablero.getGraphics();
+        try {
+            if (mt[xr - 1][yr] != 1 && xr > 0) {
+                xr = xr - 1;
+
                 t.setColor(Color.decode("#F4A364"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {//Se llegó a posición final.
+                if (xr == xfr && yr == yfr) {
                     nivel1 = true;
-                    vd1=vidas;
+                    vd1 = vidas;
                     HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
                     //Cálculo de puntaje obtenido.
                     System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
@@ -228,25 +480,181 @@ public class NIVEL1 extends javax.swing.JFrame {
                     sgte.setVisible(true);
                     this.setVisible(false);
                 }
-            } else{
-                if (mt[xr][yr - 1] == 1){//Golpe con casilla bloqueada.
-                    vidas = vidas - 1;//Pierde una vida.
+            } else {
+                if (mt[xr - 1][yr] == 1) {
+                    vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 4){
+                    if (vidas == 4) {
                         vida5.setVisible(false);
                     }
-                    if (vidas == 3){
+                    if (vidas == 3) {
                         vida4.setVisible(false);
                     }
-                    if (vidas == 2){
+                    if (vidas == 2) {
                         vida3.setVisible(false);
                     }
-                    if (vidas == 1){
+                    if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-                    if (vidas < 1){
+                    if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
                         vida1.setVisible(false);
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50)/2;
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
+                        this.setVisible(false);
+                    }
+                }
+            }
+            movimientos++;
+        } catch (Exception e) {
+            movimientos++;
+        }
+
+    }//GEN-LAST:event_upMouseClicked
+
+    private void rightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightMouseClicked
+        Graphics t = Tablero.getGraphics();
+        try {
+            if (mt[xr][yr + 1] != 1 && yr < mm) {
+                yr = yr + 1;
+                t.setColor(Color.decode("#F4A364"));
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                if (xr == xfr && yr == yfr) {
+                    nivel1 = true;
+                    vd1 = vidas;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
+                    NEXTLEVEL sgte = new NEXTLEVEL();
+                    sgte.setVisible(true);
+                    this.setVisible(false);
+                }
+            } else {
+                if (mt[xr][yr + 1] == 1) {
+                    vidas = vidas - 1;
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 4) {
+                        vida5.setVisible(false);
+                    }
+                    if (vidas == 3) {
+                        vida4.setVisible(false);
+                    }
+                    if (vidas == 2) {
+                        vida3.setVisible(false);
+                    }
+                    if (vidas == 1) {
+                        vida2.setVisible(false);
+                    }
+                    if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+                        vida1.setVisible(false);
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
+                        this.setVisible(false);
+                    }
+                }
+            }
+            movimientos++;
+        } catch (Exception e) {
+            movimientos++;
+        }
+
+    }//GEN-LAST:event_rightMouseClicked
+
+    private void downMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_downMouseClicked
+        Graphics t = Tablero.getGraphics();
+        try {
+            if (mt[xr + 1][yr] != 1 && xr < nn) {
+                xr = xr + 1;
+                t.setColor(Color.decode("#F4A364"));
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                if (xr == xfr && yr == yfr) {
+                    nivel1 = true;
+                    vd1 = vidas;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    HOMEE.Ranking[HOMEE.jugadores][1] = HOMEE.Ranking[HOMEE.jugadores][1] + vidas;
+                    System.out.println(movimientos);
+                    NEXTLEVEL sgte = new NEXTLEVEL();
+                    sgte.setVisible(true);
+                    this.setVisible(false);
+                }
+            } else {
+                if (mt[xr + 1][yr] == 1) {
+                    vidas = vidas - 1;
+                    System.out.println("actualmente tienes " + vidas);
+
+                    if (vidas == 4) {
+                        vida5.setVisible(false);
+                    }
+                    if (vidas == 3) {
+                        vida4.setVisible(false);
+                    }
+                    if (vidas == 2) {
+                        vida3.setVisible(false);
+                    }
+                    if (vidas == 1) {
+                        vida2.setVisible(false);
+                    }
+                    if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+                        vida1.setVisible(false);
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
+                        this.setVisible(false);
+                    }
+                }
+            }
+            movimientos++;
+        } catch (Exception e) {
+            movimientos++;
+        }
+
+    }//GEN-LAST:event_downMouseClicked
+
+    private void leftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftMouseClicked
+        Graphics t = Tablero.getGraphics();
+        try {
+            if (mt[xr][yr - 1] != 1 && yr > 0) {//Validación para casilla libre y evitar salir de panel.
+                yr = yr - 1;
+                t.setColor(Color.decode("#F4A364"));
+                t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                if (xr == xfr && yr == yfr) {//Se llegó a posición final.
+                    nivel1 = true;
+                    vd1 = vidas;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
+                    //Cálculo de puntaje obtenido.
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    System.out.println(movimientos);
+                    NEXTLEVEL sgte = new NEXTLEVEL();
+                    sgte.setVisible(true);
+                    this.setVisible(false);
+                }
+            } else {
+                if (mt[xr][yr - 1] == 1) {//Golpe con casilla bloqueada.
+                    vidas = vidas - 1;//Pierde una vida.
+                    System.out.println("actualmente tienes " + vidas);
+                    if (vidas == 4) {
+                        vida5.setVisible(false);
+                    }
+                    if (vidas == 3) {
+                        vida4.setVisible(false);
+                    }
+                    if (vidas == 2) {
+                        vida3.setVisible(false);
+                    }
+                    if (vidas == 1) {
+                        vida2.setVisible(false);
+                    }
+                    if (vidas < 1) {
+                        vida1.setVisible(false);
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50) / 2;
                         //Cálculo del puntaje obtenido.
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         System.out.println(movimientos);
@@ -256,189 +664,56 @@ public class NIVEL1 extends javax.swing.JFrame {
                     }
                 }
             }
-        }
-        if (evt.getKeyCode() == 38){//Tecla hacia arriba.
-            if (mt[xr - 1][yr] != 1 && xr > 0){
-                xr = xr - 1;
-                t.setColor(Color.decode("#F4A364"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr){
-                    nivel1 = true;
-                    vd1=vidas;
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
-                    //Cálculo de puntaje obtenido.
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    System.out.println(movimientos);
-                    NEXTLEVEL sgte = new NEXTLEVEL();
-                    sgte.setVisible(true);
-                    this.setVisible(false);
-                }
-            } else{
-                if (mt[xr - 1][yr] == 1){
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 4){
-                        vida5.setVisible(false);
-                    }
-                    if (vidas == 3){
-                        vida4.setVisible(false);
-                    }
-                    if (vidas == 2){
-                        vida3.setVisible(false);
-                    }
-                    if (vidas == 1){
-                        vida2.setVisible(false);
-                    }
-                    if (vidas < 1){
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50)/2;
-                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                        System.out.println(movimientos);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
-                        this.setVisible(false);
-                    }
-                }
-            }
+            movimientos++;
+        } catch (Exception e) {
+            movimientos++;
         }
 
-        if (evt.getKeyCode() == 39){//Tecla hacia derecha.           
-            if (mt[xr][yr + 1] != 1 && yr < mm){
-                yr = yr + 1;
-                t.setColor(Color.decode("#F4A364"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr){
-                    nivel1 = true;
-                    vd1=vidas;
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    System.out.println(movimientos);
-                    NEXTLEVEL sgte = new NEXTLEVEL();
-                    sgte.setVisible(true);
-                    this.setVisible(false);
-                }
-            } else{
-                if (mt[xr][yr + 1] == 1){
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 4){
-                        vida5.setVisible(false);
-                    }
-                    if (vidas == 3){
-                        vida4.setVisible(false);
-                    }
-                    if (vidas == 2){
-                        vida3.setVisible(false);
-                    }
-                    if (vidas == 1){
-                        vida2.setVisible(false);
-                    }
-                    if (vidas < 1){
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50)/2;
-                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                        System.out.println(movimientos);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
-                        this.setVisible(false);
-                    }
-                }
-            }
-        }
-        if (evt.getKeyCode() == 40){//Tecla hacia izquierda.
-            if (mt[xr + 1][yr] != 1 && xr < nn){
-                xr = xr + 1;
-                t.setColor(Color.decode("#F4A364"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr){
-                    nivel1 = true;
-                    vd1=vidas;
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 50;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    HOMEE.Ranking[HOMEE.jugadores][1] = HOMEE.Ranking[HOMEE.jugadores][1] + vidas;
-                    System.out.println(movimientos);
-                    NEXTLEVEL sgte = new NEXTLEVEL();
-                    sgte.setVisible(true);
-                    this.setVisible(false);
-                }
-            } else{
-                if (mt[xr + 1][yr] == 1){
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-
-                    if (vidas == 4){
-                        vida5.setVisible(false);
-                    }
-                    if (vidas == 3){
-                        vida4.setVisible(false);
-                    }
-                    if (vidas == 2){
-                        vida3.setVisible(false);
-                    }
-                    if (vidas == 1){
-                        vida2.setVisible(false);
-                    }
-                    if (vidas < 1){
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50)/2;
-                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                        System.out.println(movimientos);                     
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
-                        this.setVisible(false);
-                    }
-                }
-            }
-        }
-        movimientos++;
-    }//GEN-LAST:event_NOBORRARKeyPressed
-
-    private void NOBORRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOBORRARActionPerformed
-
-    }//GEN-LAST:event_NOBORRARActionPerformed
-    public static boolean Buscar(int mt[][], int inicialy, int inicialx, int nn, int mm){//Procedimiento que resuelve automática y recursivamente laberinto.
+    }//GEN-LAST:event_leftMouseClicked
+    public static boolean Buscar(int mt[][], int inicialy, int inicialx, int nn, int mm) {//Procedimiento que resuelve automática y recursivamente laberinto.
         System.out.println(inicialx + "   ENTRA   " + inicialy);
-        if (mt[inicialy][inicialx] == 6){
+        if (mt[inicialy][inicialx] == 6) {
             System.out.println("encontrado");
             return true;
         }
-        if (mt[inicialy][inicialx] == 1 || mt[inicialy][inicialx] == 0){
+        if (mt[inicialy][inicialx] == 1 || mt[inicialy][inicialx] == 0) {
             System.out.println("sale");
             return false;
         }
         mt[inicialy][inicialx] = 0;
         boolean encontrado = false;
-        if (inicialy - 1 >= 0){
+        if (inicialy - 1 >= 0) {
             System.out.println("arriba");
             encontrado = Buscar(mt, inicialy - 1, inicialx, nn, mm);
         }
-        if (encontrado == true){
+        if (encontrado == true) {
             return true;
         }
-        if (inicialx + 1 < mm){
+        if (inicialx + 1 < mm) {
             System.out.println("derecha");
             encontrado = Buscar(mt, inicialy, inicialx + 1, nn, mm);
         }
-        if (encontrado == true){
+        if (encontrado == true) {
             return true;
         }
-        if (inicialx - 1 >= 0){
+        if (inicialx - 1 >= 0) {
             System.out.println("izquierda");
             encontrado = Buscar(mt, inicialy, inicialx - 1, nn, mm);
         }
-        if (encontrado == true){
+        if (encontrado == true) {
             return true;
         }
-        if (inicialy + 1 < nn){
+        if (inicialy + 1 < nn) {
             System.out.println("abajo");
             encontrado = Buscar(mt, inicialy + 1, inicialx, nn, mm);
         }
-        if (encontrado == true){
+        if (encontrado == true) {
             return true;
         }
         mt[inicialy][inicialx] = 1;
         return false;
     }
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -452,9 +727,14 @@ public class NIVEL1 extends javax.swing.JFrame {
     private javax.swing.JPanel Tablero;
     private javax.swing.JLabel b_automatico;
     private javax.swing.JLabel b_generar;
+    private javax.swing.JLabel down;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel joystick;
+    private javax.swing.JLabel left;
     private javax.swing.JLabel level1bg;
+    private javax.swing.JLabel right;
     private javax.swing.JLabel score;
+    private javax.swing.JLabel up;
     private javax.swing.JLabel vida1;
     private javax.swing.JLabel vida2;
     private javax.swing.JLabel vida3;

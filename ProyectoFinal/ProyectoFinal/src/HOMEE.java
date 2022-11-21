@@ -1,4 +1,9 @@
 
+import java.io.IOException;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
 public class HOMEE extends javax.swing.JFrame {
@@ -9,11 +14,31 @@ public class HOMEE extends javax.swing.JFrame {
         tf_nombre.setOpaque(false);
 
     }
+    
+      public Clip clip;
+    /*sonido*/
+    public String link = "/sonido/";
+
+    public void mus(String archivo) {
+        /*código para la pista musical*/
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(link + archivo + ".wav")));
+            clip.start();
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
+
+        }
+    }
+    public static int n, m;
+    boolean reproducir = false;
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        b_musica = new javax.swing.JButton();
+        b_nomusica = new javax.swing.JButton();
         tf_nombre = new javax.swing.JTextField();
         ayudabt = new javax.swing.JLabel();
         rankingbt = new javax.swing.JLabel();
@@ -24,6 +49,22 @@ public class HOMEE extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        b_musica.setText("MUSIC ON");
+        b_musica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_musicaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(b_musica, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        b_nomusica.setText("MUSIC OFF");
+        b_nomusica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_nomusicaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(b_nomusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         tf_nombre.setBackground(new java.awt.Color(102, 102, 102));
         tf_nombre.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
@@ -48,7 +89,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 320, -1));
 
         ayudabt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/ayudabt.png"))); // NOI18N
-        ayudabt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ayudabt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ayudabt.setDisabledIcon(null);
         ayudabt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -58,7 +99,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().add(ayudabt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 610, 180, 50));
 
         rankingbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/rankingbt.png"))); // NOI18N
-        rankingbt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rankingbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         rankingbt.setDisabledIcon(null);
         rankingbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -68,7 +109,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().add(rankingbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 620, 180, 50));
 
         salirbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/salirbt.png"))); // NOI18N
-        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salirbt.setDisabledIcon(null);
         salirbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,7 +121,7 @@ public class HOMEE extends javax.swing.JFrame {
 
         selectlevel_bt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/selectlevel_bt.png"))); // NOI18N
         selectlevel_bt.setToolTipText("");
-        selectlevel_bt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        selectlevel_bt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         selectlevel_bt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 selectlevel_btMouseClicked(evt);
@@ -158,6 +199,21 @@ public class HOMEE extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_salirbtMouseClicked
 
+    private void b_musicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_musicaActionPerformed
+        reproducir = true;
+        if (reproducir == true) {
+            mus("Musica");
+        }
+    }//GEN-LAST:event_b_musicaActionPerformed
+
+    private void b_nomusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_nomusicaActionPerformed
+        reproducir = false;
+
+        if (reproducir == false) {
+            clip.stop();
+        }
+    }//GEN-LAST:event_b_nomusicaActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -169,6 +225,8 @@ public class HOMEE extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ayudabt;
+    private javax.swing.JButton b_musica;
+    private javax.swing.JButton b_nomusica;
     private javax.swing.JLabel bghome;
     private javax.swing.JLabel gametitle;
     private javax.swing.JLabel rankingbt;
