@@ -17,6 +17,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
         lev_2.setVisible(false);
         lev_3.setVisible(false);
         this.setLocationRelativeTo(null);
+        advertencia.setVisible(false);
 
     }
 
@@ -32,6 +33,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
         lev_1 = new javax.swing.JLabel();
         lev_2 = new javax.swing.JLabel();
         lev_3 = new javax.swing.JLabel();
+        advertencia = new javax.swing.JLabel();
         bgnextlevel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +71,9 @@ public class NEXTLEVEL extends javax.swing.JFrame {
             }
         });
         getContentPane().add(lev_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 90, 90));
+
+        advertencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/advertencianivel.png"))); // NOI18N
+        getContentPane().add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 460, 30));
 
         bgnextlevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/nextlevelbg.png"))); // NOI18N
         bgnextlevel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -114,14 +119,14 @@ public class NEXTLEVEL extends javax.swing.JFrame {
     }//GEN-LAST:event_lev_2MouseClicked
 
     private void lev_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lev_3MouseClicked
-        NIVEL3 abrir = new NIVEL3();
-        abrir.setVisible(true);
 
         NIVEL2 cerrar1 = new NIVEL2();
         cerrar1.setVisible(false);
-
+        
         NIVEL1 cerrar = new NIVEL1();
         cerrar.setVisible(false);
+        NIVEL3 abrir = new NIVEL3();
+        abrir.setVisible(true);
 
         this.setVisible(false);
     }//GEN-LAST:event_lev_3MouseClicked
@@ -162,6 +167,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel advertencia;
     private javax.swing.JLabel bgnextlevel;
     private javax.swing.JLabel lev_1;
     private javax.swing.JLabel lev_2;

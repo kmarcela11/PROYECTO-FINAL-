@@ -7,12 +7,12 @@
  *
  * @author Valentina Bustamante
  */
-public class GAMEOVER extends javax.swing.JFrame {
+public class GANAR extends javax.swing.JFrame {
 
     /**
-     * Creates new form GAMEOVER
+     * Creates new form GANAR
      */
-    public GAMEOVER() {
+    public GANAR() {
         initComponents();
         score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
         user.setText(HOMEE.Jugadores[HOMEE.jugadores]);
@@ -29,9 +29,9 @@ public class GAMEOVER extends javax.swing.JFrame {
     private void initComponents() {
 
         scorelabel = new javax.swing.JLabel();
-        user = new javax.swing.JLabel();
         score = new javax.swing.JLabel();
-        gameoverbg = new javax.swing.JLabel();
+        user = new javax.swing.JLabel();
+        wonbg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -44,18 +44,18 @@ public class GAMEOVER extends javax.swing.JFrame {
         scorelabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/scorelabel.png"))); // NOI18N
         getContentPane().add(scorelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 300, 100));
 
-        user.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
-        user.setForeground(new java.awt.Color(243, 252, 240));
-        user.setText("Player");
-        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, -1, -1));
-
         score.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         score.setForeground(new java.awt.Color(243, 252, 240));
         score.setText("000");
         getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, -1, -1));
 
-        gameoverbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/gameoverbg.png"))); // NOI18N
-        getContentPane().add(gameoverbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1201, 700));
+        user.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        user.setForeground(new java.awt.Color(243, 252, 240));
+        user.setText("Player");
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, -1, -1));
+
+        wonbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/wonbg.png"))); // NOI18N
+        getContentPane().add(wonbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,28 +83,28 @@ public class GAMEOVER extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GAMEOVER.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GANAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GAMEOVER.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GANAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GAMEOVER.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GANAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GAMEOVER.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GANAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GAMEOVER().setVisible(true);
+                new GANAR().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel gameoverbg;
     private javax.swing.JLabel score;
     private javax.swing.JLabel scorelabel;
     private javax.swing.JLabel user;
+    private javax.swing.JLabel wonbg;
     // End of variables declaration//GEN-END:variables
 }

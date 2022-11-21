@@ -13,6 +13,7 @@ public class NIVEL2 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         movimientos = 0;
+        nivel2 = false;
         score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
     }
     Scanner lea = new Scanner(System.in);
@@ -329,10 +330,14 @@ public class NIVEL2 extends javax.swing.JFrame {
                     }
 
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -367,10 +372,14 @@ public class NIVEL2 extends javax.swing.JFrame {
                     }
 
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -404,10 +413,14 @@ public class NIVEL2 extends javax.swing.JFrame {
                     }
 
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -440,10 +453,14 @@ public class NIVEL2 extends javax.swing.JFrame {
                     }
 
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }

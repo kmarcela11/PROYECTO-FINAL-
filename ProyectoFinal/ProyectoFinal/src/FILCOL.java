@@ -18,7 +18,6 @@ public class FILCOL extends javax.swing.JFrame {
     public FILCOL() {
         initComponents();
         this.setLocationRelativeTo(null);
-        tf_nombre.setText(HOMEE.nombre);
         tf_filas.setOpaque(false);
         tf_columnas.setOpaque(false);
     }
@@ -45,7 +44,6 @@ public class FILCOL extends javax.swing.JFrame {
         tf_columnas = new javax.swing.JTextField();
         b_musica = new javax.swing.JButton();
         b_nomusica = new javax.swing.JButton();
-        tf_nombre = new javax.swing.JTextField();
         level_bt1 = new javax.swing.JLabel();
         level_bt2 = new javax.swing.JLabel();
         levelsbg = new javax.swing.JLabel();
@@ -98,7 +96,7 @@ public class FILCOL extends javax.swing.JFrame {
                 b_musicaActionPerformed(evt);
             }
         });
-        getContentPane().add(b_musica, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 220, -1, -1));
+        getContentPane().add(b_musica, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         b_nomusica.setText("MUSIC OFF");
         b_nomusica.addActionListener(new java.awt.event.ActionListener() {
@@ -106,10 +104,7 @@ public class FILCOL extends javax.swing.JFrame {
                 b_nomusicaActionPerformed(evt);
             }
         });
-        getContentPane().add(b_nomusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 310, -1, -1));
-
-        tf_nombre.setEditable(false);
-        getContentPane().add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 90, 170, 34));
+        getContentPane().add(b_nomusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         level_bt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"))); // NOI18N
         level_bt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -266,6 +261,5 @@ public class FILCOL extends javax.swing.JFrame {
     private javax.swing.JLabel levelsbg;
     private javax.swing.JTextField tf_columnas;
     private javax.swing.JTextField tf_filas;
-    private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
 }

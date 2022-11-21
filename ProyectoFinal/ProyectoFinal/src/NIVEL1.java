@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -250,9 +252,14 @@ public class NIVEL1 extends javax.swing.JFrame {
 
                     if (vidas < 1) {
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50)/2;;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -295,10 +302,15 @@ public class NIVEL1 extends javax.swing.JFrame {
                     }
 
                     if (vidas < 1) {
+
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50)/2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -340,10 +352,14 @@ public class NIVEL1 extends javax.swing.JFrame {
                     }
 
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50)/2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -385,10 +401,15 @@ public class NIVEL1 extends javax.swing.JFrame {
                     }
 
                     if (vidas < 1) {
+
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 50)/2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+                        
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }

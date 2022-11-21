@@ -12,12 +12,15 @@ public class NIVEL3 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
+        nivel3 = false;
+        movimientos = 0;
     }
     int inicialx = 0, inicialy = 0;
     public static int n, m, nn, mm, ancho, alto, inin, fina, posicioninicial, posicionfinal, xr, yr, xfr, yfr;
     public static int mt[][] = new int[100][100];
     public static int vidas = 1;
     public static boolean nivel3 = false;
+    int movimientos;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -197,7 +200,11 @@ public class NIVEL3 extends javax.swing.JFrame {
                 t.setColor(Color.decode("#EA5157"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
-                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    GANAR ganar = new GANAR();
+                    ganar.setVisible(true);
+                    this.setVisible(false);
                     nivel3 = true;
                 }
             } else {
@@ -206,10 +213,12 @@ public class NIVEL3 extends javax.swing.JFrame {
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -222,8 +231,12 @@ public class NIVEL3 extends javax.swing.JFrame {
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
 
                 if (xr == xfr && yr == yfr) {
-                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
-                    nivel3 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    GANAR ganar = new GANAR();
+                    ganar.setVisible(true);
+                    this.setVisible(false);
+
                 }
             } else {
                 if (mt[xr - 1][yr] == 1) {
@@ -231,10 +244,12 @@ public class NIVEL3 extends javax.swing.JFrame {
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -246,8 +261,11 @@ public class NIVEL3 extends javax.swing.JFrame {
                 t.setColor(Color.decode("#EA5157"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
-                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
-                    nivel3 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    GANAR ganar = new GANAR();
+                    ganar.setVisible(true);
+                    this.setVisible(false);
                 }
             } else {
                 if (mt[xr][yr + 1] == 1) {
@@ -255,10 +273,12 @@ public class NIVEL3 extends javax.swing.JFrame {
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
@@ -269,8 +289,11 @@ public class NIVEL3 extends javax.swing.JFrame {
                 t.setColor(Color.decode("#EA5157"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
                 if (xr == xfr && yr == yfr) {
-                    JOptionPane.showMessageDialog(null, "Ganaste wuu");
-                    nivel3 = true;
+                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
+                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                    GANAR ganar = new GANAR();
+                    ganar.setVisible(true);
+                    this.setVisible(false);
                 }
             } else {
                 if (mt[xr + 1][yr] == 1) {
@@ -278,14 +301,17 @@ public class NIVEL3 extends javax.swing.JFrame {
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
                     if (vidas < 1) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         vida1.setVisible(false);
-                        FILCOL abrir = new FILCOL();
+                        GAMEOVER salir = new GAMEOVER();
+                        salir.setVisible(true);
                         this.setVisible(false);
-                        abrir.setVisible(true);
                     }
                 }
             }
         }
+        movimientos++;
     }//GEN-LAST:event_tempKeyPressed
 
     private void tempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempActionPerformed
