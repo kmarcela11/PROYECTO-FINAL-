@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
-import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -16,12 +15,12 @@ public class NIVEL2 extends javax.swing.JFrame {
         nivel2 = false;
         score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
     }
-    Scanner lea = new Scanner(System.in);
+    
     int inicialx = 0, inicialy = 0;
     public static boolean nivel2 = false;
     public static int n, m, nn, mm, ancho, alto, inin, fina, posicioninicial, posicionfinal, xr, yr, xfr, yfr;
     public static int mt[][] = new int[100][100];
-    public static int vidas = 3;
+    public static int vidas = 3,vd2;
     private Image img;
     int movimientos = 0;
 
@@ -140,60 +139,49 @@ public class NIVEL2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public static boolean Buscar(int mt[][], int inicialy, int inicialx, int nn, int mm) {
+    public static boolean Buscar(int mt[][], int inicialy, int inicialx, int nn, int mm) {//Procedimiento que resuelve automática y recursivamente laberinto.
         System.out.println(inicialx + "   ENTRA   " + inicialy);
-        if (mt[inicialy][inicialx] == 6) {
+        if (mt[inicialy][inicialx] == 6){
             System.out.println("encontrado");
             return true;
         }
-
-        if (mt[inicialy][inicialx] == 1 || mt[inicialy][inicialx] == 0) {
+        if (mt[inicialy][inicialx] == 1 || mt[inicialy][inicialx] == 0){
             System.out.println("sale");
             return false;
         }
-
         mt[inicialy][inicialx] = 0;
-
         boolean encontrado = false;
-        if (inicialy - 1 >= 0) {
+        if (inicialy - 1 >= 0){
             System.out.println("arriba");
             encontrado = Buscar(mt, inicialy - 1, inicialx, nn, mm);
         }
-
-        if (encontrado == true) {
+        if (encontrado == true){
             return true;
         }
-
-        if (inicialx + 1 < mm) {
+        if (inicialx + 1 < mm){
             System.out.println("derecha");
             encontrado = Buscar(mt, inicialy, inicialx + 1, nn, mm);
         }
-
-        if (encontrado == true) {
+        if (encontrado == true){
             return true;
         }
-
-        if (inicialx - 1 >= 0) {
+        if (inicialx - 1 >= 0){
             System.out.println("izquierda");
             encontrado = Buscar(mt, inicialy, inicialx - 1, nn, mm);
         }
-
-        if (encontrado == true) {
+        if (encontrado == true){
             return true;
         }
-
-        if (inicialy + 1 < nn) {
+        if (inicialy + 1 < nn){
             System.out.println("abajo");
             encontrado = Buscar(mt, inicialy + 1, inicialx, nn, mm);
         }
-
-        if (encontrado == true) {
+        if (encontrado == true){
             return true;
         }
         mt[inicialy][inicialx] = 1;
         return false;
     }
-
     private void columnasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_columnasKeyTyped
 
     }//GEN-LAST:event_columnasKeyTyped
@@ -202,7 +190,7 @@ public class NIVEL2 extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyTyped
 
     private void b_nivel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_nivel3ActionPerformed
-        if (nivel2 == true) {
+        if (nivel2 == true){ //Posición final encontrada.
             NIVEL3 abrir = new NIVEL3();
             this.setVisible(false);
             abrir.setVisible(true);
@@ -214,11 +202,11 @@ public class NIVEL2 extends javax.swing.JFrame {
     private void b_automaticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_automaticoMouseClicked
         boolean resultado = Buscar(mt, inicialx, inicialy, nn, mm);
         Graphics t = Tablero.getGraphics();
-        for (int i = 0; i < nn; i++) {
-            for (int j = 0; j < mm; j++) {
+        for (int i = 0; i < nn; i++){
+            for (int j = 0; j < mm; j++){
                 if (mt[i][j] == 0) {
                     t.setColor(Color.decode("#ff9966"));
-                    t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                    t.fillRect(ancho * j, alto * i, ancho, alto);
                 }
                 t.setColor(Color.black);
                 t.drawLine(0, i * alto, mm * ancho, i * alto);
@@ -228,60 +216,56 @@ public class NIVEL2 extends javax.swing.JFrame {
     }//GEN-LAST:event_b_automaticoMouseClicked
 
     private void b_generarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_generarMouseClicked
-
         Graphics t = Tablero.getGraphics();
         Image img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
-        nn = FILCOL.n; //trae la fila
-        mm = FILCOL.m; //trae la columna
-        ancho = 800 / mm;/* ancho casillas*/
-        alto = 550 / nn;/* alto casillas*/
+        nn = FILCOL.n; 
+        mm = FILCOL.m; 
+        ancho = 800 / mm;
+        alto = 550 / nn;
         Random r = new Random();
-        xr = r.nextInt(nn); // Posición aleatoria de fila inicial.
-        yr = r.nextInt(mm); // Posición aleatoria de columnas inicial.
-        xfr = r.nextInt(nn); // Posición aleatoria de fila final.
-        yfr = r.nextInt(mm); // Posición aleatoria de columnas final.
-        while (xr == xfr && yfr == yr) { // en caso de que pos inicial y pos final sean iguales, se usa random otra vez
-            xfr = r.nextInt(nn); // Posición aleatoria de fila final.
-            yfr = r.nextInt(mm); // Posición aleatoria de columnas final.
+        xr = r.nextInt(nn);
+        yr = r.nextInt(mm);
+        xfr = r.nextInt(nn);
+        yfr = r.nextInt(mm);
+        while (xr == xfr && yfr == yr){
+            xfr = r.nextInt(nn); 
+            yfr = r.nextInt(mm); 
         }
-        for (int i = 0; i < nn; i++) {
-            for (int j = 0; j < mm; j++) {
-                mt[i][j] = r.nextInt(3) + 1; // Genera el número aleatorio de 0 a 4 (en este caso, el límite varía según la dificultad).
-                if (mt[i][j] == 1) {
-                    t.setColor(Color.decode("#1f271b")); //Si se bloquea
+        for (int i = 0; i < nn; i++){
+            for (int j = 0; j < mm; j++){
+                mt[i][j] = r.nextInt(3) + 1; 
+                if (mt[i][j] == 1){
+                    t.setColor(Color.decode("#1f271b")); 
                 } else {
-                    t.setColor(Color.decode("#f3fcf0")); // Ta libre :p
+                    t.setColor(Color.decode("#f3fcf0"));
                 }
-                if (i == xr && j == yr) {
+                if (i == xr && j == yr){
                     mt[i][j] = 5;
                     inin = 5;
                 }
-                if (i == xfr && j == yfr) {
+                if (i == xfr && j == yfr){
                     mt[i][j] = 6;
                     fina = 6;
                 }
-                if (!(i == xr && j == yr) && !(i == xfr && j == yfr)) {
-                    t.fillRect(ancho * j, alto * i, ancho, alto); //Se va moviendo por el código pintando cuadrito x cuadrito.
+                if (!(i == xr && j == yr) && !(i == xfr && j == yfr)){
+                    t.fillRect(ancho * j, alto * i, ancho, alto); 
                 }
             }
         }
-
-        if (inin == 5) {
+        if (inin == 5){
             t.setColor(Color.decode("#f3fcf0"));
             t.fillRect(ancho * yr, alto * xr, ancho, alto);
             img = new ImageIcon(getClass().getResource("/pfmedia/x.png")).getImage();
-            t.drawImage(img, ancho * yr, alto * xr, ancho, alto, Tablero);//posicion inicial
-
+            t.drawImage(img, ancho * yr, alto * xr, ancho, alto, Tablero);
         }
-        if (fina == 6) {
+        if (fina == 6){
             t.setColor(Color.decode("#f3fcf0"));
             t.fillRect(ancho * yfr, alto * xfr, ancho, alto);
             img = new ImageIcon(getClass().getResource("/pfmedia/o.png")).getImage();
-            t.drawImage(img, ancho * yfr, alto * xfr, ancho, alto, Tablero); // posicion final
+            t.drawImage(img, ancho * yfr, alto * xfr, ancho, alto, Tablero); 
         }
-
-        for (int i = 0; i < nn; i++) {
-            for (int j = 0; j < mm; j++) {
+        for (int i = 0; i < nn; i++){
+            for (int j = 0; j < mm; j++){
                 t.setColor(Color.decode("#1f271b"));
                 t.drawLine(0, i * alto, mm * ancho, i * alto);
                 t.setColor(Color.decode("#1f271b"));
@@ -303,37 +287,34 @@ public class NIVEL2 extends javax.swing.JFrame {
 
     private void neededKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_neededKeyPressed
         Graphics t = Tablero.getGraphics();
-        if (evt.getKeyCode() == 37) { //izquierda
-            if (mt[xr][yr - 1] != 1 && yr > 0) {
+        if (evt.getKeyCode() == 37){ 
+            if (mt[xr][yr - 1] != 1 && yr > 0){
                 yr = yr - 1;
                 t.setColor(Color.decode("#FCC26B"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
+                if (xr == xfr && yr == yfr){
                     nivel2 = true;
+                    vd2=vidas;
                     HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
                     System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                     System.out.println(movimientos);
                     NEXTLEVEL abrir = new NEXTLEVEL();
                     abrir.setVisible(true);
                 }
-            } else {
-                if (mt[xr][yr - 1] == 1) {
+            }else{
+                if (mt[xr][yr - 1] == 1){
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
-
                     if (vidas == 2) {
                         vida3.setVisible(false);
                     }
-
                     if (vidas == 1) {
                         vida2.setVisible(false);
                     }
-
                     if (vidas < 1) {
                         HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         System.out.println(movimientos);
-
                         vida1.setVisible(false);
                         GAMEOVER salir = new GAMEOVER();
                         salir.setVisible(true);
@@ -342,40 +323,35 @@ public class NIVEL2 extends javax.swing.JFrame {
                 }
             }
         }
-        if (evt.getKeyCode() == 38) { //arriba
+        if (evt.getKeyCode() == 38){ 
 
-            if (mt[xr - 1][yr] != 1 && xr > 0) {
+            if (mt[xr - 1][yr] != 1 && xr > 0){
                 xr = xr - 1;
                 t.setColor(Color.decode("#FCC26B"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
-
-                if (xr == xfr && yr == yfr) {
-
+                if (xr == xfr && yr == yfr){
                     nivel2 = true;
+                    vd2=vidas;
                     HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
                     System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                     System.out.println(movimientos);
                     NEXTLEVEL abrir = new NEXTLEVEL();
                     abrir.setVisible(true);
                 }
-            } else {
-                if (mt[xr - 1][yr] == 1) {
+            }else{
+                if (mt[xr - 1][yr] == 1){
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
-
-                    if (vidas == 2) {
+                    if (vidas == 2){
                         vida3.setVisible(false);
                     }
-
-                    if (vidas == 1) {
+                    if (vidas == 1){
                         vida2.setVisible(false);
                     }
-
-                    if (vidas < 1) {
+                    if (vidas < 1){
                         HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         System.out.println(movimientos);
-
                         vida1.setVisible(false);
                         GAMEOVER salir = new GAMEOVER();
                         salir.setVisible(true);
@@ -385,38 +361,34 @@ public class NIVEL2 extends javax.swing.JFrame {
             }
         }
 
-        if (evt.getKeyCode() == 39) { // derecha           
-            if (mt[xr][yr + 1] != 1 && yr < mm) {
+        if (evt.getKeyCode() == 39){           
+            if (mt[xr][yr + 1] != 1 && yr < mm){
                 yr = yr + 1;
                 t.setColor(Color.decode("#FCC26B"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-
+                if (xr == xfr && yr == yfr){
                     nivel2 = true;
+                    vd2=vidas;
                     HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
                     System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                     System.out.println(movimientos);
                     NEXTLEVEL abrir = new NEXTLEVEL();
                     abrir.setVisible(true);
                 }
-            } else {
-                if (mt[xr][yr + 1] == 1) {
+            }else{
+                if (mt[xr][yr + 1] == 1){
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
-
-                    if (vidas == 2) {
+                    if (vidas == 2){
                         vida3.setVisible(false);
                     }
-
-                    if (vidas == 1) {
+                    if (vidas == 1){
                         vida2.setVisible(false);
                     }
-
-                    if (vidas < 1) {
+                    if (vidas < 1){
                         HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         System.out.println(movimientos);
-
                         vida1.setVisible(false);
                         GAMEOVER salir = new GAMEOVER();
                         salir.setVisible(true);
@@ -425,38 +397,35 @@ public class NIVEL2 extends javax.swing.JFrame {
                 }
             }
         }
-        if (evt.getKeyCode() == 40) { //izquierda
-            if (mt[xr + 1][yr] != 1 && xr < nn) {
+        if (evt.getKeyCode() == 40){ 
+            if (mt[xr + 1][yr] != 1 && xr < nn){
                 xr = xr + 1;
                 t.setColor(Color.decode("#FCC26B"));
                 t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-
+                if (xr == xfr && yr == yfr){
                     nivel2 = true;
+                    vd2=vidas;
                     HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
                     System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                     System.out.println(movimientos);
                     NEXTLEVEL abrir = new NEXTLEVEL();
                     abrir.setVisible(true);
                 }
-            } else {
-                if (mt[xr + 1][yr] == 1) {
+            }else{
+                if (mt[xr + 1][yr] == 1){
                     vidas = vidas - 1;
                     System.out.println("actualmente tienes " + vidas);
 
-                    if (vidas == 2) {
+                    if (vidas == 2){
                         vida3.setVisible(false);
                     }
-
-                    if (vidas == 1) {
+                    if (vidas == 1){
                         vida2.setVisible(false);
                     }
-
-                    if (vidas < 1) {
+                    if (vidas < 1){
                         HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         System.out.println(movimientos);
-
                         vida1.setVisible(false);
                         GAMEOVER salir = new GAMEOVER();
                         salir.setVisible(true);
@@ -465,10 +434,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                 }
             }
         }
-
         movimientos++;
-
-
     }//GEN-LAST:event_neededKeyPressed
 
     private void neededActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_neededActionPerformed

@@ -32,7 +32,7 @@ public class AYUDAA extends javax.swing.JFrame {
         getContentPane().add(CONTENIDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 855, 486));
 
         salirbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/salirbt.png"))); // NOI18N
-        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salirbt.setDisabledIcon(null);
         salirbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -58,26 +58,21 @@ public class AYUDAA extends javax.swing.JFrame {
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         clic++;
-
-        if (clic == 4) {
+        if (clic == 4){
             clic = 1;
         }
-
-        if (clic == 1) {
+        if (clic == 1){
             ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/ayuda1.png"));
             CONTENIDO.setIcon(im);
         }
-
-        if (clic == 2) {
+        if (clic == 2){
             ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/ayuda2.png"));
             CONTENIDO.setIcon(im);
         }
-
-        if (clic == 3) {
+        if (clic == 3){
             ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/ayuda3.png"));
             CONTENIDO.setIcon(im);
         }
-
     }//GEN-LAST:event_formKeyPressed
 
     public static void main(String args[]) {

@@ -47,6 +47,7 @@ public class FILCOL extends javax.swing.JFrame {
         level_bt1 = new javax.swing.JLabel();
         level_bt2 = new javax.swing.JLabel();
         levelsbg = new javax.swing.JLabel();
+        level_bt3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,7 +108,7 @@ public class FILCOL extends javax.swing.JFrame {
         getContentPane().add(b_nomusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         level_bt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1_selbt.png"))); // NOI18N
-        level_bt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        level_bt1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         level_bt1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 level_bt1MouseClicked(evt);
@@ -122,7 +123,7 @@ public class FILCOL extends javax.swing.JFrame {
         getContentPane().add(level_bt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 310, 70));
 
         level_bt2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level2_selbt.png"))); // NOI18N
-        level_bt2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        level_bt2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         level_bt2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 level_bt2MouseClicked(evt);
@@ -137,7 +138,16 @@ public class FILCOL extends javax.swing.JFrame {
         getContentPane().add(level_bt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 310, 70));
 
         levelsbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/levelsbg.png"))); // NOI18N
+        levelsbg.setText("v");
         getContentPane().add(levelsbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 720));
+
+        level_bt3.setText("nivel3");
+        level_bt3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                level_bt3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(level_bt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 260, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,7 +167,7 @@ public class FILCOL extends javax.swing.JFrame {
     private void b_musicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_musicaActionPerformed
         reproducir = true;
         if (reproducir == true) {
-            mus("musica");
+            mus("Musica");
         }
     }//GEN-LAST:event_b_musicaActionPerformed
 
@@ -243,6 +253,28 @@ public class FILCOL extends javax.swing.JFrame {
         level_bt2.setIcon(im);
     }//GEN-LAST:event_level_bt2MouseExited
 
+    private void level_bt3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt3MouseClicked
+         // TODO add your handling code here:
+        if (tf_filas.getText().equals("") || tf_columnas.getText().equals("")) { //validación texto vacio 
+            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LOS DOS DATOS (N y M )");
+        } else {
+            n = Integer.parseInt(tf_filas.getText());
+            /*toma cantidad de filas del textfield*/
+            m = Integer.parseInt(tf_columnas.getText());
+            /*toma cantidad de columnas del textfield*/
+            if (((n >= 8) && (n <= 100)) && ((m >= 16) && (m <= 100))) {
+                NIVEL3 abrir = new NIVEL3();
+                this.setVisible(false);
+                abrir.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "el número de filas debe ser mayor o igual a 8 y menor o igual a 100. \n"
+                        + "el número de columnas debe ser mayor o igual a 16 y menor o igual a 100");
+
+            }
+        }
+    }//GEN-LAST:event_level_bt3MouseClicked
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -258,6 +290,7 @@ public class FILCOL extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bg_niveles;
     private javax.swing.JLabel level_bt1;
     private javax.swing.JLabel level_bt2;
+    private javax.swing.JLabel level_bt3;
     private javax.swing.JLabel levelsbg;
     private javax.swing.JTextField tf_columnas;
     private javax.swing.JTextField tf_filas;

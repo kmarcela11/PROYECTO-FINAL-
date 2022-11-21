@@ -10,15 +10,18 @@ public class RANKINGG extends javax.swing.JFrame {
 
         String auxname = HOMEE.Jugadores[HOMEE.jugadores];
         int auxpuntaje = HOMEE.Ranking[HOMEE.jugadores][0];
+        int cantvidas = NIVEL1.vd1 + NIVEL2.vd2 + NIVEL3.vd3;
         int k = HOMEE.jugadores;
         while (k > 1 && HOMEE.Ranking[k - 1][0] < auxpuntaje) {
             HOMEE.Ranking[k][0] = HOMEE.Ranking[k - 1][0];
+            HOMEE.Ranking[k][1] = HOMEE.Ranking[k - 1][1];
             HOMEE.Jugadores[k] = HOMEE.Jugadores[k - 1];
             k--;
         }
 
-        HOMEE.Ranking[k][0] = auxpuntaje;
-        HOMEE.Jugadores[k] = auxname;
+        HOMEE.Ranking[k][0] = auxpuntaje;//Puntaje obtenido por jugador.
+        HOMEE.Ranking[k][1] = cantvidas;
+        HOMEE.Jugadores[k] = auxname;//Nombre del jugador.
 
         for (int i = 1; i <= HOMEE.jugadores; i++) {
             ta_points.append(String.valueOf(HOMEE.Ranking[i][0]) + "\n");

@@ -107,16 +107,13 @@ public class HOMEE extends javax.swing.JFrame {
 
     private void selectlevel_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectlevel_btMouseClicked
         nombre = tf_nombre.getText();
-        if (nombre.equals("")) {
+        if (nombre.equals("")){
             nombre = nulo;
         }
-
         jugadores++;
-
         Jugadores[jugadores] = nombre;
         Ranking[jugadores][0] = 0;
         Ranking[jugadores][1] = 0;
-
         FILCOL abrir = new FILCOL();
         abrir.setVisible(true);
         this.setVisible(false);
