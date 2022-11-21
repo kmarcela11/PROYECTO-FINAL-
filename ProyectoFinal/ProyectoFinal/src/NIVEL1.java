@@ -48,6 +48,7 @@ public class NIVEL1 extends javax.swing.JFrame {
         level1bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(1200, 700));
         addWindowListener(new java.awt.event.WindowAdapter() {

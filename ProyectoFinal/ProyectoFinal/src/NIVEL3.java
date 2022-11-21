@@ -1,5 +1,4 @@
 
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -42,6 +41,8 @@ public class NIVEL3 extends javax.swing.JFrame {
         temp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         b_generar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/generarbt.png"))); // NOI18N
@@ -142,7 +143,7 @@ public class NIVEL3 extends javax.swing.JFrame {
                 tempKeyPressed(evt);
             }
         });
-        getContentPane().add(temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, -1, -1));
+        getContentPane().add(temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(899, 59, 0, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -247,123 +248,128 @@ public class NIVEL3 extends javax.swing.JFrame {
 
     private void tempKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tempKeyPressed
         Graphics t = Tablero.getGraphics();
-        if (evt.getKeyCode() == 37) {
-            if (mt[xr][yr - 1] != 1 && yr > 0) {
-                yr = yr - 1;
-                t.setColor(Color.decode("#EA5157"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    GANAR ganar = new GANAR();
-                    ganar.setVisible(true);
-                    this.setVisible(false);
-                    nivel3 = true;
-                    vd3 = vidas;
-                }
-            } else {
-                if (mt[xr][yr - 1] == 1) {
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas < 1) {
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+
+        try {
+            if (evt.getKeyCode() == 37) {
+                if (mt[xr][yr - 1] != 1 && yr > 0) {
+                    yr = yr - 1;
+                    t.setColor(Color.decode("#EA5157"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
+                        GANAR ganar = new GANAR();
+                        ganar.setVisible(true);
                         this.setVisible(false);
+                        nivel3 = true;
+                        vd3 = vidas;
+                    }
+                } else {
+                    if (mt[xr][yr - 1] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
                     }
                 }
             }
-        }
-        if (evt.getKeyCode() == 38) {
-            if (mt[xr - 1][yr] != 1 && xr > 0) {
-                xr = xr - 1;
-                t.setColor(Color.decode("#EA5157"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    GANAR ganar = new GANAR();
-                    ganar.setVisible(true);
-                    this.setVisible(false);
-                    nivel3 = true;
-                    vd3 = vidas;
-                }
-            } else {
-                if (mt[xr - 1][yr] == 1) {
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas < 1) {
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+            if (evt.getKeyCode() == 38) {
+                if (mt[xr - 1][yr] != 1 && xr > 0) {
+                    xr = xr - 1;
+                    t.setColor(Color.decode("#EA5157"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
+                        GANAR ganar = new GANAR();
+                        ganar.setVisible(true);
                         this.setVisible(false);
+                        nivel3 = true;
+                        vd3 = vidas;
+                    }
+                } else {
+                    if (mt[xr - 1][yr] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
                     }
                 }
             }
-        }
-        if (evt.getKeyCode() == 39) {
-            if (mt[xr][yr + 1] != 1 && yr < mm) {
-                yr = yr + 1;
-                t.setColor(Color.decode("#EA5157"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    GANAR ganar = new GANAR();
-                    ganar.setVisible(true);
-                    this.setVisible(false);
-                    nivel3 = true;
-                    vd3 = vidas;
-                }
-            } else {
-                if (mt[xr][yr + 1] == 1) {
-                    vidas = vidas - 1;
-                    vd3 = vidas;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas < 1) {
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+            if (evt.getKeyCode() == 39) {
+                if (mt[xr][yr + 1] != 1 && yr < mm) {
+                    yr = yr + 1;
+                    t.setColor(Color.decode("#EA5157"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
+                        GANAR ganar = new GANAR();
+                        ganar.setVisible(true);
                         this.setVisible(false);
+                        nivel3 = true;
+                        vd3 = vidas;
+                    }
+                } else {
+                    if (mt[xr][yr + 1] == 1) {
+                        vidas = vidas - 1;
+                        vd3 = vidas;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
                     }
                 }
             }
-        }
-        if (evt.getKeyCode() == 40) {
-            if (mt[xr + 1][yr] != 1 && xr < nn) {
-                xr = xr + 1;
-                t.setColor(Color.decode("#EA5157"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    GANAR ganar = new GANAR();
-                    ganar.setVisible(true);
-                    this.setVisible(false);
-                    nivel3 = true;
-                    vd3 = vidas;
-                }
-            } else {
-                if (mt[xr + 1][yr] == 1) {
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas < 1) {
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+            if (evt.getKeyCode() == 40) {
+                if (mt[xr + 1][yr] != 1 && xr < nn) {
+                    xr = xr + 1;
+                    t.setColor(Color.decode("#EA5157"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 500;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
+                        GANAR ganar = new GANAR();
+                        ganar.setVisible(true);
                         this.setVisible(false);
+                        nivel3 = true;
+                        vd3 = vidas;
+                    }
+                } else {
+                    if (mt[xr + 1][yr] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
                     }
                 }
             }
+        } catch (Exception e) {
         }
+
         movimientos++;
     }//GEN-LAST:event_tempKeyPressed
 

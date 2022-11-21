@@ -14,8 +14,9 @@ public class HOMEE extends javax.swing.JFrame {
         tf_nombre.setOpaque(false);
 
     }
-    
-      public Clip clip;
+
+    public static int musd = 1;
+    public Clip clip;
     /*sonido*/
     public String link = "/sonido/";
 
@@ -30,15 +31,13 @@ public class HOMEE extends javax.swing.JFrame {
         }
     }
     public static int n, m;
-    boolean reproducir = false;
-
+    public static boolean reproducir = false;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        b_musica = new javax.swing.JButton();
-        b_nomusica = new javax.swing.JButton();
+        b_mus = new javax.swing.JLabel();
         tf_nombre = new javax.swing.JTextField();
         ayudabt = new javax.swing.JLabel();
         rankingbt = new javax.swing.JLabel();
@@ -48,23 +47,18 @@ public class HOMEE extends javax.swing.JFrame {
         bghome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        b_musica.setText("MUSIC ON");
-        b_musica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_musicaActionPerformed(evt);
+        b_mus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/aaampause.png"))); // NOI18N
+        b_mus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_mus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_musMouseClicked(evt);
             }
         });
-        getContentPane().add(b_musica, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-
-        b_nomusica.setText("MUSIC OFF");
-        b_nomusica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_nomusicaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(b_nomusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        getContentPane().add(b_mus, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
         tf_nombre.setBackground(new java.awt.Color(102, 102, 102));
         tf_nombre.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
@@ -89,7 +83,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().add(tf_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 320, -1));
 
         ayudabt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/ayudabt.png"))); // NOI18N
-        ayudabt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ayudabt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ayudabt.setDisabledIcon(null);
         ayudabt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -99,7 +93,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().add(ayudabt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 610, 180, 50));
 
         rankingbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/rankingbt.png"))); // NOI18N
-        rankingbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        rankingbt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rankingbt.setDisabledIcon(null);
         rankingbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,7 +103,7 @@ public class HOMEE extends javax.swing.JFrame {
         getContentPane().add(rankingbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 620, 180, 50));
 
         salirbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/salirbt.png"))); // NOI18N
-        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salirbt.setDisabledIcon(null);
         salirbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,7 +111,9 @@ public class HOMEE extends javax.swing.JFrame {
             }
         });
         getContentPane().add(salirbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, 180, 50));
-        getContentPane().add(gametitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 700, 130));
+
+        gametitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/AAAVEIKMAZE.png"))); // NOI18N
+        getContentPane().add(gametitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 650, 130));
 
         selectlevel_bt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/selectlevel_bt.png"))); // NOI18N
         selectlevel_bt.setToolTipText("");
@@ -148,7 +144,7 @@ public class HOMEE extends javax.swing.JFrame {
 
     private void selectlevel_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectlevel_btMouseClicked
         nombre = tf_nombre.getText();
-        if (nombre.equals("")){
+        if (nombre.equals("")) {
             nombre = nulo;
         }
         jugadores++;
@@ -199,20 +195,32 @@ public class HOMEE extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_salirbtMouseClicked
 
-    private void b_musicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_musicaActionPerformed
-        reproducir = true;
-        if (reproducir == true) {
-            mus("Musica");
-        }
-    }//GEN-LAST:event_b_musicaActionPerformed
+    private void b_musMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_musMouseClicked
+        if (musd == 1) {
+            musd = 2;
+            reproducir = true;
+            if (reproducir == true) {
+                mus("Musica");
+            }
 
-    private void b_nomusicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_nomusicaActionPerformed
-        reproducir = false;
+            ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/aaamplay.png"));
+            b_mus.setIcon(im);
+        } else {
+            if (musd == 2) {
+                musd = 1;
+                reproducir = false;
 
-        if (reproducir == false) {
-            clip.stop();
+                if (reproducir == false) {
+                    clip.stop();
+                }
+                ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/aaampause.png"));
+                b_mus.setIcon(im);
+            }
+
         }
-    }//GEN-LAST:event_b_nomusicaActionPerformed
+
+
+    }//GEN-LAST:event_b_musMouseClicked
 
     public static void main(String args[]) {
 
@@ -225,8 +233,7 @@ public class HOMEE extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ayudabt;
-    private javax.swing.JButton b_musica;
-    private javax.swing.JButton b_nomusica;
+    private javax.swing.JLabel b_mus;
     private javax.swing.JLabel bghome;
     private javax.swing.JLabel gametitle;
     private javax.swing.JLabel rankingbt;

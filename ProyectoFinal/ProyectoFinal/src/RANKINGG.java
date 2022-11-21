@@ -46,12 +46,13 @@ public class RANKINGG extends javax.swing.JFrame {
         rkgbg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setUndecorated(true);
+        setResizable(false);
         setSize(new java.awt.Dimension(1200, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         salirbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/salirbt.png"))); // NOI18N
-        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salirbt.setDisabledIcon(null);
         salirbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -60,6 +61,7 @@ public class RANKINGG extends javax.swing.JFrame {
         });
         getContentPane().add(salirbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, 180, 50));
 
+        ta_points.setEditable(false);
         ta_points.setBackground(new java.awt.Color(243, 252, 240));
         ta_points.setColumns(20);
         ta_points.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
@@ -69,6 +71,7 @@ public class RANKINGG extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, 160, 430));
 
+        ta_hearts.setEditable(false);
         ta_hearts.setBackground(new java.awt.Color(243, 252, 240));
         ta_hearts.setColumns(20);
         ta_hearts.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
@@ -78,6 +81,7 @@ public class RANKINGG extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 70, 430));
 
+        ta_players.setEditable(false);
         ta_players.setBackground(new java.awt.Color(243, 252, 240));
         ta_players.setColumns(20);
         ta_players.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N

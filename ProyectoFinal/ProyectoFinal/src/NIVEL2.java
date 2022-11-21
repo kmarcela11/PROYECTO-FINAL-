@@ -45,6 +45,8 @@ public class NIVEL2 extends javax.swing.JFrame {
         needed = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -164,7 +166,7 @@ public class NIVEL2 extends javax.swing.JFrame {
                 neededKeyPressed(evt);
             }
         });
-        p_nivel2.add(needed, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 140, -1));
+        p_nivel2.add(needed, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, 10, 0));
 
         getContentPane().add(p_nivel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
 
@@ -323,156 +325,161 @@ public class NIVEL2 extends javax.swing.JFrame {
 
     private void neededKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_neededKeyPressed
         Graphics t = Tablero.getGraphics();
-        if (evt.getKeyCode() == 37) {
-            if (mt[xr][yr - 1] != 1 && yr > 0) {
-                yr = yr - 1;
-                t.setColor(Color.decode("#FCC26B"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-                    nivel2 = true;
-                    vd2 = vidas;
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    System.out.println(movimientos);
-                    NEXTLEVEL abrir = new NEXTLEVEL();
-                    abrir.setVisible(true);
-                    this.setVisible(false);
-                }
-            } else {
-                if (mt[xr][yr - 1] == 1) {
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 2) {
-                        vida3.setVisible(false);
-                    }
-                    if (vidas == 1) {
-                        vida2.setVisible(false);
-                    }
-                    if (vidas < 1) {
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
-                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                        System.out.println(movimientos);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
-                        this.setVisible(false);
-                    }
-                }
-            }
-        }
-        if (evt.getKeyCode() == 38) {
 
-            if (mt[xr - 1][yr] != 1 && xr > 0) {
-                xr = xr - 1;
-                t.setColor(Color.decode("#FCC26B"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-                    nivel2 = true;
-                    vd2 = vidas;
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    System.out.println(movimientos);
-                    NEXTLEVEL abrir = new NEXTLEVEL();
-                    abrir.setVisible(true);
-                    this.setVisible(false);
-                }
-            } else {
-                if (mt[xr - 1][yr] == 1) {
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 2) {
-                        vida3.setVisible(false);
-                    }
-                    if (vidas == 1) {
-                        vida2.setVisible(false);
-                    }
-                    if (vidas < 1) {
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+        try {
+            if (evt.getKeyCode() == 37) {
+                if (mt[xr][yr - 1] != 1 && yr > 0) {
+                    yr = yr - 1;
+                    t.setColor(Color.decode("#FCC26B"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        nivel2 = true;
+                        vd2 = vidas;
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         System.out.println(movimientos);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
+                        NEXTLEVEL abrir = new NEXTLEVEL();
+                        abrir.setVisible(true);
                         this.setVisible(false);
+                    }
+                } else {
+                    if (mt[xr][yr - 1] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas == 2) {
+                            vida3.setVisible(false);
+                        }
+                        if (vidas == 1) {
+                            vida2.setVisible(false);
+                        }
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            System.out.println(movimientos);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
                     }
                 }
             }
-        }
+            if (evt.getKeyCode() == 38) {
 
-        if (evt.getKeyCode() == 39) {
-            if (mt[xr][yr + 1] != 1 && yr < mm) {
-                yr = yr + 1;
-                t.setColor(Color.decode("#FCC26B"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-                    nivel2 = true;
-                    vd2 = vidas;
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    System.out.println(movimientos);
-                    NEXTLEVEL abrir = new NEXTLEVEL();
-                    abrir.setVisible(true);
-                    this.setVisible(false);
-                }
-            } else {
-                if (mt[xr][yr + 1] == 1) {
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
-                    if (vidas == 2) {
-                        vida3.setVisible(false);
-                    }
-                    if (vidas == 1) {
-                        vida2.setVisible(false);
-                    }
-                    if (vidas < 1) {
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                if (mt[xr - 1][yr] != 1 && xr > 0) {
+                    xr = xr - 1;
+                    t.setColor(Color.decode("#FCC26B"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        nivel2 = true;
+                        vd2 = vidas;
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         System.out.println(movimientos);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
+                        NEXTLEVEL abrir = new NEXTLEVEL();
+                        abrir.setVisible(true);
                         this.setVisible(false);
+                    }
+                } else {
+                    if (mt[xr - 1][yr] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas == 2) {
+                            vida3.setVisible(false);
+                        }
+                        if (vidas == 1) {
+                            vida2.setVisible(false);
+                        }
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            System.out.println(movimientos);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
                     }
                 }
             }
-        }
-        if (evt.getKeyCode() == 40) {
-            if (mt[xr + 1][yr] != 1 && xr < nn) {
-                xr = xr + 1;
-                t.setColor(Color.decode("#FCC26B"));
-                t.fillRect(ancho * yr, alto * xr, ancho, alto);
-                if (xr == xfr && yr == yfr) {
-                    nivel2 = true;
-                    vd2 = vidas;
-                    HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
-                    System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
-                    System.out.println(movimientos);
-                    NEXTLEVEL abrir = new NEXTLEVEL();
-                    abrir.setVisible(true);
-                    this.setVisible(false);
-                }
-            } else {
-                if (mt[xr + 1][yr] == 1) {
-                    vidas = vidas - 1;
-                    System.out.println("actualmente tienes " + vidas);
 
-                    if (vidas == 2) {
-                        vida3.setVisible(false);
-                    }
-                    if (vidas == 1) {
-                        vida2.setVisible(false);
-                    }
-                    if (vidas < 1) {
-                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+            if (evt.getKeyCode() == 39) {
+                if (mt[xr][yr + 1] != 1 && yr < mm) {
+                    yr = yr + 1;
+                    t.setColor(Color.decode("#FCC26B"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        nivel2 = true;
+                        vd2 = vidas;
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
                         System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
                         System.out.println(movimientos);
-                        vida1.setVisible(false);
-                        GAMEOVER salir = new GAMEOVER();
-                        salir.setVisible(true);
+                        NEXTLEVEL abrir = new NEXTLEVEL();
+                        abrir.setVisible(true);
                         this.setVisible(false);
+                    }
+                } else {
+                    if (mt[xr][yr + 1] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+                        if (vidas == 2) {
+                            vida3.setVisible(false);
+                        }
+                        if (vidas == 1) {
+                            vida2.setVisible(false);
+                        }
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            System.out.println(movimientos);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
                     }
                 }
             }
+            if (evt.getKeyCode() == 40) {
+                if (mt[xr + 1][yr] != 1 && xr < nn) {
+                    xr = xr + 1;
+                    t.setColor(Color.decode("#FCC26B"));
+                    t.fillRect(ancho * yr, alto * xr, ancho, alto);
+                    if (xr == xfr && yr == yfr) {
+                        nivel2 = true;
+                        vd2 = vidas;
+                        HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + (nn * mm) - movimientos + vidas * 100;
+                        System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                        System.out.println(movimientos);
+                        NEXTLEVEL abrir = new NEXTLEVEL();
+                        abrir.setVisible(true);
+                        this.setVisible(false);
+                    }
+                } else {
+                    if (mt[xr + 1][yr] == 1) {
+                        vidas = vidas - 1;
+                        System.out.println("actualmente tienes " + vidas);
+
+                        if (vidas == 2) {
+                            vida3.setVisible(false);
+                        }
+                        if (vidas == 1) {
+                            vida2.setVisible(false);
+                        }
+                        if (vidas < 1) {
+                            HOMEE.Ranking[HOMEE.jugadores][0] = HOMEE.Ranking[HOMEE.jugadores][0] + ((nn * mm) - movimientos + vidas * 100) / 2;
+                            System.out.println(HOMEE.Ranking[HOMEE.jugadores][0]);
+                            System.out.println(movimientos);
+                            vida1.setVisible(false);
+                            GAMEOVER salir = new GAMEOVER();
+                            salir.setVisible(true);
+                            this.setVisible(false);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+
         }
         movimientos++;
     }//GEN-LAST:event_neededKeyPressed

@@ -31,16 +31,19 @@ public class NEXTLEVEL extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dsddsd = new javax.swing.JLabel();
         score = new javax.swing.JLabel();
         lev_1 = new javax.swing.JLabel();
         lev_2 = new javax.swing.JLabel();
         lev_3 = new javax.swing.JLabel();
         advertencia = new javax.swing.JLabel();
         bgnextlevel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        bgbgbgbg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 400));
+        setUndecorated(true);
+        setResizable(false);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 formMouseMoved(evt);
@@ -52,6 +55,9 @@ public class NEXTLEVEL extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        dsddsd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/pasarnivel.png"))); // NOI18N
+        getContentPane().add(dsddsd, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 161, 620, 80));
 
         score.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
         score.setForeground(new java.awt.Color(31, 39, 27));
@@ -102,8 +108,8 @@ public class NEXTLEVEL extends javax.swing.JFrame {
         });
         getContentPane().add(bgnextlevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 701, 401));
 
-        jPanel1.setBackground(new java.awt.Color(31, 39, 27));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
+        bgbgbgbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/homebg.png"))); // NOI18N
+        getContentPane().add(bgbgbgbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,8 +213,9 @@ public class NEXTLEVEL extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel advertencia;
+    private javax.swing.JLabel bgbgbgbg;
     private javax.swing.JLabel bgnextlevel;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel dsddsd;
     private javax.swing.JLabel lev_1;
     private javax.swing.JLabel lev_2;
     private javax.swing.JLabel lev_3;
