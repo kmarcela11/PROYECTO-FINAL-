@@ -39,18 +39,30 @@ public class FILCOL extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg_niveles = new javax.swing.ButtonGroup();
+        salirbt = new javax.swing.JLabel();
         tf_filas = new javax.swing.JTextField();
         tf_columnas = new javax.swing.JTextField();
         b_musica = new javax.swing.JButton();
         b_nomusica = new javax.swing.JButton();
         level_bt1 = new javax.swing.JLabel();
         level_bt2 = new javax.swing.JLabel();
-        levelsbg = new javax.swing.JLabel();
         level_bt3 = new javax.swing.JLabel();
+        levelsbg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
+        setSize(new java.awt.Dimension(1200, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        salirbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/salirbt.png"))); // NOI18N
+        salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        salirbt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirbtMouseClicked(evt);
+            }
+        });
+        getContentPane().add(salirbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 650, 180, 50));
 
         tf_filas.setBackground(new java.awt.Color(102, 102, 102));
         tf_filas.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -137,17 +149,23 @@ public class FILCOL extends javax.swing.JFrame {
         });
         getContentPane().add(level_bt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 310, 70));
 
-        levelsbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/levelsbg.png"))); // NOI18N
-        levelsbg.setText("v");
-        getContentPane().add(levelsbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 720));
-
-        level_bt3.setText("nivel3");
+        level_bt3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level3_selbt.png"))); // NOI18N
         level_bt3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 level_bt3MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                level_bt3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                level_bt3MouseExited(evt);
+            }
         });
-        getContentPane().add(level_bt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 260, 70));
+        getContentPane().add(level_bt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 350, 70));
+
+        levelsbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/levelsbg.png"))); // NOI18N
+        levelsbg.setText("v");
+        getContentPane().add(levelsbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -275,6 +293,22 @@ public class FILCOL extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_level_bt3MouseClicked
 
+    private void level_bt3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt3MouseEntered
+        ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level3_selbtmouse.png"));
+        level_bt3.setIcon(im);  
+    }//GEN-LAST:event_level_bt3MouseEntered
+
+    private void level_bt3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_level_bt3MouseExited
+        ImageIcon im = new ImageIcon(getClass().getResource("/pfmedia/level3_selbt.png"));
+        level_bt3.setIcon(im);
+    }//GEN-LAST:event_level_bt3MouseExited
+
+    private void salirbtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirbtMouseClicked
+        HOMEE atras = new HOMEE();
+        atras.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_salirbtMouseClicked
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -287,11 +321,11 @@ public class FILCOL extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_musica;
     private javax.swing.JButton b_nomusica;
-    private javax.swing.ButtonGroup bg_niveles;
     private javax.swing.JLabel level_bt1;
     private javax.swing.JLabel level_bt2;
     private javax.swing.JLabel level_bt3;
     private javax.swing.JLabel levelsbg;
+    private javax.swing.JLabel salirbt;
     private javax.swing.JTextField tf_columnas;
     private javax.swing.JTextField tf_filas;
     // End of variables declaration//GEN-END:variables

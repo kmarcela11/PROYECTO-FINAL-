@@ -21,6 +21,9 @@ public class AYUDAA extends javax.swing.JFrame {
         ayuda_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
+        setSize(new java.awt.Dimension(1200, 700));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -33,7 +36,6 @@ public class AYUDAA extends javax.swing.JFrame {
 
         salirbt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/salirbt.png"))); // NOI18N
         salirbt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        salirbt.setDisabledIcon(null);
         salirbt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salirbtMouseClicked(evt);

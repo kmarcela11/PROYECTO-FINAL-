@@ -18,6 +18,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
         lev_3.setVisible(false);
         this.setLocationRelativeTo(null);
         advertencia.setVisible(false);
+        score.setText(String.valueOf(HOMEE.Ranking[HOMEE.jugadores][0]));
 
     }
 
@@ -30,6 +31,7 @@ public class NEXTLEVEL extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        score = new javax.swing.JLabel();
         lev_1 = new javax.swing.JLabel();
         lev_2 = new javax.swing.JLabel();
         lev_3 = new javax.swing.JLabel();
@@ -50,8 +52,21 @@ public class NEXTLEVEL extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        score.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
+        score.setForeground(new java.awt.Color(31, 39, 27));
+        score.setText("000");
+        getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+
         lev_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level1bt.png"))); // NOI18N
         lev_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lev_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lev_1MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lev_1MouseExited(evt);
+            }
+        });
         getContentPane().add(lev_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 90, 90));
 
         lev_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pfmedia/level2bt.png"))); // NOI18N
@@ -59,6 +74,9 @@ public class NEXTLEVEL extends javax.swing.JFrame {
         lev_2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lev_2MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lev_2MouseExited(evt);
             }
         });
         getContentPane().add(lev_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 90, 90));
@@ -106,23 +124,28 @@ public class NEXTLEVEL extends javax.swing.JFrame {
     }//GEN-LAST:event_bgnextlevelMouseMoved
 
     private void lev_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lev_2MouseClicked
-        NIVEL2 abrir = new NIVEL2();
-        abrir.setVisible(true);
+        if (NIVEL2.nivel2 == false) {
+            NIVEL2 abrir = new NIVEL2();
+            abrir.setVisible(true);
 
-        NIVEL1 cerrar = new NIVEL1();
-        cerrar.setVisible(false);
+            NIVEL1 cerrar = new NIVEL1();
+            cerrar.setVisible(false);
 
-        NIVEL3 cerrar1 = new NIVEL3();
-        cerrar1.setVisible(false);
+            NIVEL3 cerrar1 = new NIVEL3();
+            cerrar1.setVisible(false);
 
-        this.setVisible(false);
+            this.setVisible(false);
+        } else {
+            advertencia.setVisible(true);
+        }
+
     }//GEN-LAST:event_lev_2MouseClicked
 
     private void lev_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lev_3MouseClicked
 
         NIVEL2 cerrar1 = new NIVEL2();
         cerrar1.setVisible(false);
-        
+
         NIVEL1 cerrar = new NIVEL1();
         cerrar.setVisible(false);
         NIVEL3 abrir = new NIVEL3();
@@ -130,6 +153,18 @@ public class NEXTLEVEL extends javax.swing.JFrame {
 
         this.setVisible(false);
     }//GEN-LAST:event_lev_3MouseClicked
+
+    private void lev_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lev_1MouseClicked
+        advertencia.setVisible(true);
+    }//GEN-LAST:event_lev_1MouseClicked
+
+    private void lev_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lev_2MouseExited
+        advertencia.setVisible(false);
+    }//GEN-LAST:event_lev_2MouseExited
+
+    private void lev_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lev_1MouseExited
+        advertencia.setVisible(false);
+    }//GEN-LAST:event_lev_1MouseExited
 
     /**
      * @param args the command line arguments
@@ -172,5 +207,6 @@ public class NEXTLEVEL extends javax.swing.JFrame {
     private javax.swing.JLabel lev_1;
     private javax.swing.JLabel lev_2;
     private javax.swing.JLabel lev_3;
+    private javax.swing.JLabel score;
     // End of variables declaration//GEN-END:variables
 }
